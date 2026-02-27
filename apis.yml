@@ -1,0 +1,148 @@
+name: Microsoft Power Apps APIs
+description: Collection of APIs for Microsoft Power Apps platform enabling low-code application development, automation, and data connectivity
+image: https://powerplatform.microsoft.com/images/power-apps-logo.png
+created: '2024'
+modified: '2024'
+specificationVersion: '0.18'
+url: https://apis.json/microsoft-power-apps
+apis:
+- name: Power Apps API
+  description: Core API for managing Power Apps applications, including creating, updating, and deleting apps
+  image: https://powerplatform.microsoft.com/images/power-apps-icon.png
+  humanURL: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/overview
+  baseURL: https://api.powerapps.com
+  tags:
+  - Low-Code
+  - Applications
+  - Development
+  - Power Platform
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/reference
+  - type: OpenAPI
+    url: https://docs.microsoft.com/en-us/connectors/powerappsforappmakers/
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/authenticate
+  - type: Rate Limits
+    url: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/api-limits
+- name: Dataverse API (Common Data Service)
+  description: RESTful API for interacting with Microsoft Dataverse (formerly Common Data Service) for data storage and management
+  image: https://powerplatform.microsoft.com/images/dataverse-icon.png
+  humanURL: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/overview
+  baseURL: https://[organization].api.crm.dynamics.com/api/data/v9.2
+  tags:
+  - Data Platform
+  - Database
+  - CRM
+  - REST API
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/overview
+  - type: OpenAPI
+    url: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/openapi
+  - type: OData
+    url: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/query-data-web-api
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/authenticate-oauth
+- name: Power Apps Management API
+  description: API for administrative tasks including environment management, app sharing, and user permissions
+  image: https://powerplatform.microsoft.com/images/admin-icon.png
+  humanURL: https://docs.microsoft.com/en-us/power-platform/admin/programmability-admin-center
+  baseURL: https://api.bap.microsoft.com
+  tags:
+  - Administration
+  - Management
+  - Governance
+  - Environments
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/power-platform/admin/programmability-admin-center
+  - type: PowerShell
+    url: https://docs.microsoft.com/en-us/power-platform/admin/powershell-getting-started
+  - type: CLI
+    url: https://docs.microsoft.com/en-us/power-platform/developer/cli/introduction
+- name: Power Apps Connectors API
+  description: API for working with custom and standard connectors to integrate external services and data sources
+  image: https://powerplatform.microsoft.com/images/connectors-icon.png
+  humanURL: https://docs.microsoft.com/en-us/connectors/custom-connectors/
+  baseURL: https://api.powerapps.com/providers/Microsoft.PowerApps
+  tags:
+  - Connectors
+  - Integration
+  - APIs
+  - Custom Connectors
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/connectors/custom-connectors/create-web-api-connector
+  - type: Connector Reference
+    url: https://docs.microsoft.com/en-us/connectors/connector-reference/
+  - type: Custom Connectors
+    url: https://docs.microsoft.com/en-us/connectors/custom-connectors/
+- name: Power Apps Canvas Apps API
+  description: API specific to Canvas Apps for creating pixel-perfect user interfaces with drag-and-drop functionality
+  image: https://powerplatform.microsoft.com/images/canvas-apps-icon.png
+  humanURL: https://docs.microsoft.com/en-us/power-apps/maker/canvas-apps/
+  baseURL: https://api.powerapps.com
+  tags:
+  - Canvas Apps
+  - UI
+  - Low-Code
+  - Mobile
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/power-apps/maker/canvas-apps/dev-enterprise-intro
+  - type: Formula Reference
+    url: https://docs.microsoft.com/en-us/power-platform/power-fx/formula-reference
+  - type: App Lifecycle
+    url: https://docs.microsoft.com/en-us/power-apps/maker/canvas-apps/application-lifecycle-management
+- name: Power Apps Model-driven Apps API
+  description: API for Model-driven Apps that automatically generate UI based on data model and business logic
+  image: https://powerplatform.microsoft.com/images/model-driven-icon.png
+  humanURL: https://docs.microsoft.com/en-us/power-apps/developer/model-driven-apps/
+  baseURL: https://[organization].crm.dynamics.com
+  tags:
+  - Model-driven Apps
+  - Forms
+  - Views
+  - Business Logic
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/power-apps/developer/model-driven-apps/overview
+  - type: Client API
+    url: https://docs.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference
+  - type: Customization
+    url: https://docs.microsoft.com/en-us/power-apps/developer/model-driven-apps/customize-entity-forms
+common:
+- type: Developer Portal
+  url: https://docs.microsoft.com/en-us/power-apps/developer/
+- type: Community
+  url: https://powerusers.microsoft.com/
+- type: Blog
+  url: https://powerapps.microsoft.com/blog/
+- type: Pricing
+  url: https://powerapps.microsoft.com/pricing/
+- type: Status
+  url: https://status.powerplatform.microsoft.com/
+- type: Support
+  url: https://powerapps.microsoft.com/support/
+- type: Learning Resources
+  url: https://docs.microsoft.com/en-us/learn/powerplatform/power-apps
+- type: GitHub
+  url: https://github.com/microsoft/PowerApps-Samples
+- type: Terms of Service
+  url: https://www.microsoft.com/licensing/terms/productoffering/MicrosoftPowerApps
+- type: Privacy Policy
+  url: https://privacy.microsoft.com/
+maintainers:
+- name: Microsoft Corporation
+  email: support@microsoft.com
+  url: https://www.microsoft.com
+tags:
+- Power Platform
+- Low-Code
+- No-Code
+- Business Applications
+- Microsoft
+- Enterprise
+- Cloud
+- SaaS
