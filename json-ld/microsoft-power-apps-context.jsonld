@@ -1,0 +1,439 @@
+{
+  "@context": {
+    "@version": 1.1,
+
+    "dataverse": "https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/reference/",
+    "schema": "https://schema.org/",
+    "odata": "http://docs.oasis-open.org/odata/ns/",
+    "crm": "https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/reference/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+
+    "Account": {
+      "@id": "dataverse:account",
+      "@context": {
+        "accountid": {
+          "@id": "dataverse:account#accountid",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:legalName",
+          "@type": "xsd:string"
+        },
+        "accountnumber": {
+          "@id": "dataverse:account#accountnumber",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "emailaddress1": {
+          "@id": "schema:email",
+          "@type": "xsd:string"
+        },
+        "emailaddress2": {
+          "@id": "dataverse:account#emailaddress2",
+          "@type": "xsd:string"
+        },
+        "emailaddress3": {
+          "@id": "dataverse:account#emailaddress3",
+          "@type": "xsd:string"
+        },
+        "telephone1": {
+          "@id": "schema:telephone",
+          "@type": "xsd:string"
+        },
+        "telephone2": {
+          "@id": "dataverse:account#telephone2",
+          "@type": "xsd:string"
+        },
+        "telephone3": {
+          "@id": "dataverse:account#telephone3",
+          "@type": "xsd:string"
+        },
+        "fax": {
+          "@id": "schema:faxNumber",
+          "@type": "xsd:string"
+        },
+        "websiteurl": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "industrycode": {
+          "@id": "dataverse:account#industrycode",
+          "@type": "xsd:integer"
+        },
+        "numberofemployees": {
+          "@id": "schema:numberOfEmployees",
+          "@type": "xsd:integer"
+        },
+        "revenue": {
+          "@id": "dataverse:account#revenue",
+          "@type": "xsd:decimal"
+        },
+        "ownershipcode": {
+          "@id": "dataverse:account#ownershipcode",
+          "@type": "xsd:integer"
+        },
+        "customertypecode": {
+          "@id": "dataverse:account#customertypecode",
+          "@type": "xsd:integer"
+        },
+        "sic": {
+          "@id": "dataverse:account#sic",
+          "@type": "xsd:string"
+        },
+        "tickersymbol": {
+          "@id": "schema:tickerSymbol",
+          "@type": "xsd:string"
+        },
+        "stockexchange": {
+          "@id": "dataverse:account#stockexchange",
+          "@type": "xsd:string"
+        },
+        "creditlimit": {
+          "@id": "dataverse:account#creditlimit",
+          "@type": "xsd:decimal"
+        },
+        "creditonhold": {
+          "@id": "dataverse:account#creditonhold",
+          "@type": "xsd:boolean"
+        },
+        "address1_line1": {
+          "@id": "schema:streetAddress",
+          "@type": "xsd:string"
+        },
+        "address1_city": {
+          "@id": "schema:addressLocality",
+          "@type": "xsd:string"
+        },
+        "address1_stateorprovince": {
+          "@id": "schema:addressRegion",
+          "@type": "xsd:string"
+        },
+        "address1_postalcode": {
+          "@id": "schema:postalCode",
+          "@type": "xsd:string"
+        },
+        "address1_country": {
+          "@id": "schema:addressCountry",
+          "@type": "xsd:string"
+        },
+        "address1_latitude": {
+          "@id": "schema:latitude",
+          "@type": "xsd:double"
+        },
+        "address1_longitude": {
+          "@id": "schema:longitude",
+          "@type": "xsd:double"
+        },
+        "statecode": {
+          "@id": "dataverse:account#statecode",
+          "@type": "xsd:integer"
+        },
+        "statuscode": {
+          "@id": "dataverse:account#statuscode",
+          "@type": "xsd:integer"
+        },
+        "createdon": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "modifiedon": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "primarycontactid": {
+          "@id": "dataverse:account#primarycontactid",
+          "@type": "@id"
+        },
+        "parentaccountid": {
+          "@id": "dataverse:account#parentaccountid",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Contact": {
+      "@id": "dataverse:contact",
+      "@context": {
+        "contactid": {
+          "@id": "dataverse:contact#contactid",
+          "@type": "xsd:string"
+        },
+        "firstname": {
+          "@id": "schema:givenName",
+          "@type": "xsd:string"
+        },
+        "lastname": {
+          "@id": "schema:familyName",
+          "@type": "xsd:string"
+        },
+        "fullname": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "middlename": {
+          "@id": "schema:additionalName",
+          "@type": "xsd:string"
+        },
+        "nickname": {
+          "@id": "dataverse:contact#nickname",
+          "@type": "xsd:string"
+        },
+        "salutation": {
+          "@id": "schema:honorificPrefix",
+          "@type": "xsd:string"
+        },
+        "suffix": {
+          "@id": "schema:honorificSuffix",
+          "@type": "xsd:string"
+        },
+        "jobtitle": {
+          "@id": "schema:jobTitle",
+          "@type": "xsd:string"
+        },
+        "department": {
+          "@id": "dataverse:contact#department",
+          "@type": "xsd:string"
+        },
+        "emailaddress1": {
+          "@id": "schema:email",
+          "@type": "xsd:string"
+        },
+        "emailaddress2": {
+          "@id": "dataverse:contact#emailaddress2",
+          "@type": "xsd:string"
+        },
+        "emailaddress3": {
+          "@id": "dataverse:contact#emailaddress3",
+          "@type": "xsd:string"
+        },
+        "telephone1": {
+          "@id": "schema:telephone",
+          "@type": "xsd:string"
+        },
+        "telephone2": {
+          "@id": "dataverse:contact#telephone2",
+          "@type": "xsd:string"
+        },
+        "telephone3": {
+          "@id": "dataverse:contact#telephone3",
+          "@type": "xsd:string"
+        },
+        "mobilephone": {
+          "@id": "dataverse:contact#mobilephone",
+          "@type": "xsd:string"
+        },
+        "fax": {
+          "@id": "schema:faxNumber",
+          "@type": "xsd:string"
+        },
+        "websiteurl": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "gendercode": {
+          "@id": "schema:gender",
+          "@type": "xsd:integer"
+        },
+        "birthdate": {
+          "@id": "schema:birthDate",
+          "@type": "xsd:date"
+        },
+        "anniversary": {
+          "@id": "dataverse:contact#anniversary",
+          "@type": "xsd:date"
+        },
+        "spousesname": {
+          "@id": "schema:spouse",
+          "@type": "xsd:string"
+        },
+        "numberofchildren": {
+          "@id": "dataverse:contact#numberofchildren",
+          "@type": "xsd:integer"
+        },
+        "address1_line1": {
+          "@id": "schema:streetAddress",
+          "@type": "xsd:string"
+        },
+        "address1_city": {
+          "@id": "schema:addressLocality",
+          "@type": "xsd:string"
+        },
+        "address1_stateorprovince": {
+          "@id": "schema:addressRegion",
+          "@type": "xsd:string"
+        },
+        "address1_postalcode": {
+          "@id": "schema:postalCode",
+          "@type": "xsd:string"
+        },
+        "address1_country": {
+          "@id": "schema:addressCountry",
+          "@type": "xsd:string"
+        },
+        "address1_latitude": {
+          "@id": "schema:latitude",
+          "@type": "xsd:double"
+        },
+        "address1_longitude": {
+          "@id": "schema:longitude",
+          "@type": "xsd:double"
+        },
+        "statecode": {
+          "@id": "dataverse:contact#statecode",
+          "@type": "xsd:integer"
+        },
+        "statuscode": {
+          "@id": "dataverse:contact#statuscode",
+          "@type": "xsd:integer"
+        },
+        "createdon": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "modifiedon": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "parentcustomerid": {
+          "@id": "dataverse:contact#parentcustomerid",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Entity": {
+      "@id": "dataverse:entity",
+      "@context": {
+        "entityid": {
+          "@id": "dataverse:entity#entityid",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "logicalname": {
+          "@id": "dataverse:entity#logicalname",
+          "@type": "xsd:string"
+        },
+        "logicalcollectionname": {
+          "@id": "dataverse:entity#logicalcollectionname",
+          "@type": "xsd:string"
+        },
+        "collectionname": {
+          "@id": "dataverse:entity#collectionname",
+          "@type": "xsd:string"
+        },
+        "entitysetname": {
+          "@id": "dataverse:entity#entitysetname",
+          "@type": "xsd:string"
+        },
+        "physicalname": {
+          "@id": "dataverse:entity#physicalname",
+          "@type": "xsd:string"
+        },
+        "basetablename": {
+          "@id": "dataverse:entity#basetablename",
+          "@type": "xsd:string"
+        },
+        "externalname": {
+          "@id": "dataverse:entity#externalname",
+          "@type": "xsd:string"
+        },
+        "isactivity": {
+          "@id": "dataverse:entity#isactivity",
+          "@type": "xsd:boolean"
+        },
+        "objecttypecode": {
+          "@id": "dataverse:entity#objecttypecode",
+          "@type": "xsd:integer"
+        },
+        "componentstate": {
+          "@id": "dataverse:entity#componentstate",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "DataverseAddress": {
+      "@id": "schema:PostalAddress",
+      "@context": {
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "line1": {
+          "@id": "schema:streetAddress",
+          "@type": "xsd:string"
+        },
+        "city": {
+          "@id": "schema:addressLocality",
+          "@type": "xsd:string"
+        },
+        "stateorprovince": {
+          "@id": "schema:addressRegion",
+          "@type": "xsd:string"
+        },
+        "postalcode": {
+          "@id": "schema:postalCode",
+          "@type": "xsd:string"
+        },
+        "country": {
+          "@id": "schema:addressCountry",
+          "@type": "xsd:string"
+        },
+        "county": {
+          "@id": "dataverse:customeraddress#county",
+          "@type": "xsd:string"
+        },
+        "telephone1": {
+          "@id": "schema:telephone",
+          "@type": "xsd:string"
+        },
+        "fax": {
+          "@id": "schema:faxNumber",
+          "@type": "xsd:string"
+        },
+        "latitude": {
+          "@id": "schema:latitude",
+          "@type": "xsd:double"
+        },
+        "longitude": {
+          "@id": "schema:longitude",
+          "@type": "xsd:double"
+        }
+      }
+    },
+
+    "ODataCollection": {
+      "@id": "odata:Collection",
+      "@context": {
+        "value": {
+          "@id": "odata:value",
+          "@container": "@list"
+        },
+        "count": {
+          "@id": "odata:count",
+          "@type": "xsd:integer"
+        },
+        "nextLink": {
+          "@id": "odata:nextLink",
+          "@type": "@id"
+        },
+        "context": {
+          "@id": "odata:context",
+          "@type": "@id"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1455 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Dataverse Web API
+  description: >-
+    RESTful API for interacting with Microsoft Dataverse (formerly Common Data
+    Service), the underlying data platform for Microsoft Power Apps. This API
+    follows OData v4.0 conventions and provides CRUD operations on Dataverse
+    tables including accounts, contacts, and entity definitions. Each Dataverse
+    environment has a unique organization URL and may include custom tables and
+    operations specific to that environment.
+  version: '9.2'
+  termsOfService: https://www.microsoft.com/licensing/terms/productoffering/MicrosoftPowerApps
+  contact:
+    name: Microsoft Power Apps Developer Support
+    url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/overview
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/licensing/terms/productoffering/MicrosoftPowerApps
+  x-namespace: Microsoft.Dynamics.CRM
+
+servers:
+  - url: https://{organization}.api.crm.dynamics.com/api/data/v9.2
+    description: Dataverse Web API v9.2 endpoint (North America)
+    variables:
+      organization:
+        default: yourorg
+        description: >-
+          The unique organization name for your Dataverse environment. Find this
+          in the Power Platform admin center under environment details.
+  - url: https://{organization}.api.crm2.dynamics.com/api/data/v9.2
+    description: Dataverse Web API v9.2 endpoint (South America)
+    variables:
+      organization:
+        default: yourorg
+        description: The unique organization name for your Dataverse environment.
+  - url: https://{organization}.api.crm4.dynamics.com/api/data/v9.2
+    description: Dataverse Web API v9.2 endpoint (Europe)
+    variables:
+      organization:
+        default: yourorg
+        description: The unique organization name for your Dataverse environment.
+  - url: https://{organization}.api.crm5.dynamics.com/api/data/v9.2
+    description: Dataverse Web API v9.2 endpoint (Asia Pacific)
+    variables:
+      organization:
+        default: yourorg
+        description: The unique organization name for your Dataverse environment.
+
+security:
+  - oauth2: []
+
+tags:
+  - name: Accounts
+    description: >-
+      Operations on the account entity set. An account represents a business
+      that is a customer or potential customer, typically the company billed in
+      business transactions.
+    externalDocs:
+      description: Account EntityType Reference
+      url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/reference/account
+  - name: Contacts
+    description: >-
+      Operations on the contact entity set. A contact represents a person with
+      whom a business unit has a relationship, such as a customer, supplier, or
+      colleague.
+    externalDocs:
+      description: Contact EntityType Reference
+      url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/reference/contact
+  - name: Entities
+    description: >-
+      Operations on the entity definition entity set. Provides metadata about
+      Dataverse tables (entities) including their logical names, collection
+      names, and structural information. Read-only access via RetrieveMultiple.
+    externalDocs:
+      description: Entity EntityType Reference
+      url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/reference/entity
+
+paths:
+  /accounts:
+    get:
+      operationId: getAccounts
+      summary: Retrieve multiple accounts
+      description: >-
+        Retrieves a collection of account records from Dataverse. Supports OData
+        query options for filtering, sorting, selecting fields, expanding
+        navigation properties, and pagination.
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/ODataSelect'
+        - $ref: '#/components/parameters/ODataFilter'
+        - $ref: '#/components/parameters/ODataOrderBy'
+        - $ref: '#/components/parameters/ODataTop'
+        - $ref: '#/components/parameters/ODataSkip'
+        - $ref: '#/components/parameters/ODataExpand'
+        - $ref: '#/components/parameters/ODataCount'
+        - $ref: '#/components/parameters/Prefer'
+        - $ref: '#/components/parameters/ODataMaxPageSize'
+      responses:
+        '200':
+          description: Successfully retrieved account collection.
+          headers:
+            OData-Version:
+              description: OData protocol version.
+              schema:
+                type: string
+                example: '4.0'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    post:
+      operationId: createAccount
+      summary: Create a new account
+      description: >-
+        Creates a new account record in Dataverse. Returns the created record
+        when the Prefer header is set to return=representation.
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/Prefer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+      responses:
+        '204':
+          description: Account created successfully.
+          headers:
+            OData-EntityId:
+              description: URI of the newly created account record.
+              schema:
+                type: string
+                format: uri
+        '201':
+          description: >-
+            Account created successfully with representation returned (when
+            Prefer: return=representation is specified).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /accounts({accountid}):
+    get:
+      operationId: getAccount
+      summary: Retrieve a single account
+      description: Retrieves a single account record by its unique identifier.
+      tags:
+        - Accounts
+      parameters:
+        - name: accountid
+          in: path
+          required: true
+          description: Unique identifier (GUID) of the account record.
+          schema:
+            type: string
+            format: uuid
+        - $ref: '#/components/parameters/ODataSelect'
+        - $ref: '#/components/parameters/ODataExpand'
+        - $ref: '#/components/parameters/Prefer'
+      responses:
+        '200':
+          description: Successfully retrieved account record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateAccount
+      summary: Update an existing account
+      description: >-
+        Updates an existing account record using PATCH (merge update). Only the
+        properties included in the request body are updated. This follows the
+        OData v4.0 convention for updates.
+      tags:
+        - Accounts
+      parameters:
+        - name: accountid
+          in: path
+          required: true
+          description: Unique identifier (GUID) of the account record.
+          schema:
+            type: string
+            format: uuid
+        - name: If-Match
+          in: header
+          description: >-
+            Used for optimistic concurrency control. Set to the ETag value of
+            the record to ensure you are updating the latest version.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/Prefer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+      responses:
+        '204':
+          description: Account updated successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '412':
+          $ref: '#/components/responses/PreconditionFailed'
+    delete:
+      operationId: deleteAccount
+      summary: Delete an account
+      description: Deletes an existing account record from Dataverse.
+      tags:
+        - Accounts
+      parameters:
+        - name: accountid
+          in: path
+          required: true
+          description: Unique identifier (GUID) of the account record.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Account deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /contacts:
+    get:
+      operationId: getContacts
+      summary: Retrieve multiple contacts
+      description: >-
+        Retrieves a collection of contact records from Dataverse. Supports OData
+        query options for filtering, sorting, selecting fields, expanding
+        navigation properties, and pagination.
+      tags:
+        - Contacts
+      parameters:
+        - $ref: '#/components/parameters/ODataSelect'
+        - $ref: '#/components/parameters/ODataFilter'
+        - $ref: '#/components/parameters/ODataOrderBy'
+        - $ref: '#/components/parameters/ODataTop'
+        - $ref: '#/components/parameters/ODataSkip'
+        - $ref: '#/components/parameters/ODataExpand'
+        - $ref: '#/components/parameters/ODataCount'
+        - $ref: '#/components/parameters/Prefer'
+        - $ref: '#/components/parameters/ODataMaxPageSize'
+      responses:
+        '200':
+          description: Successfully retrieved contact collection.
+          headers:
+            OData-Version:
+              description: OData protocol version.
+              schema:
+                type: string
+                example: '4.0'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    post:
+      operationId: createContact
+      summary: Create a new contact
+      description: >-
+        Creates a new contact record in Dataverse. Returns the created record
+        when the Prefer header is set to return=representation.
+      tags:
+        - Contacts
+      parameters:
+        - $ref: '#/components/parameters/Prefer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+      responses:
+        '204':
+          description: Contact created successfully.
+          headers:
+            OData-EntityId:
+              description: URI of the newly created contact record.
+              schema:
+                type: string
+                format: uri
+        '201':
+          description: >-
+            Contact created successfully with representation returned (when
+            Prefer: return=representation is specified).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /contacts({contactid}):
+    get:
+      operationId: getContact
+      summary: Retrieve a single contact
+      description: Retrieves a single contact record by its unique identifier.
+      tags:
+        - Contacts
+      parameters:
+        - name: contactid
+          in: path
+          required: true
+          description: Unique identifier (GUID) of the contact record.
+          schema:
+            type: string
+            format: uuid
+        - $ref: '#/components/parameters/ODataSelect'
+        - $ref: '#/components/parameters/ODataExpand'
+        - $ref: '#/components/parameters/Prefer'
+      responses:
+        '200':
+          description: Successfully retrieved contact record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateContact
+      summary: Update an existing contact
+      description: >-
+        Updates an existing contact record using PATCH (merge update). Only the
+        properties included in the request body are updated.
+      tags:
+        - Contacts
+      parameters:
+        - name: contactid
+          in: path
+          required: true
+          description: Unique identifier (GUID) of the contact record.
+          schema:
+            type: string
+            format: uuid
+        - name: If-Match
+          in: header
+          description: >-
+            Used for optimistic concurrency control. Set to the ETag value of
+            the record to ensure you are updating the latest version.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/Prefer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+      responses:
+        '204':
+          description: Contact updated successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '412':
+          $ref: '#/components/responses/PreconditionFailed'
+    delete:
+      operationId: deleteContact
+      summary: Delete a contact
+      description: Deletes an existing contact record from Dataverse.
+      tags:
+        - Contacts
+      parameters:
+        - name: contactid
+          in: path
+          required: true
+          description: Unique identifier (GUID) of the contact record.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Contact deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /entities:
+    get:
+      operationId: getEntities
+      summary: Retrieve entity definitions
+      description: >-
+        Retrieves a collection of entity (table) definitions from Dataverse.
+        This endpoint provides metadata about the tables available in the
+        environment, including their logical names, collection names, and
+        structural information. This is a read-only endpoint supporting only
+        RetrieveMultiple operations.
+      tags:
+        - Entities
+      parameters:
+        - $ref: '#/components/parameters/ODataSelect'
+        - $ref: '#/components/parameters/ODataFilter'
+        - $ref: '#/components/parameters/ODataOrderBy'
+        - $ref: '#/components/parameters/ODataTop'
+        - $ref: '#/components/parameters/ODataSkip'
+        - $ref: '#/components/parameters/ODataCount'
+        - $ref: '#/components/parameters/Prefer'
+        - $ref: '#/components/parameters/ODataMaxPageSize'
+      responses:
+        '200':
+          description: Successfully retrieved entity definition collection.
+          headers:
+            OData-Version:
+              description: OData protocol version.
+              schema:
+                type: string
+                example: '4.0'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /entities({entityid}):
+    get:
+      operationId: getEntity
+      summary: Retrieve a single entity definition
+      description: >-
+        Retrieves a single entity (table) definition by its unique identifier.
+        Provides metadata about the table including its logical name, collection
+        name, and structural information.
+      tags:
+        - Entities
+      parameters:
+        - name: entityid
+          in: path
+          required: true
+          description: Unique identifier (GUID) of the entity definition.
+          schema:
+            type: string
+            format: uuid
+        - $ref: '#/components/parameters/ODataSelect'
+        - $ref: '#/components/parameters/Prefer'
+      responses:
+        '200':
+          description: Successfully retrieved entity definition.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Entity'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: >-
+        OAuth 2.0 authentication using Microsoft Entra ID (formerly Azure Active
+        Directory). Applications must be registered in Microsoft Entra ID and
+        granted appropriate Dataverse permissions.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://{organization}.crm.dynamics.com/.default: Full access to Dataverse environment
+            https://{organization}.crm.dynamics.com/user_impersonation: Access Dataverse as the signed-in user
+
+  parameters:
+    ODataSelect:
+      name: $select
+      in: query
+      description: >-
+        Comma-separated list of property names to include in the response. Use
+        to limit the properties returned and improve performance.
+      schema:
+        type: string
+      example: name,accountnumber,emailaddress1
+
+    ODataFilter:
+      name: $filter
+      in: query
+      description: >-
+        OData filter expression to restrict the set of records returned. Supports
+        standard OData comparison, logical, and function operators.
+      schema:
+        type: string
+      example: statecode eq 0
+
+    ODataOrderBy:
+      name: $orderby
+      in: query
+      description: >-
+        Comma-separated list of properties to sort results by, each optionally
+        followed by asc or desc.
+      schema:
+        type: string
+      example: name asc
+
+    ODataTop:
+      name: $top
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        minimum: 1
+      example: 50
+
+    ODataSkip:
+      name: $skip
+      in: query
+      description: Number of records to skip before returning results.
+      schema:
+        type: integer
+        minimum: 0
+
+    ODataExpand:
+      name: $expand
+      in: query
+      description: >-
+        Comma-separated list of navigation properties to expand inline in the
+        response. Supports nested $select and $filter on expanded entities.
+      schema:
+        type: string
+      example: primarycontactid($select=fullname,emailaddress1)
+
+    ODataCount:
+      name: $count
+      in: query
+      description: >-
+        Set to true to include a count of matching records in the response.
+      schema:
+        type: boolean
+      example: true
+
+    Prefer:
+      name: Prefer
+      in: header
+      description: >-
+        OData preference header. Common values include
+        return=representation (return created/updated record),
+        odata.include-annotations="*" (include formatted values),
+        and odata.maxpagesize=N (set page size).
+      schema:
+        type: string
+      example: return=representation,odata.include-annotations="*"
+
+    ODataMaxPageSize:
+      name: Prefer
+      in: header
+      description: >-
+        Set the maximum page size for paginated results using
+        odata.maxpagesize preference. Default is 5000 records.
+      schema:
+        type: string
+      example: odata.maxpagesize=100
+
+  schemas:
+    Account:
+      type: object
+      description: >-
+        Business that represents a customer or potential customer. The company
+        that is billed in business transactions. Corresponds to the account
+        entity type in the Microsoft.Dynamics.CRM namespace.
+      properties:
+        accountid:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Unique identifier of the account.
+        name:
+          type: string
+          maxLength: 160
+          description: Company or business name of the account.
+        accountnumber:
+          type: string
+          maxLength: 20
+          description: >-
+            ID number or code for the account to quickly search and identify
+            the account in system views.
+        accountcategorycode:
+          type: integer
+          description: >-
+            Category indicating whether the customer account is standard or
+            preferred. 1 = Preferred Customer, 2 = Standard.
+          enum: [1, 2]
+        accountclassificationcode:
+          type: integer
+          description: >-
+            Classification code indicating the potential value of the customer
+            account. 1 = Default Value.
+        accountratingcode:
+          type: integer
+          description: Rating indicating the value of the customer account.
+        description:
+          type: string
+          maxLength: 2000
+          description: Additional information describing the account.
+        emailaddress1:
+          type: string
+          format: email
+          maxLength: 100
+          description: Primary email address for the account.
+        emailaddress2:
+          type: string
+          format: email
+          maxLength: 100
+          description: Secondary email address for the account.
+        emailaddress3:
+          type: string
+          format: email
+          maxLength: 100
+          description: Alternate email address for the account.
+        telephone1:
+          type: string
+          maxLength: 50
+          description: Main phone number for the account.
+        telephone2:
+          type: string
+          maxLength: 50
+          description: Second phone number for the account.
+        telephone3:
+          type: string
+          maxLength: 50
+          description: Third phone number for the account.
+        fax:
+          type: string
+          maxLength: 50
+          description: Fax number for the account.
+        websiteurl:
+          type: string
+          format: uri
+          maxLength: 200
+          description: Website URL for the account.
+        industrycode:
+          type: integer
+          description: >-
+            Primary industry of the account for marketing segmentation. Values
+            include 1=Accounting, 2=Agriculture, 3=Broadcasting, 4=Brokers,
+            5=Building Supply, 6=Business Services, 7=Consulting,
+            8=Consumer Services, and others up to 33=Wholesale.
+        numberofemployees:
+          type: integer
+          description: Number of employees at the account.
+        revenue:
+          type: number
+          format: decimal
+          description: Annual revenue for the account.
+        revenue_base:
+          type: number
+          format: decimal
+          readOnly: true
+          description: Annual revenue converted to the system default base currency.
+        ownershipcode:
+          type: integer
+          description: >-
+            Ownership structure of the account. 1 = Public, 2 = Private,
+            3 = Subsidiary, 4 = Other.
+          enum: [1, 2, 3, 4]
+        customertypecode:
+          type: integer
+          description: >-
+            Category describing the relationship between the account and the
+            organization. 1=Competitor, 2=Consultant, 3=Customer, 4=Investor,
+            5=Partner, 6=Influencer, 7=Press, 8=Prospect, 9=Reseller,
+            10=Supplier, 11=Vendor, 12=Other.
+        businesstypecode:
+          type: integer
+          description: Legal designation or other business type of the account.
+        sic:
+          type: string
+          maxLength: 20
+          description: Standard Industrial Classification (SIC) code.
+        tickersymbol:
+          type: string
+          maxLength: 10
+          description: Stock exchange symbol for the account.
+        stockexchange:
+          type: string
+          maxLength: 20
+          description: Stock exchange at which the account is listed.
+        sharesoutstanding:
+          type: integer
+          description: Number of shares available to the public.
+        marketcap:
+          type: number
+          format: decimal
+          description: Market capitalization of the account.
+        creditlimit:
+          type: number
+          format: decimal
+          description: Credit limit of the account.
+        creditonhold:
+          type: boolean
+          description: Whether the credit for the account is on hold.
+        paymenttermscode:
+          type: integer
+          description: >-
+            Payment terms for the account. 1 = Net 30, 2 = 2% 10 Net 30,
+            3 = Net 45, 4 = Net 60.
+          enum: [1, 2, 3, 4]
+        preferredcontactmethodcode:
+          type: integer
+          description: >-
+            Preferred method of contact. 1 = Any, 2 = Email, 3 = Phone,
+            4 = Fax, 5 = Mail.
+          enum: [1, 2, 3, 4, 5]
+        donotemail:
+          type: boolean
+          description: Whether the account allows direct email.
+        donotphone:
+          type: boolean
+          description: Whether the account allows phone calls.
+        donotfax:
+          type: boolean
+          description: Whether the account allows faxes.
+        donotpostalmail:
+          type: boolean
+          description: Whether the account allows direct mail.
+        donotbulkemail:
+          type: boolean
+          description: Whether the account allows bulk email through campaigns.
+        donotsendmm:
+          type: boolean
+          description: Whether the account accepts marketing materials.
+        address1_name:
+          type: string
+          maxLength: 200
+          description: Descriptive name for the primary address.
+        address1_line1:
+          type: string
+          maxLength: 250
+          description: First line of the primary address.
+        address1_line2:
+          type: string
+          maxLength: 250
+          description: Second line of the primary address.
+        address1_line3:
+          type: string
+          maxLength: 250
+          description: Third line of the primary address.
+        address1_city:
+          type: string
+          maxLength: 80
+          description: City for the primary address.
+        address1_stateorprovince:
+          type: string
+          maxLength: 50
+          description: State or province for the primary address.
+        address1_postalcode:
+          type: string
+          maxLength: 20
+          description: ZIP code or postal code for the primary address.
+        address1_country:
+          type: string
+          maxLength: 80
+          description: Country or region for the primary address.
+        address1_county:
+          type: string
+          maxLength: 50
+          description: County for the primary address.
+        address1_telephone1:
+          type: string
+          maxLength: 50
+          description: Main phone number for the primary address.
+        address1_fax:
+          type: string
+          maxLength: 50
+          description: Fax number for the primary address.
+        address1_latitude:
+          type: number
+          format: double
+          description: Latitude value for the primary address.
+        address1_longitude:
+          type: number
+          format: double
+          description: Longitude value for the primary address.
+        address1_addresstypecode:
+          type: integer
+          description: >-
+            Primary address type. 1 = Bill To, 2 = Ship To, 3 = Primary,
+            4 = Other.
+          enum: [1, 2, 3, 4]
+        address2_name:
+          type: string
+          maxLength: 200
+          description: Descriptive name for the secondary address.
+        address2_line1:
+          type: string
+          maxLength: 250
+          description: First line of the secondary address.
+        address2_line2:
+          type: string
+          maxLength: 250
+          description: Second line of the secondary address.
+        address2_line3:
+          type: string
+          maxLength: 250
+          description: Third line of the secondary address.
+        address2_city:
+          type: string
+          maxLength: 80
+          description: City for the secondary address.
+        address2_stateorprovince:
+          type: string
+          maxLength: 50
+          description: State or province for the secondary address.
+        address2_postalcode:
+          type: string
+          maxLength: 20
+          description: ZIP code or postal code for the secondary address.
+        address2_country:
+          type: string
+          maxLength: 80
+          description: Country or region for the secondary address.
+        statecode:
+          type: integer
+          description: >-
+            Status of the account. 0 = Active, 1 = Inactive. Inactive
+            accounts are read-only.
+          enum: [0, 1]
+          readOnly: true
+        statuscode:
+          type: integer
+          description: >-
+            Status reason for the account. 1 = Active, 2 = Inactive.
+          enum: [1, 2]
+        createdon:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time when the account record was created.
+        modifiedon:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time when the account record was last updated.
+        versionnumber:
+          type: integer
+          format: int64
+          readOnly: true
+          description: Version number of the account record.
+        _primarycontactid_value:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Lookup property for the primary contact of the account.
+        _parentaccountid_value:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Lookup property for the parent account.
+        _ownerid_value:
+          type: string
+          format: uuid
+          readOnly: true
+          description: >-
+            Lookup property for the user or team assigned to manage
+            the record.
+        _transactioncurrencyid_value:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Lookup property for the currency associated with the record.
+        yominame:
+          type: string
+          maxLength: 160
+          description: >-
+            Phonetic spelling of the company name for Japanese pronunciation.
+      x-ms-dynamics-entity:
+        entitySetName: accounts
+        primaryKey: accountid
+        primaryNameColumn: name
+        namespace: Microsoft.Dynamics.CRM
+        baseType: crmbaseentity
+
+    AccountCollection:
+      type: object
+      description: OData collection response containing account records.
+      properties:
+        '@odata.context':
+          type: string
+          format: uri
+          description: OData context URL describing the collection.
+        '@odata.count':
+          type: integer
+          description: Total count of matching records (when $count=true).
+        '@odata.nextLink':
+          type: string
+          format: uri
+          description: URL to retrieve the next page of results.
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+          description: Array of account records.
+
+    Contact:
+      type: object
+      description: >-
+        Person with whom a business unit has a relationship, such as a customer,
+        supplier, or colleague. Corresponds to the contact entity type in the
+        Microsoft.Dynamics.CRM namespace.
+      properties:
+        contactid:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Unique identifier of the contact.
+        firstname:
+          type: string
+          maxLength: 50
+          description: First name of the contact.
+        lastname:
+          type: string
+          maxLength: 50
+          description: Last name of the contact.
+        fullname:
+          type: string
+          maxLength: 160
+          readOnly: true
+          description: >-
+            Full name of the contact, combining first name, middle name, and
+            last name.
+        middlename:
+          type: string
+          maxLength: 50
+          description: Middle name or initial of the contact.
+        nickname:
+          type: string
+          maxLength: 100
+          description: Nickname of the contact.
+        salutation:
+          type: string
+          maxLength: 100
+          description: Salutation for correspondence with the contact.
+        suffix:
+          type: string
+          maxLength: 10
+          description: Suffix used in the contact's name.
+        jobtitle:
+          type: string
+          maxLength: 100
+          description: Job title of the contact.
+        department:
+          type: string
+          maxLength: 100
+          description: Department or business unit where the contact works.
+        emailaddress1:
+          type: string
+          format: email
+          maxLength: 100
+          description: Primary email address for the contact.
+        emailaddress2:
+          type: string
+          format: email
+          maxLength: 100
+          description: Secondary email address for the contact.
+        emailaddress3:
+          type: string
+          format: email
+          maxLength: 100
+          description: Alternate email address for the contact.
+        telephone1:
+          type: string
+          maxLength: 50
+          description: Main phone number for the contact.
+        telephone2:
+          type: string
+          maxLength: 50
+          description: Second phone number for the contact.
+        telephone3:
+          type: string
+          maxLength: 50
+          description: Third phone number for the contact.
+        mobilephone:
+          type: string
+          maxLength: 50
+          description: Mobile phone number for the contact.
+        fax:
+          type: string
+          maxLength: 50
+          description: Fax number for the contact.
+        websiteurl:
+          type: string
+          format: uri
+          maxLength: 200
+          description: Website URL for the contact.
+        description:
+          type: string
+          maxLength: 2000
+          description: Additional information to describe the contact.
+        gendercode:
+          type: integer
+          description: >-
+            Gender of the contact. 1 = Male, 2 = Female.
+          enum: [1, 2]
+        familystatuscode:
+          type: integer
+          description: >-
+            Marital status of the contact. 1 = Single, 2 = Married,
+            3 = Divorced, 4 = Widowed.
+          enum: [1, 2, 3, 4]
+        birthdate:
+          type: string
+          format: date
+          description: Birthday of the contact.
+        anniversary:
+          type: string
+          format: date
+          description: Anniversary date of the contact.
+        spousesname:
+          type: string
+          maxLength: 100
+          description: Name of the contact's spouse or partner.
+        numberofchildren:
+          type: integer
+          description: Number of children the contact has.
+        address1_name:
+          type: string
+          maxLength: 200
+          description: Descriptive name for the primary address.
+        address1_line1:
+          type: string
+          maxLength: 250
+          description: First line of the primary address.
+        address1_line2:
+          type: string
+          maxLength: 250
+          description: Second line of the primary address.
+        address1_line3:
+          type: string
+          maxLength: 250
+          description: Third line of the primary address.
+        address1_city:
+          type: string
+          maxLength: 80
+          description: City for the primary address.
+        address1_stateorprovince:
+          type: string
+          maxLength: 50
+          description: State or province for the primary address.
+        address1_postalcode:
+          type: string
+          maxLength: 20
+          description: ZIP code or postal code for the primary address.
+        address1_country:
+          type: string
+          maxLength: 80
+          description: Country or region for the primary address.
+        address1_county:
+          type: string
+          maxLength: 50
+          description: County for the primary address.
+        address1_telephone1:
+          type: string
+          maxLength: 50
+          description: Main phone number for the primary address.
+        address1_fax:
+          type: string
+          maxLength: 50
+          description: Fax number for the primary address.
+        address1_latitude:
+          type: number
+          format: double
+          description: Latitude value for the primary address.
+        address1_longitude:
+          type: number
+          format: double
+          description: Longitude value for the primary address.
+        address2_name:
+          type: string
+          maxLength: 200
+          description: Descriptive name for the secondary address.
+        address2_line1:
+          type: string
+          maxLength: 250
+          description: First line of the secondary address.
+        address2_line2:
+          type: string
+          maxLength: 250
+          description: Second line of the secondary address.
+        address2_line3:
+          type: string
+          maxLength: 250
+          description: Third line of the secondary address.
+        address2_city:
+          type: string
+          maxLength: 80
+          description: City for the secondary address.
+        address2_stateorprovince:
+          type: string
+          maxLength: 50
+          description: State or province for the secondary address.
+        address2_postalcode:
+          type: string
+          maxLength: 20
+          description: ZIP code or postal code for the secondary address.
+        address2_country:
+          type: string
+          maxLength: 80
+          description: Country or region for the secondary address.
+        preferredcontactmethodcode:
+          type: integer
+          description: >-
+            Preferred method of contact. 1 = Any, 2 = Email, 3 = Phone,
+            4 = Fax, 5 = Mail.
+          enum: [1, 2, 3, 4, 5]
+        donotemail:
+          type: boolean
+          description: Whether the contact allows direct email.
+        donotphone:
+          type: boolean
+          description: Whether the contact allows phone calls.
+        donotfax:
+          type: boolean
+          description: Whether the contact allows faxes.
+        donotpostalmail:
+          type: boolean
+          description: Whether the contact allows direct mail.
+        donotbulkemail:
+          type: boolean
+          description: Whether the contact allows bulk email through campaigns.
+        donotsendmm:
+          type: boolean
+          description: Whether the contact accepts marketing materials.
+        creditlimit:
+          type: number
+          format: decimal
+          description: Credit limit of the contact.
+        creditonhold:
+          type: boolean
+          description: Whether the credit for the contact is on hold.
+        statecode:
+          type: integer
+          description: >-
+            Status of the contact. 0 = Active, 1 = Inactive. Inactive
+            contacts are read-only.
+          enum: [0, 1]
+          readOnly: true
+        statuscode:
+          type: integer
+          description: >-
+            Status reason for the contact. 1 = Active, 2 = Inactive.
+          enum: [1, 2]
+        createdon:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time when the contact record was created.
+        modifiedon:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time when the contact record was last updated.
+        versionnumber:
+          type: integer
+          format: int64
+          readOnly: true
+          description: Version number of the contact record.
+        _parentcustomerid_value:
+          type: string
+          format: uuid
+          readOnly: true
+          description: >-
+            Lookup property for the parent customer (account or contact)
+            associated with this contact.
+        _ownerid_value:
+          type: string
+          format: uuid
+          readOnly: true
+          description: >-
+            Lookup property for the user or team assigned to manage
+            the record.
+        _transactioncurrencyid_value:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Lookup property for the currency associated with the record.
+        yomifirstname:
+          type: string
+          maxLength: 150
+          description: Phonetic spelling of the first name (Japanese).
+        yomilastname:
+          type: string
+          maxLength: 150
+          description: Phonetic spelling of the last name (Japanese).
+        yomimiddlename:
+          type: string
+          maxLength: 150
+          description: Phonetic spelling of the middle name (Japanese).
+        yomifullname:
+          type: string
+          maxLength: 450
+          readOnly: true
+          description: Phonetic spelling of the full name (Japanese).
+      x-ms-dynamics-entity:
+        entitySetName: contacts
+        primaryKey: contactid
+        primaryNameColumn: fullname
+        namespace: Microsoft.Dynamics.CRM
+        baseType: crmbaseentity
+
+    ContactCollection:
+      type: object
+      description: OData collection response containing contact records.
+      properties:
+        '@odata.context':
+          type: string
+          format: uri
+          description: OData context URL describing the collection.
+        '@odata.count':
+          type: integer
+          description: Total count of matching records (when $count=true).
+        '@odata.nextLink':
+          type: string
+          format: uri
+          description: URL to retrieve the next page of results.
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+          description: Array of contact records.
+
+    Entity:
+      type: object
+      description: >-
+        Metadata definition for a Dataverse table (entity). Provides
+        information about the table structure including logical names,
+        collection names, and configuration. Read-only entity type
+        supporting only RetrieveMultiple operations.
+      properties:
+        entityid:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Unique identifier of the entity definition.
+        name:
+          type: string
+          description: Display name of the entity.
+        logicalname:
+          type: string
+          description: >-
+            Logical name of the entity, used in API requests and
+            programmatic references.
+        logicalcollectionname:
+          type: string
+          description: Logical collection name of the entity.
+        collectionname:
+          type: string
+          description: Collection name of the entity.
+        entitysetname:
+          type: string
+          description: >-
+            Entity set name used in Web API URLs to reference this table.
+        physicalname:
+          type: string
+          description: Physical database table name of the entity.
+        basetablename:
+          type: string
+          description: Base table name of the entity.
+        externalname:
+          type: string
+          description: External name of the entity for virtual entities.
+        externalcollectionname:
+          type: string
+          description: External collection name of the entity.
+        addresstablename:
+          type: string
+          description: Address table name associated with the entity.
+        extensiontablename:
+          type: string
+          description: Extension table name of the entity.
+        reportviewname:
+          type: string
+          description: Report view name of the entity.
+        parentcontrollingattributename:
+          type: string
+          description: Parent controlling attribute name of the entity.
+        originallocalizedname:
+          type: string
+          description: Original localized display name of the entity.
+        originallocalizedcollectionname:
+          type: string
+          description: Original localized collection name of the entity.
+        isactivity:
+          type: boolean
+          readOnly: true
+          description: Whether this entity is an activity type.
+        objecttypecode:
+          type: integer
+          readOnly: true
+          description: Object type code of the entity.
+        componentstate:
+          type: integer
+          readOnly: true
+          description: >-
+            Component state of the entity. 0 = Published, 1 = Unpublished,
+            2 = Deleted, 3 = Deleted Unpublished.
+          enum: [0, 1, 2, 3]
+        solutionid:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Unique identifier of the associated solution.
+        overwritetime:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Record overwrite time for internal use.
+        versionnumber:
+          type: integer
+          format: int64
+          readOnly: true
+          description: Version number of the entity definition record.
+      x-ms-dynamics-entity:
+        entitySetName: entities
+        primaryKey: entityid
+        primaryNameColumn: name
+        namespace: Microsoft.Dynamics.CRM
+        baseType: crmbaseentity
+
+    EntityCollection:
+      type: object
+      description: OData collection response containing entity definition records.
+      properties:
+        '@odata.context':
+          type: string
+          format: uri
+          description: OData context URL describing the collection.
+        '@odata.count':
+          type: integer
+          description: Total count of matching records (when $count=true).
+        '@odata.nextLink':
+          type: string
+          format: uri
+          description: URL to retrieve the next page of results.
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+          description: Array of entity definition records.
+
+    ODataError:
+      type: object
+      description: Standard OData error response from the Dataverse Web API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code.
+            message:
+              type: string
+              description: Human-readable error message.
+            innererror:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Detailed inner error message.
+                type:
+                  type: string
+                  description: Error type identifier.
+                stacktrace:
+                  type: string
+                  description: Server-side stack trace for debugging.
+
+  responses:
+    BadRequest:
+      description: >-
+        The request was malformed or contained invalid data. Check the request
+        body and query parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+
+    Unauthorized:
+      description: >-
+        Authentication failed. Ensure a valid OAuth 2.0 bearer token is
+        included in the Authorization header.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+
+    Forbidden:
+      description: >-
+        The authenticated user does not have sufficient permissions to perform
+        this operation. Check Dataverse security roles and privileges.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+
+    NotFound:
+      description: >-
+        The requested record was not found. Verify the record identifier
+        is correct and the record exists.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+
+    PreconditionFailed:
+      description: >-
+        The If-Match header value does not match the current ETag of the
+        record, indicating the record has been modified since it was last
+        retrieved. Retrieve the latest version and retry.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+
+externalDocs:
+  description: Microsoft Dataverse Web API Reference
+  url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/reference/about
