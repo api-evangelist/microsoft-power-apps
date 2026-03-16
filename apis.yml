@@ -1,8 +1,9 @@
+aid: microsoft-power-apps
 name: Microsoft Power Apps APIs
 description: Collection of APIs for Microsoft Power Apps platform enabling low-code application development, automation, and data connectivity
 image: https://powerplatform.microsoft.com/images/power-apps-logo.png
 created: '2024'
-modified: '2026-03-03'
+modified: '2026-03-16'
 artifacts:
   openapi:
     - name: Microsoft Dataverse Web API OpenAPI Specification
@@ -19,8 +20,8 @@ artifacts:
       path: json-ld/microsoft-power-apps-context.jsonld
       version: '1.1'
       description: JSON-LD context mapping Dataverse entity properties to Schema.org, Dublin Core, OData, and vCard vocabularies for semantic interoperability
-specificationVersion: '0.18'
-url: https://apis.json/microsoft-power-apps
+specificationVersion: '0.19'
+url: https://raw.githubusercontent.com/api-evangelist/microsoft-power-apps/refs/heads/main/apis.yml
 apis:
 - name: Power Apps API
   description: Core API for managing Power Apps applications, including creating, updating, and deleting apps
@@ -316,9 +317,8 @@ common:
 - type: Release Plan
   url: https://learn.microsoft.com/en-us/power-platform/release-plan/2025wave1/power-apps/planned-features
 maintainers:
-- name: Kin Lane
+- FN: Kin Lane
   email: kin@apievangelist.com
-  url: https://apievangelist.com
 tags:
 - Power Platform
 - Low-Code
