@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Microsoft Dataverse Web API
+  title: Microsoft Power Apps Microsoft Dataverse Web API
   description: >-
     RESTful API for interacting with Microsoft Dataverse (formerly Common Data
     Service), the underlying data platform for Microsoft Power Apps. This API
@@ -79,7 +79,7 @@ paths:
   /accounts:
     get:
       operationId: getAccounts
-      summary: Retrieve multiple accounts
+      summary: Microsoft Power Apps Retrieve multiple accounts
       description: >-
         Retrieves a collection of account records from Dataverse. Supports OData
         query options for filtering, sorting, selecting fields, expanding
@@ -115,7 +115,7 @@ paths:
           $ref: '#/components/responses/Forbidden'
     post:
       operationId: createAccount
-      summary: Create a new account
+      summary: Microsoft Power Apps Create a new account
       description: >-
         Creates a new account record in Dataverse. Returns the created record
         when the Prefer header is set to return=representation.
@@ -156,7 +156,7 @@ paths:
   /accounts({accountid}):
     get:
       operationId: getAccount
-      summary: Retrieve a single account
+      summary: Microsoft Power Apps Retrieve a single account
       description: Retrieves a single account record by its unique identifier.
       tags:
         - Accounts
@@ -184,7 +184,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateAccount
-      summary: Update an existing account
+      summary: Microsoft Power Apps Update an existing account
       description: >-
         Updates an existing account record using PATCH (merge update). Only the
         properties included in the request body are updated. This follows the
@@ -226,7 +226,7 @@ paths:
           $ref: '#/components/responses/PreconditionFailed'
     delete:
       operationId: deleteAccount
-      summary: Delete an account
+      summary: Microsoft Power Apps Delete an account
       description: Deletes an existing account record from Dataverse.
       tags:
         - Accounts
@@ -249,7 +249,7 @@ paths:
   /contacts:
     get:
       operationId: getContacts
-      summary: Retrieve multiple contacts
+      summary: Microsoft Power Apps Retrieve multiple contacts
       description: >-
         Retrieves a collection of contact records from Dataverse. Supports OData
         query options for filtering, sorting, selecting fields, expanding
@@ -285,7 +285,7 @@ paths:
           $ref: '#/components/responses/Forbidden'
     post:
       operationId: createContact
-      summary: Create a new contact
+      summary: Microsoft Power Apps Create a new contact
       description: >-
         Creates a new contact record in Dataverse. Returns the created record
         when the Prefer header is set to return=representation.
@@ -326,7 +326,7 @@ paths:
   /contacts({contactid}):
     get:
       operationId: getContact
-      summary: Retrieve a single contact
+      summary: Microsoft Power Apps Retrieve a single contact
       description: Retrieves a single contact record by its unique identifier.
       tags:
         - Contacts
@@ -354,7 +354,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateContact
-      summary: Update an existing contact
+      summary: Microsoft Power Apps Update an existing contact
       description: >-
         Updates an existing contact record using PATCH (merge update). Only the
         properties included in the request body are updated.
@@ -395,7 +395,7 @@ paths:
           $ref: '#/components/responses/PreconditionFailed'
     delete:
       operationId: deleteContact
-      summary: Delete a contact
+      summary: Microsoft Power Apps Delete a contact
       description: Deletes an existing contact record from Dataverse.
       tags:
         - Contacts
@@ -418,7 +418,7 @@ paths:
   /entities:
     get:
       operationId: getEntities
-      summary: Retrieve entity definitions
+      summary: Microsoft Power Apps Retrieve entity definitions
       description: >-
         Retrieves a collection of entity (table) definitions from Dataverse.
         This endpoint provides metadata about the tables available in the
@@ -457,7 +457,7 @@ paths:
   /entities({entityid}):
     get:
       operationId: getEntity
-      summary: Retrieve a single entity definition
+      summary: Microsoft Power Apps Retrieve a single entity definition
       description: >-
         Retrieves a single entity (table) definition by its unique identifier.
         Provides metadata about the table including its logical name, collection
