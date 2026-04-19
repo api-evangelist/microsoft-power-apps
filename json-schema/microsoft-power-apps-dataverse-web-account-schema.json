@@ -1,0 +1,284 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Account",
+  "type": "object",
+  "description": "Business that represents a customer or potential customer. The company that is billed in business transactions. Corresponds to the account entity type in the Microsoft.Dynamics.CRM namespace.",
+  "properties": {
+    "accountid": {
+      "type": "string",
+      "description": "Unique identifier of the account."
+    },
+    "name": {
+      "type": "string",
+      "description": "Company or business name of the account."
+    },
+    "accountnumber": {
+      "type": "string",
+      "description": "ID number or code for the account to quickly search and identify the account in system views."
+    },
+    "accountcategorycode": {
+      "type": "integer",
+      "description": "Category indicating whether the customer account is standard or preferred. 1 = Preferred Customer, 2 = Standard."
+    },
+    "accountclassificationcode": {
+      "type": "integer",
+      "description": "Classification code indicating the potential value of the customer account. 1 = Default Value."
+    },
+    "accountratingcode": {
+      "type": "integer",
+      "description": "Rating indicating the value of the customer account."
+    },
+    "description": {
+      "type": "string",
+      "description": "Additional information describing the account."
+    },
+    "emailaddress1": {
+      "type": "string",
+      "description": "Primary email address for the account."
+    },
+    "emailaddress2": {
+      "type": "string",
+      "description": "Secondary email address for the account."
+    },
+    "emailaddress3": {
+      "type": "string",
+      "description": "Alternate email address for the account."
+    },
+    "telephone1": {
+      "type": "string",
+      "description": "Main phone number for the account."
+    },
+    "telephone2": {
+      "type": "string",
+      "description": "Second phone number for the account."
+    },
+    "telephone3": {
+      "type": "string",
+      "description": "Third phone number for the account."
+    },
+    "fax": {
+      "type": "string",
+      "description": "Fax number for the account."
+    },
+    "websiteurl": {
+      "type": "string",
+      "description": "Website URL for the account."
+    },
+    "industrycode": {
+      "type": "integer",
+      "description": "Primary industry of the account for marketing segmentation. Values include 1=Accounting, 2=Agriculture, 3=Broadcasting, 4=Brokers, 5=Building Supply, 6=Business Services, 7=Consulting, 8=Consumer Services, and others up to 33=Wholesale."
+    },
+    "numberofemployees": {
+      "type": "integer",
+      "description": "Number of employees at the account."
+    },
+    "revenue": {
+      "type": "number",
+      "description": "Annual revenue for the account."
+    },
+    "revenue_base": {
+      "type": "number",
+      "description": "Annual revenue converted to the system default base currency."
+    },
+    "ownershipcode": {
+      "type": "integer",
+      "description": "Ownership structure of the account. 1 = Public, 2 = Private, 3 = Subsidiary, 4 = Other."
+    },
+    "customertypecode": {
+      "type": "integer",
+      "description": "Category describing the relationship between the account and the organization. 1=Competitor, 2=Consultant, 3=Customer, 4=Investor, 5=Partner, 6=Influencer, 7=Press, 8=Prospect, 9=Reseller, 10=Supplier, 11=Vendor, 12=Other."
+    },
+    "businesstypecode": {
+      "type": "integer",
+      "description": "Legal designation or other business type of the account."
+    },
+    "sic": {
+      "type": "string",
+      "description": "Standard Industrial Classification (SIC) code."
+    },
+    "tickersymbol": {
+      "type": "string",
+      "description": "Stock exchange symbol for the account."
+    },
+    "stockexchange": {
+      "type": "string",
+      "description": "Stock exchange at which the account is listed."
+    },
+    "sharesoutstanding": {
+      "type": "integer",
+      "description": "Number of shares available to the public."
+    },
+    "marketcap": {
+      "type": "number",
+      "description": "Market capitalization of the account."
+    },
+    "creditlimit": {
+      "type": "number",
+      "description": "Credit limit of the account."
+    },
+    "creditonhold": {
+      "type": "boolean",
+      "description": "Whether the credit for the account is on hold."
+    },
+    "paymenttermscode": {
+      "type": "integer",
+      "description": "Payment terms for the account. 1 = Net 30, 2 = 2% 10 Net 30, 3 = Net 45, 4 = Net 60."
+    },
+    "preferredcontactmethodcode": {
+      "type": "integer",
+      "description": "Preferred method of contact. 1 = Any, 2 = Email, 3 = Phone, 4 = Fax, 5 = Mail."
+    },
+    "donotemail": {
+      "type": "boolean",
+      "description": "Whether the account allows direct email."
+    },
+    "donotphone": {
+      "type": "boolean",
+      "description": "Whether the account allows phone calls."
+    },
+    "donotfax": {
+      "type": "boolean",
+      "description": "Whether the account allows faxes."
+    },
+    "donotpostalmail": {
+      "type": "boolean",
+      "description": "Whether the account allows direct mail."
+    },
+    "donotbulkemail": {
+      "type": "boolean",
+      "description": "Whether the account allows bulk email through campaigns."
+    },
+    "donotsendmm": {
+      "type": "boolean",
+      "description": "Whether the account accepts marketing materials."
+    },
+    "address1_name": {
+      "type": "string",
+      "description": "Descriptive name for the primary address."
+    },
+    "address1_line1": {
+      "type": "string",
+      "description": "First line of the primary address."
+    },
+    "address1_line2": {
+      "type": "string",
+      "description": "Second line of the primary address."
+    },
+    "address1_line3": {
+      "type": "string",
+      "description": "Third line of the primary address."
+    },
+    "address1_city": {
+      "type": "string",
+      "description": "City for the primary address."
+    },
+    "address1_stateorprovince": {
+      "type": "string",
+      "description": "State or province for the primary address."
+    },
+    "address1_postalcode": {
+      "type": "string",
+      "description": "ZIP code or postal code for the primary address."
+    },
+    "address1_country": {
+      "type": "string",
+      "description": "Country or region for the primary address."
+    },
+    "address1_county": {
+      "type": "string",
+      "description": "County for the primary address."
+    },
+    "address1_telephone1": {
+      "type": "string",
+      "description": "Main phone number for the primary address."
+    },
+    "address1_fax": {
+      "type": "string",
+      "description": "Fax number for the primary address."
+    },
+    "address1_latitude": {
+      "type": "number",
+      "description": "Latitude value for the primary address."
+    },
+    "address1_longitude": {
+      "type": "number",
+      "description": "Longitude value for the primary address."
+    },
+    "address1_addresstypecode": {
+      "type": "integer",
+      "description": "Primary address type. 1 = Bill To, 2 = Ship To, 3 = Primary, 4 = Other."
+    },
+    "address2_name": {
+      "type": "string",
+      "description": "Descriptive name for the secondary address."
+    },
+    "address2_line1": {
+      "type": "string",
+      "description": "First line of the secondary address."
+    },
+    "address2_line2": {
+      "type": "string",
+      "description": "Second line of the secondary address."
+    },
+    "address2_line3": {
+      "type": "string",
+      "description": "Third line of the secondary address."
+    },
+    "address2_city": {
+      "type": "string",
+      "description": "City for the secondary address."
+    },
+    "address2_stateorprovince": {
+      "type": "string",
+      "description": "State or province for the secondary address."
+    },
+    "address2_postalcode": {
+      "type": "string",
+      "description": "ZIP code or postal code for the secondary address."
+    },
+    "address2_country": {
+      "type": "string",
+      "description": "Country or region for the secondary address."
+    },
+    "statecode": {
+      "type": "integer",
+      "description": "Status of the account. 0 = Active, 1 = Inactive. Inactive accounts are read-only."
+    },
+    "statuscode": {
+      "type": "integer",
+      "description": "Status reason for the account. 1 = Active, 2 = Inactive."
+    },
+    "createdon": {
+      "type": "string",
+      "description": "Date and time when the account record was created."
+    },
+    "modifiedon": {
+      "type": "string",
+      "description": "Date and time when the account record was last updated."
+    },
+    "versionnumber": {
+      "type": "integer",
+      "description": "Version number of the account record."
+    },
+    "_primarycontactid_value": {
+      "type": "string",
+      "description": "Lookup property for the primary contact of the account."
+    },
+    "_parentaccountid_value": {
+      "type": "string",
+      "description": "Lookup property for the parent account."
+    },
+    "_ownerid_value": {
+      "type": "string",
+      "description": "Lookup property for the user or team assigned to manage the record."
+    },
+    "_transactioncurrencyid_value": {
+      "type": "string",
+      "description": "Lookup property for the currency associated with the record."
+    },
+    "yominame": {
+      "type": "string",
+      "description": "Phonetic spelling of the company name for Japanese pronunciation."
+    }
+  }
+}

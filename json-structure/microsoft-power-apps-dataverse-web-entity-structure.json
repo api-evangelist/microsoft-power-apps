@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Entity",
+  "type": "object",
+  "properties": {
+    "entityid": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "logicalname": {
+      "type": "string"
+    },
+    "logicalcollectionname": {
+      "type": "string"
+    },
+    "collectionname": {
+      "type": "string"
+    },
+    "entitysetname": {
+      "type": "string"
+    },
+    "physicalname": {
+      "type": "string"
+    },
+    "basetablename": {
+      "type": "string"
+    },
+    "externalname": {
+      "type": "string"
+    },
+    "externalcollectionname": {
+      "type": "string"
+    },
+    "addresstablename": {
+      "type": "string"
+    },
+    "extensiontablename": {
+      "type": "string"
+    },
+    "reportviewname": {
+      "type": "string"
+    },
+    "parentcontrollingattributename": {
+      "type": "string"
+    },
+    "originallocalizedname": {
+      "type": "string"
+    },
+    "originallocalizedcollectionname": {
+      "type": "string"
+    },
+    "isactivity": {
+      "type": "boolean"
+    },
+    "objecttypecode": {
+      "type": "integer"
+    },
+    "componentstate": {
+      "type": "integer"
+    },
+    "solutionid": {
+      "type": "string"
+    },
+    "overwritetime": {
+      "type": "string"
+    },
+    "versionnumber": {
+      "type": "integer"
+    }
+  }
+}

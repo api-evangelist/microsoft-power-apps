@@ -1,0 +1,280 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contact",
+  "type": "object",
+  "description": "Person with whom a business unit has a relationship, such as a customer, supplier, or colleague. Corresponds to the contact entity type in the Microsoft.Dynamics.CRM namespace.",
+  "properties": {
+    "contactid": {
+      "type": "string",
+      "description": "Unique identifier of the contact."
+    },
+    "firstname": {
+      "type": "string",
+      "description": "First name of the contact."
+    },
+    "lastname": {
+      "type": "string",
+      "description": "Last name of the contact."
+    },
+    "fullname": {
+      "type": "string",
+      "description": "Full name of the contact, combining first name, middle name, and last name."
+    },
+    "middlename": {
+      "type": "string",
+      "description": "Middle name or initial of the contact."
+    },
+    "nickname": {
+      "type": "string",
+      "description": "Nickname of the contact."
+    },
+    "salutation": {
+      "type": "string",
+      "description": "Salutation for correspondence with the contact."
+    },
+    "suffix": {
+      "type": "string",
+      "description": "Suffix used in the contact's name."
+    },
+    "jobtitle": {
+      "type": "string",
+      "description": "Job title of the contact."
+    },
+    "department": {
+      "type": "string",
+      "description": "Department or business unit where the contact works."
+    },
+    "emailaddress1": {
+      "type": "string",
+      "description": "Primary email address for the contact."
+    },
+    "emailaddress2": {
+      "type": "string",
+      "description": "Secondary email address for the contact."
+    },
+    "emailaddress3": {
+      "type": "string",
+      "description": "Alternate email address for the contact."
+    },
+    "telephone1": {
+      "type": "string",
+      "description": "Main phone number for the contact."
+    },
+    "telephone2": {
+      "type": "string",
+      "description": "Second phone number for the contact."
+    },
+    "telephone3": {
+      "type": "string",
+      "description": "Third phone number for the contact."
+    },
+    "mobilephone": {
+      "type": "string",
+      "description": "Mobile phone number for the contact."
+    },
+    "fax": {
+      "type": "string",
+      "description": "Fax number for the contact."
+    },
+    "websiteurl": {
+      "type": "string",
+      "description": "Website URL for the contact."
+    },
+    "description": {
+      "type": "string",
+      "description": "Additional information to describe the contact."
+    },
+    "gendercode": {
+      "type": "integer",
+      "description": "Gender of the contact. 1 = Male, 2 = Female."
+    },
+    "familystatuscode": {
+      "type": "integer",
+      "description": "Marital status of the contact. 1 = Single, 2 = Married, 3 = Divorced, 4 = Widowed."
+    },
+    "birthdate": {
+      "type": "string",
+      "description": "Birthday of the contact."
+    },
+    "anniversary": {
+      "type": "string",
+      "description": "Anniversary date of the contact."
+    },
+    "spousesname": {
+      "type": "string",
+      "description": "Name of the contact's spouse or partner."
+    },
+    "numberofchildren": {
+      "type": "integer",
+      "description": "Number of children the contact has."
+    },
+    "address1_name": {
+      "type": "string",
+      "description": "Descriptive name for the primary address."
+    },
+    "address1_line1": {
+      "type": "string",
+      "description": "First line of the primary address."
+    },
+    "address1_line2": {
+      "type": "string",
+      "description": "Second line of the primary address."
+    },
+    "address1_line3": {
+      "type": "string",
+      "description": "Third line of the primary address."
+    },
+    "address1_city": {
+      "type": "string",
+      "description": "City for the primary address."
+    },
+    "address1_stateorprovince": {
+      "type": "string",
+      "description": "State or province for the primary address."
+    },
+    "address1_postalcode": {
+      "type": "string",
+      "description": "ZIP code or postal code for the primary address."
+    },
+    "address1_country": {
+      "type": "string",
+      "description": "Country or region for the primary address."
+    },
+    "address1_county": {
+      "type": "string",
+      "description": "County for the primary address."
+    },
+    "address1_telephone1": {
+      "type": "string",
+      "description": "Main phone number for the primary address."
+    },
+    "address1_fax": {
+      "type": "string",
+      "description": "Fax number for the primary address."
+    },
+    "address1_latitude": {
+      "type": "number",
+      "description": "Latitude value for the primary address."
+    },
+    "address1_longitude": {
+      "type": "number",
+      "description": "Longitude value for the primary address."
+    },
+    "address2_name": {
+      "type": "string",
+      "description": "Descriptive name for the secondary address."
+    },
+    "address2_line1": {
+      "type": "string",
+      "description": "First line of the secondary address."
+    },
+    "address2_line2": {
+      "type": "string",
+      "description": "Second line of the secondary address."
+    },
+    "address2_line3": {
+      "type": "string",
+      "description": "Third line of the secondary address."
+    },
+    "address2_city": {
+      "type": "string",
+      "description": "City for the secondary address."
+    },
+    "address2_stateorprovince": {
+      "type": "string",
+      "description": "State or province for the secondary address."
+    },
+    "address2_postalcode": {
+      "type": "string",
+      "description": "ZIP code or postal code for the secondary address."
+    },
+    "address2_country": {
+      "type": "string",
+      "description": "Country or region for the secondary address."
+    },
+    "preferredcontactmethodcode": {
+      "type": "integer",
+      "description": "Preferred method of contact. 1 = Any, 2 = Email, 3 = Phone, 4 = Fax, 5 = Mail."
+    },
+    "donotemail": {
+      "type": "boolean",
+      "description": "Whether the contact allows direct email."
+    },
+    "donotphone": {
+      "type": "boolean",
+      "description": "Whether the contact allows phone calls."
+    },
+    "donotfax": {
+      "type": "boolean",
+      "description": "Whether the contact allows faxes."
+    },
+    "donotpostalmail": {
+      "type": "boolean",
+      "description": "Whether the contact allows direct mail."
+    },
+    "donotbulkemail": {
+      "type": "boolean",
+      "description": "Whether the contact allows bulk email through campaigns."
+    },
+    "donotsendmm": {
+      "type": "boolean",
+      "description": "Whether the contact accepts marketing materials."
+    },
+    "creditlimit": {
+      "type": "number",
+      "description": "Credit limit of the contact."
+    },
+    "creditonhold": {
+      "type": "boolean",
+      "description": "Whether the credit for the contact is on hold."
+    },
+    "statecode": {
+      "type": "integer",
+      "description": "Status of the contact. 0 = Active, 1 = Inactive. Inactive contacts are read-only."
+    },
+    "statuscode": {
+      "type": "integer",
+      "description": "Status reason for the contact. 1 = Active, 2 = Inactive."
+    },
+    "createdon": {
+      "type": "string",
+      "description": "Date and time when the contact record was created."
+    },
+    "modifiedon": {
+      "type": "string",
+      "description": "Date and time when the contact record was last updated."
+    },
+    "versionnumber": {
+      "type": "integer",
+      "description": "Version number of the contact record."
+    },
+    "_parentcustomerid_value": {
+      "type": "string",
+      "description": "Lookup property for the parent customer (account or contact) associated with this contact."
+    },
+    "_ownerid_value": {
+      "type": "string",
+      "description": "Lookup property for the user or team assigned to manage the record."
+    },
+    "_transactioncurrencyid_value": {
+      "type": "string",
+      "description": "Lookup property for the currency associated with the record."
+    },
+    "yomifirstname": {
+      "type": "string",
+      "description": "Phonetic spelling of the first name (Japanese)."
+    },
+    "yomilastname": {
+      "type": "string",
+      "description": "Phonetic spelling of the last name (Japanese)."
+    },
+    "yomimiddlename": {
+      "type": "string",
+      "description": "Phonetic spelling of the middle name (Japanese)."
+    },
+    "yomifullname": {
+      "type": "string",
+      "description": "Phonetic spelling of the full name (Japanese)."
+    }
+  }
+}

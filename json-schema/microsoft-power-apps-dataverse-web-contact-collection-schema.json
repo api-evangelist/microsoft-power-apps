@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ContactCollection",
+  "type": "object",
+  "description": "OData collection response containing contact records.",
+  "properties": {
+    "@odata.context": {
+      "type": "string",
+      "description": "OData context URL describing the collection."
+    },
+    "@odata.count": {
+      "type": "integer",
+      "description": "Total count of matching records (when $count=true)."
+    },
+    "@odata.nextLink": {
+      "type": "string",
+      "description": "URL to retrieve the next page of results."
+    },
+    "value": {
+      "type": "array",
+      "description": "Array of contact records."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+name: microsoft-power-apps API Vocabulary
+provider: microsoft-power-apps
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 12
+schemas: 7
+tags:
+- Accounts
+- Contacts
+- Entities

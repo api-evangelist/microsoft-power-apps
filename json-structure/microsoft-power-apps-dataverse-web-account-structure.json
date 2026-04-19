@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Account",
+  "type": "object",
+  "properties": {
+    "accountid": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "accountnumber": {
+      "type": "string"
+    },
+    "accountcategorycode": {
+      "type": "integer"
+    },
+    "accountclassificationcode": {
+      "type": "integer"
+    },
+    "accountratingcode": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "string"
+    },
+    "emailaddress1": {
+      "type": "string"
+    },
+    "emailaddress2": {
+      "type": "string"
+    },
+    "emailaddress3": {
+      "type": "string"
+    },
+    "telephone1": {
+      "type": "string"
+    },
+    "telephone2": {
+      "type": "string"
+    },
+    "telephone3": {
+      "type": "string"
+    },
+    "fax": {
+      "type": "string"
+    },
+    "websiteurl": {
+      "type": "string"
+    },
+    "industrycode": {
+      "type": "integer"
+    },
+    "numberofemployees": {
+      "type": "integer"
+    },
+    "revenue": {
+      "type": "number"
+    },
+    "revenue_base": {
+      "type": "number"
+    },
+    "ownershipcode": {
+      "type": "integer"
+    },
+    "customertypecode": {
+      "type": "integer"
+    },
+    "businesstypecode": {
+      "type": "integer"
+    },
+    "sic": {
+      "type": "string"
+    },
+    "tickersymbol": {
+      "type": "string"
+    },
+    "stockexchange": {
+      "type": "string"
+    },
+    "sharesoutstanding": {
+      "type": "integer"
+    },
+    "marketcap": {
+      "type": "number"
+    },
+    "creditlimit": {
+      "type": "number"
+    },
+    "creditonhold": {
+      "type": "boolean"
+    },
+    "paymenttermscode": {
+      "type": "integer"
+    },
+    "preferredcontactmethodcode": {
+      "type": "integer"
+    },
+    "donotemail": {
+      "type": "boolean"
+    },
+    "donotphone": {
+      "type": "boolean"
+    },
+    "donotfax": {
+      "type": "boolean"
+    },
+    "donotpostalmail": {
+      "type": "boolean"
+    },
+    "donotbulkemail": {
+      "type": "boolean"
+    },
+    "donotsendmm": {
+      "type": "boolean"
+    },
+    "address1_name": {
+      "type": "string"
+    },
+    "address1_line1": {
+      "type": "string"
+    },
+    "address1_line2": {
+      "type": "string"
+    },
+    "address1_line3": {
+      "type": "string"
+    },
+    "address1_city": {
+      "type": "string"
+    },
+    "address1_stateorprovince": {
+      "type": "string"
+    },
+    "address1_postalcode": {
+      "type": "string"
+    },
+    "address1_country": {
+      "type": "string"
+    },
+    "address1_county": {
+      "type": "string"
+    },
+    "address1_telephone1": {
+      "type": "string"
+    },
+    "address1_fax": {
+      "type": "string"
+    },
+    "address1_latitude": {
+      "type": "number"
+    },
+    "address1_longitude": {
+      "type": "number"
+    },
+    "address1_addresstypecode": {
+      "type": "integer"
+    },
+    "address2_name": {
+      "type": "string"
+    },
+    "address2_line1": {
+      "type": "string"
+    },
+    "address2_line2": {
+      "type": "string"
+    },
+    "address2_line3": {
+      "type": "string"
+    },
+    "address2_city": {
+      "type": "string"
+    },
+    "address2_stateorprovince": {
+      "type": "string"
+    },
+    "address2_postalcode": {
+      "type": "string"
+    },
+    "address2_country": {
+      "type": "string"
+    },
+    "statecode": {
+      "type": "integer"
+    },
+    "statuscode": {
+      "type": "integer"
+    },
+    "createdon": {
+      "type": "string"
+    },
+    "modifiedon": {
+      "type": "string"
+    },
+    "versionnumber": {
+      "type": "integer"
+    },
+    "_primarycontactid_value": {
+      "type": "string"
+    },
+    "_parentaccountid_value": {
+      "type": "string"
+    },
+    "_ownerid_value": {
+      "type": "string"
+    },
+    "_transactioncurrencyid_value": {
+      "type": "string"
+    },
+    "yominame": {
+      "type": "string"
+    }
+  }
+}

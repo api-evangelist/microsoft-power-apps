@@ -1,0 +1,45 @@
+naftiko: "1.0.0-alpha1"
+info:
+  label: "Microsoft Dataverse Web API"
+  description: "RESTful OData v4.0 API for Microsoft Dataverse CRUD operations on accounts, contacts, and entity definitions."
+  tags: [Microsoft, Power Apps, Dataverse, CRM]
+  created: "2026-04-18"
+  modified: "2026-04-18"
+binds:
+  - namespace: env
+    keys:
+      DATAVERSE_OAUTH_TOKEN: DATAVERSE_OAUTH_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: dataverse-web-api
+      baseUri: https://yourorg.api.crm.dynamics.com/api/data/v9.2
+      description: "Dataverse Web API for account, contact, and entity CRUD operations."
+      authentication:
+        type: bearer
+        token: "{{DATAVERSE_OAUTH_TOKEN}}"
+      resources:
+        - name: accounts
+          path: /accounts
+          description: "Account entity operations"
+          operations:
+            - { name: list-accounts, method: GET, description: "Retrieve multiple accounts", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: create-account, method: POST, description: "Create a new account", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: get-account, method: GET, description: "Retrieve a single account", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: update-account, method: PATCH, description: "Update an account", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: delete-account, method: DELETE, description: "Delete an account", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+        - name: contacts
+          path: /contacts
+          description: "Contact entity operations"
+          operations:
+            - { name: list-contacts, method: GET, description: "Retrieve multiple contacts", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: create-contact, method: POST, description: "Create a new contact", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: get-contact, method: GET, description: "Retrieve a single contact", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: update-contact, method: PATCH, description: "Update a contact", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: delete-contact, method: DELETE, description: "Delete a contact", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+        - name: entities
+          path: /entities
+          description: "Entity definition operations"
+          operations:
+            - { name: list-entities, method: GET, description: "Retrieve entity definitions", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: get-entity, method: GET, description: "Retrieve a single entity definition", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }

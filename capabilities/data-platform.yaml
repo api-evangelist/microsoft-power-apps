@@ -1,0 +1,45 @@
+naftiko: "1.0.0-alpha1"
+info:
+  label: "Microsoft Power Apps Data Platform"
+  description: "Unified data platform capability combining Dataverse account, contact, and entity management with OData query support. Used by Power Platform developers and CRM integration teams."
+  tags: [Microsoft, Power Apps, Dataverse, Data Platform]
+  created: "2026-04-18"
+  modified: "2026-04-18"
+binds:
+  - namespace: env
+    keys:
+      DATAVERSE_OAUTH_TOKEN: DATAVERSE_OAUTH_TOKEN
+capability:
+  consumes:
+    - import: dataverse-web-api
+      location: ./shared/dataverse-web-api.yaml
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: data-platform-api
+      description: "Unified REST API for Microsoft Power Apps data platform."
+      resources:
+        - path: /v1/accounts
+          name: accounts
+          description: "Account management"
+          operations:
+            - { method: GET, name: list-accounts, description: "List accounts", call: "dataverse-web-api.list-accounts", outputParameters: [{ type: object, mapping: "$." }] }
+            - { method: POST, name: create-account, description: "Create an account", call: "dataverse-web-api.create-account", outputParameters: [{ type: object, mapping: "$." }] }
+    - type: mcp
+      port: 9090
+      namespace: data-platform-mcp
+      transport: http
+      description: "MCP server for AI-assisted Dataverse data operations."
+      tools:
+        - { name: list-accounts, description: "Retrieve multiple accounts", hints: { readOnly: true, openWorld: true }, call: "dataverse-web-api.list-accounts", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: get-account, description: "Retrieve a single account", hints: { readOnly: true }, call: "dataverse-web-api.get-account", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: create-account, description: "Create a new account", call: "dataverse-web-api.create-account", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: update-account, description: "Update an account", call: "dataverse-web-api.update-account", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: delete-account, description: "Delete an account", hints: { destructive: true }, call: "dataverse-web-api.delete-account", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: list-contacts, description: "Retrieve multiple contacts", hints: { readOnly: true, openWorld: true }, call: "dataverse-web-api.list-contacts", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: get-contact, description: "Retrieve a single contact", hints: { readOnly: true }, call: "dataverse-web-api.get-contact", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: create-contact, description: "Create a new contact", call: "dataverse-web-api.create-contact", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: update-contact, description: "Update a contact", call: "dataverse-web-api.update-contact", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: delete-contact, description: "Delete a contact", hints: { destructive: true }, call: "dataverse-web-api.delete-contact", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: list-entities, description: "Retrieve entity definitions", hints: { readOnly: true }, call: "dataverse-web-api.list-entities", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: get-entity, description: "Retrieve a single entity definition", hints: { readOnly: true }, call: "dataverse-web-api.get-entity", outputParameters: [{ type: object, mapping: "$." }] }

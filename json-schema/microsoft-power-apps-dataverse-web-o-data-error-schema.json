@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ODataError",
+  "type": "object",
+  "description": "Standard OData error response from the Dataverse Web API.",
+  "properties": {
+    "error": {
+      "type": "object"
+    }
+  }
+}

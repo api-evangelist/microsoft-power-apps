@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Entity",
+  "type": "object",
+  "description": "Metadata definition for a Dataverse table (entity). Provides information about the table structure including logical names, collection names, and configuration. Read-only entity type supporting only RetrieveMultiple operations.",
+  "properties": {
+    "entityid": {
+      "type": "string",
+      "description": "Unique identifier of the entity definition."
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the entity."
+    },
+    "logicalname": {
+      "type": "string",
+      "description": "Logical name of the entity, used in API requests and programmatic references."
+    },
+    "logicalcollectionname": {
+      "type": "string",
+      "description": "Logical collection name of the entity."
+    },
+    "collectionname": {
+      "type": "string",
+      "description": "Collection name of the entity."
+    },
+    "entitysetname": {
+      "type": "string",
+      "description": "Entity set name used in Web API URLs to reference this table."
+    },
+    "physicalname": {
+      "type": "string",
+      "description": "Physical database table name of the entity."
+    },
+    "basetablename": {
+      "type": "string",
+      "description": "Base table name of the entity."
+    },
+    "externalname": {
+      "type": "string",
+      "description": "External name of the entity for virtual entities."
+    },
+    "externalcollectionname": {
+      "type": "string",
+      "description": "External collection name of the entity."
+    },
+    "addresstablename": {
+      "type": "string",
+      "description": "Address table name associated with the entity."
+    },
+    "extensiontablename": {
+      "type": "string",
+      "description": "Extension table name of the entity."
+    },
+    "reportviewname": {
+      "type": "string",
+      "description": "Report view name of the entity."
+    },
+    "parentcontrollingattributename": {
+      "type": "string",
+      "description": "Parent controlling attribute name of the entity."
+    },
+    "originallocalizedname": {
+      "type": "string",
+      "description": "Original localized display name of the entity."
+    },
+    "originallocalizedcollectionname": {
+      "type": "string",
+      "description": "Original localized collection name of the entity."
+    },
+    "isactivity": {
+      "type": "boolean",
+      "description": "Whether this entity is an activity type."
+    },
+    "objecttypecode": {
+      "type": "integer",
+      "description": "Object type code of the entity."
+    },
+    "componentstate": {
+      "type": "integer",
+      "description": "Component state of the entity. 0 = Published, 1 = Unpublished, 2 = Deleted, 3 = Deleted Unpublished."
+    },
+    "solutionid": {
+      "type": "string",
+      "description": "Unique identifier of the associated solution."
+    },
+    "overwritetime": {
+      "type": "string",
+      "description": "Record overwrite time for internal use."
+    },
+    "versionnumber": {
+      "type": "integer",
+      "description": "Version number of the entity definition record."
+    }
+  }
+}
