@@ -4,139 +4,104 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Microsoft Power Apps
 providerId: microsoft-power-apps
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Business Applications
-  - Cloud
-  - Enterprise
-  - Low-Code
-  - Microsoft
-  - No-Code
-  - Power Platform
-  - SaaS
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Microsoft Power Apps API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
+  - Business Applications
+  - Microsoft
+  - Power Platform
+  - Dataverse
+description: Microsoft Power Apps enforces two distinct limit models. Power Platform request (PPR)
+  entitlements are 24-hour daily quotas tied to the assigned user license (e.g. 40,000/24hr for Premium,
+  6,000/24hr for Power Apps per-app or pay-as-you-go). Dataverse service-protection limits are per-user
+  per-web-server sliding 5-minute windows that cap raw API velocity. Limits are enforced per-user; raise
+  via the PPR capacity add-on (50,000 requests per pack) or via custom enterprise arrangement with Microsoft.
+sources:
+  - https://learn.microsoft.com/en-us/power-platform/admin/api-request-limits-allocations
+  - https://learn.microsoft.com/en-us/power-apps/developer/data-platform/api-limits
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
   retryAfter: Retry-After
-  policy: RateLimit-Policy
+  burstRemaining: x-ms-ratelimit-burst-remaining-xrm-requests
+  timeRemaining: x-ms-ratelimit-time-remaining-xrm-requests
 responseCodes:
   throttled: 429
   quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
+  - name: Power Platform requests (Power Apps Premium / Per-user)
+    scope: account
+    metric: requests_per_day
+    limit: 40000
+    timeFrame: day
+    notes: Sliding 24-hour window per licensed user. Includes Dataverse and connector calls from
+      Power Apps and Power Automate.
+  - name: Power Platform requests (Power Apps per-app / pay-as-you-go / Microsoft 365 seeded)
+    scope: account
+    metric: requests_per_day
+    limit: 6000
+    timeFrame: day
+    notes: Sliding 24-hour window per licensed user.
+  - name: Power Platform requests (Power Automate per-flow / Copilot Studio)
+    scope: account
+    metric: requests_per_day
+    limit: 250000
+    timeFrame: day
+    notes: Per-flow license; flow-level rather than user-level.
+  - name: Power Apps Portals (paid login)
+    scope: account
+    metric: requests_per_day
+    limit: 200
+    timeFrame: day
+  - name: Non-licensed user pool (Power Apps tenant)
+    scope: account
+    metric: requests_per_day
+    limit: 25000
+    timeFrame: day
+    notes: Tenant-pooled requests for application/service-principal/system users.
+  - name: Dataverse number-of-requests (service protection)
+    scope: account/region/service
+    metric: requests_per_5min
+    limit: 6000
     timeFrame: minute
-    applies:
-      - Power Apps API
-      - Dataverse API (Common Data Service)
-      - Power Apps Management API
-      - Power Apps Connectors API
-      - Power Apps Canvas Apps API
-      - Power Apps Model-driven Apps API
-      - Power Apps Component Framework (PCF) API
-      - Power Platform REST API
-      - Power Pages Web API
-      - Dataverse Organization Service SDK
-      - Power Apps Code Apps API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Power Apps API
-      - Dataverse API (Common Data Service)
-      - Power Apps Management API
-      - Power Apps Connectors API
-      - Power Apps Canvas Apps API
-      - Power Apps Model-driven Apps API
-      - Power Apps Component Framework (PCF) API
-      - Power Platform REST API
-      - Power Pages Web API
-      - Dataverse Organization Service SDK
-      - Power Apps Code Apps API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Power Apps API
-      - Dataverse API (Common Data Service)
-      - Power Apps Management API
-      - Power Apps Connectors API
-      - Power Apps Canvas Apps API
-      - Power Apps Model-driven Apps API
-      - Power Apps Component Framework (PCF) API
-      - Power Platform REST API
-      - Power Pages Web API
-      - Dataverse Organization Service SDK
-      - Power Apps Code Apps API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Power Apps API
-      - Dataverse API (Common Data Service)
-      - Power Apps Management API
-      - Power Apps Connectors API
-      - Power Apps Canvas Apps API
-      - Power Apps Model-driven Apps API
-      - Power Apps Component Framework (PCF) API
-      - Power Platform REST API
-      - Power Pages Web API
-      - Dataverse Organization Service SDK
-      - Power Apps Code Apps API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Power Apps API
-      - Dataverse API (Common Data Service)
-      - Power Apps Management API
-      - Power Apps Connectors API
-      - Power Apps Canvas Apps API
-      - Power Apps Model-driven Apps API
-      - Power Apps Component Framework (PCF) API
-      - Power Platform REST API
-      - Power Pages Web API
-      - Dataverse Organization Service SDK
-      - Power Apps Code Apps API
+    notes: Per-user per-web-server sliding 5-minute window (default 6,000). Returns 429 with Retry-After.
+  - name: Dataverse execution-time (service protection)
+    scope: account/region/service
+    metric: varies
+    limit: '1,200,000 ms combined execution time per 300-second sliding window per user per web server'
+  - name: Dataverse concurrent-requests (service protection)
+    scope: account/region/service
+    metric: concurrent_requests
+    limit: 52
+    notes: Default; can be higher in some environments. Returns 429 immediately on excess.
+  - name: Dataverse Search API
+    scope: account
+    metric: requests_per_second
+    limit: 1
+    timeFrame: second
+    notes: One request/second per user against api/search.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Retry-After honoring
+    description: All 429 responses carry a Retry-After header (seconds). Clients must pause for that
+      duration before retrying. Microsoft.PowerPlatform.Dataverse.Client.ServiceClient handles this
+      automatically.
+  - name: Sliding 24-hour PPR window
+    description: Power Platform request entitlement is a sliding 24-hour window per user; any request
+      looks back 24h to compute remaining capacity. Limits do not roll over day-to-day.
+  - name: Stackable PPR licenses
+    description: Multiple paid licenses on the same user stack additively (e.g. 40k + 40k = 80k/24hr).
+      During the transition period, license stacking is not honored — the higher of assigned plans is
+      used.
+  - name: Capacity add-on
+    description: Power Platform Request capacity add-on adds 50,000 requests per pack per 24 hours;
+      multiple packs stack. Used to raise limits without re-licensing.
+  - name: Plug-in / sandbox exemption
+    description: Operations originating from plug-ins and custom workflow activities run in the sandbox
+      and do not count against service-protection limits, but their execution time accrues to the
+      triggering request.
+  - name: High-usage enforcement transition
+    description: Microsoft is in a transition period; strict PPR enforcement begins six months after
+      Power Platform admin center reporting reaches GA. During transition, generous interim caps apply
+      (e.g. 200k/cloud-flow for Premium).
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -4,224 +4,214 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Microsoft Power Apps
 providerId: microsoft-power-apps
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - Business Applications
   - Cloud
   - Enterprise
   - Low-Code
   - Microsoft
-  - No-Code
   - Power Platform
-  - SaaS
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+description: Microsoft Power Apps is sold per-user with an unlimited app entitlement at the Premium tier
+  plus a Developer (free) tier for evaluation. Storage is billed via Dataverse capacity add-ons. API
+  consumption is governed by per-user 24-hour Power Platform request entitlements rather than per-call
+  pricing. Volume discounting is available at 2,000+ seat minimums. Custom enterprise terms available
+  via Microsoft direct sales.
+sources:
+  - https://www.microsoft.com/en-us/power-platform/products/power-apps/pricing
+  - https://learn.microsoft.com/en-us/power-platform/admin/api-request-limits-allocations
 plans:
-  - id: microsoft-power-apps-free
-    name: Free
+  - id: microsoft-power-apps-developer
+    name: Power Apps Developer Plan
     type: freemium
-    description: Free entry tier for the Microsoft Power Apps API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+    description: Free developer plan for evaluation, prototyping and learning. Three developer environments
+      with Dataverse and connector access.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
+      - label: Per-user license
+        name: developer_seat
+        type: subscription
+        metric: seat
+        limit: -1
         timeFrame: month
         geo: global
-        domains:
-          - https://api.powerapps.com
-          - https://[organization].api.crm.dynamics.com/api/data/v9.2
-          - https://api.bap.microsoft.com
-          - https://api.powerapps.com/providers/Microsoft.PowerApps
-          - https://[organization].crm.dynamics.com
-          - https://api.powerplatform.com
-          - https://[site-url]/_api
-          - https://[organization].api.crm.dynamics.com
         unit: 1
         price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
+        userMultiplied: true
+      - label: Power Platform requests
+        name: ppr_developer
+        type: quota
+        metric: requests
+        limit: 6000
+        timeFrame: day
         geo: global
-        domains:
-          - https://api.powerapps.com
-          - https://[organization].api.crm.dynamics.com/api/data/v9.2
-          - https://api.bap.microsoft.com
-          - https://api.powerapps.com/providers/Microsoft.PowerApps
-          - https://[organization].crm.dynamics.com
-          - https://api.powerplatform.com
-          - https://[site-url]/_api
-          - https://[organization].api.crm.dynamics.com
         unit: 1
-        price: '0.00'
+        price: included
+        userMultiplied: true
+      - label: Dataverse database entitlement
+        name: dataverse_db
+        type: quota
+        metric: GB
+        limit: 2
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
         userMultiplied: false
     elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Power Apps API
-      - name: Dataverse API (Common Data Service)
-      - name: Power Apps Management API
-      - name: Power Apps Connectors API
-      - name: Power Apps Canvas Apps API
-      - name: Power Apps Model-driven Apps API
-      - name: Power Apps Component Framework (PCF) API
-      - name: Power Platform REST API
-  - id: microsoft-power-apps-pro
-    name: Professional
-    type: paid
-    description: Production tier for Microsoft Power Apps. Provides higher quotas, priority support, and
-      access to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
+      - name: Three developer environments
+      - name: Prebuilt, custom and on-premises connectors
+      - name: 750 automation flows per month
+      - name: Dataverse access
+  - id: microsoft-power-apps-premium
+    name: Power Apps Premium
+    type: subscription
+    description: Production per-user plan; unlimited Power Apps and Power Pages for assigned user.
+      $20/user/month (annual billing).
     entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
+      - label: Per-user license
+        name: premium_seat
+        type: subscription
+        metric: seat
+        limit: -1
         timeFrame: month
         geo: global
-        domains:
-          - https://api.powerapps.com
-          - https://[organization].api.crm.dynamics.com/api/data/v9.2
-          - https://api.bap.microsoft.com
-          - https://api.powerapps.com/providers/Microsoft.PowerApps
-          - https://[organization].crm.dynamics.com
-          - https://api.powerplatform.com
-          - https://[site-url]/_api
-          - https://[organization].api.crm.dynamics.com
         unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
+        price: '20.00'
+        userMultiplied: true
+      - label: Power Platform requests
+        name: ppr_premium
+        type: quota
+        metric: requests
+        limit: 40000
+        timeFrame: day
         geo: global
-        domains:
-          - https://api.powerapps.com
-          - https://[organization].api.crm.dynamics.com/api/data/v9.2
-          - https://api.bap.microsoft.com
-          - https://api.powerapps.com/providers/Microsoft.PowerApps
-          - https://[organization].crm.dynamics.com
-          - https://api.powerplatform.com
-          - https://[site-url]/_api
-          - https://[organization].api.crm.dynamics.com
         unit: 1
-        price: '0.00'
+        price: included
+        userMultiplied: true
+      - label: Dataverse database entitlement
+        name: dataverse_db
+        type: quota
+        metric: MB
+        limit: 250
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: true
+      - label: Dataverse file capacity entitlement
+        name: dataverse_file
+        type: quota
+        metric: GB
+        limit: 2
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: true
+    elements:
+      - name: Unlimited Power Apps and Power Pages for assigned user
+      - name: Prebuilt, custom and on-premises connectors
+      - name: Agentic features
+      - name: Microsoft 365 Copilot chat access
+  - id: microsoft-power-apps-premium-volume
+    name: Power Apps Premium (2,000+ Seat Minimum)
+    type: subscription
+    description: Volume-discounted Premium plan for organizations purchasing 2,000+ seats. Same entitlements
+      as Premium at $12/user/month (annual billing).
+    entries:
+      - label: Per-user license (volume)
+        name: premium_volume_seat
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '12.00'
+        userMultiplied: true
+      - label: Power Platform requests
+        name: ppr_premium_volume
+        type: quota
+        metric: requests
+        limit: 40000
+        timeFrame: day
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: true
+    elements:
+      - name: 2,000+ seat minimum
+      - name: All Premium plan capabilities
+      - name: Volume pricing
+  - id: microsoft-power-apps-dataverse-addon
+    name: Dataverse Database Capacity Add-on
+    type: usage-based
+    description: Per-GB Dataverse capacity add-on for additional cloud database storage. $40/GB/month
+      (annual billing).
+    entries:
+      - label: Dataverse database GB-month
+        name: dataverse_capacity
+        type: metered
+        metric: GB
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '40.00'
         userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
+    elements:
+      - name: Additional Dataverse database storage
+      - name: Stackable on top of seat entitlements
+  - id: microsoft-power-apps-payg
+    name: Power Apps Pay-as-you-go
+    type: pay-as-you-go
+    description: Azure-billed pay-as-you-go meter for Power Apps usage without per-user license. Subject
+      to the 6,000 Power Platform requests/24hr per active user limit.
+    entries:
+      - label: Active user / app run
+        name: payg_active_user
+        type: metered
+        metric: varies
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: see Azure meter
+        userMultiplied: false
+      - label: Power Platform requests
+        name: ppr_payg
+        type: quota
+        metric: requests
+        limit: 6000
+        timeFrame: day
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: true
+    elements:
+      - name: No upfront commitment
+      - name: Billed via Azure subscription
+      - name: Useful for unpredictable / occasional usage
+  - id: microsoft-power-apps-ppr-addon
+    name: Power Platform Request Capacity Add-on
+    type: usage-based
+    description: Capacity add-on raising the per-user (or per-flow) Power Platform request limit by 50,000
+      requests per 24 hours. Stackable.
+    entries:
+      - label: PPR capacity pack
+        name: ppr_addon_pack
         type: metered
         metric: requests
-        limit: -1
-        timeFrame: month
+        limit: 50000
+        timeFrame: day
         geo: global
-        domains:
-          - https://api.powerapps.com
-          - https://[organization].api.crm.dynamics.com/api/data/v9.2
-          - https://api.bap.microsoft.com
-          - https://api.powerapps.com/providers/Microsoft.PowerApps
-          - https://[organization].crm.dynamics.com
-          - https://api.powerplatform.com
-          - https://[site-url]/_api
-          - https://[organization].api.crm.dynamics.com
-        unit: 1000
-        price: TBD
+        unit: 1
+        price: contact sales
         userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Power Apps API
-      - name: Dataverse API (Common Data Service)
-      - name: Power Apps Management API
-      - name: Power Apps Connectors API
-      - name: Power Apps Canvas Apps API
-      - name: Power Apps Model-driven Apps API
-      - name: Power Apps Component Framework (PCF) API
-      - name: Power Platform REST API
-      - name: Power Pages Web API
-      - name: Dataverse Organization Service SDK
-      - name: Power Apps Code Apps API
-  - id: microsoft-power-apps-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Microsoft Power Apps. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://api.powerapps.com
-          - https://[organization].api.crm.dynamics.com/api/data/v9.2
-          - https://api.bap.microsoft.com
-          - https://api.powerapps.com/providers/Microsoft.PowerApps
-          - https://[organization].crm.dynamics.com
-          - https://api.powerplatform.com
-          - https://[site-url]/_api
-          - https://[organization].api.crm.dynamics.com
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://api.powerapps.com
-          - https://[organization].api.crm.dynamics.com/api/data/v9.2
-          - https://api.bap.microsoft.com
-          - https://api.powerapps.com/providers/Microsoft.PowerApps
-          - https://[organization].crm.dynamics.com
-          - https://api.powerplatform.com
-          - https://[site-url]/_api
-          - https://[organization].api.crm.dynamics.com
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Power Apps API
-      - name: Dataverse API (Common Data Service)
-      - name: Power Apps Management API
-      - name: Power Apps Connectors API
-      - name: Power Apps Canvas Apps API
-      - name: Power Apps Model-driven Apps API
-      - name: Power Apps Component Framework (PCF) API
-      - name: Power Platform REST API
-      - name: Power Pages Web API
-      - name: Dataverse Organization Service SDK
-      - name: Power Apps Code Apps API
+      - name: Stackable
+      - name: Used to avoid high-usage enforcement
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

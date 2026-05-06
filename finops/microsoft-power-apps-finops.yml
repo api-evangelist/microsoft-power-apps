@@ -1,230 +1,113 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Microsoft Power Apps
+providerId: microsoft-power-apps
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+  - Cost Management
+  - Microsoft
+  - Power Platform
+  - Low-Code
+description: 'FOCUS-aligned FinOps for Microsoft Power Apps: per-user subscriptions plus Dataverse capacity
+  add-ons and optional Azure-billed pay-as-you-go meter, governed by 24-hour Power Platform request entitlements.'
+sources:
+  - https://www.microsoft.com/en-us/power-platform/products/power-apps/pricing
+  - https://learn.microsoft.com/en-us/power-platform/admin/api-request-limits-allocations
+  - https://learn.microsoft.com/en-us/power-apps/developer/data-platform/api-limits
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-provider: Microsoft Power Apps
-providerId: microsoft-power-apps
-publisherName: Microsoft Power Apps
-serviceCategory: API
-created: '2026-05-04'
-modified: '2026-05-04'
-tags:
-  - Business Applications
-  - Cloud
-  - Enterprise
-  - Low-Code
-  - Microsoft
-  - No-Code
-  - Power Platform
-  - SaaS
-  - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the Microsoft Power Apps API surface. Provides a FOCUS-aligned
-  mapping for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+publisherName: Microsoft Corporation
+serviceCategory: Business Applications / Low-Code
 billingModel:
-  pricingCategory: Usage-Based
+  pricingCategory: Tiered Subscription + Pay-As-You-Go
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
     - Usage
     - Purchase
     - Tax
-    - Credit
     - Adjustment
-  chargeFrequency: Recurring
+    - Credit
 focusColumns:
   ServiceName: Microsoft Power Apps
-  ServiceCategory: Developer Tools / API
-  ProviderName: Microsoft Power Apps
-  PublisherName: Microsoft Power Apps
-  InvoiceIssuerName: Microsoft Power Apps
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  ServiceCategory: Business Applications
+  ProviderName: Microsoft
+  PublisherName: Microsoft Corporation
+  InvoiceIssuerName: Microsoft Corporation
   BillingCurrency: USD
+  PricingUnit: seat-month
   ChargeCategory: Usage
 meters:
-  - name: api_requests
-    description: Count of billable API requests
+  - name: premium_seats
+    unit: seat
+    aggregation: sum
+    dimensions:
+      - tenant
+      - environment
+      - assigned_user
+  - name: developer_seats
+    unit: seat
+    aggregation: count
+    dimensions:
+      - tenant
+  - name: power_platform_requests
     unit: request
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
+      - user
+      - environment
+      - product
+      - tenant
+  - name: dataverse_database_capacity
+    unit: GB-month
+    aggregation: max
+    dimensions:
+      - environment
+      - tenant
+  - name: dataverse_file_capacity
+    unit: GB-month
+    aggregation: max
+    dimensions:
+      - environment
+      - tenant
+  - name: ppr_capacity_addon_packs
+    unit: pack-month
     aggregation: sum
     dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
+      - tenant
+  - name: payg_active_users
+    unit: user
+    aggregation: count
     dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Power Apps API
-    baseURL: https://api.powerapps.com
-    tags:
-      - Applications
-      - Development
-      - Low-Code
-      - Power Platform
-    serviceName: Power Apps API
-    serviceCategory: API
-  - name: Dataverse API (Common Data Service)
-    baseURL: https://[organization].api.crm.dynamics.com/api/data/v9.2
-    tags:
-      - CRM
-      - Data Platform
-      - Database
-      - REST API
-    serviceName: Dataverse API (Common Data Service)
-    serviceCategory: API
-  - name: Power Apps Management API
-    baseURL: https://api.bap.microsoft.com
-    tags:
-      - Administration
-      - Environments
-      - Governance
-      - Management
-    serviceName: Power Apps Management API
-    serviceCategory: API
-  - name: Power Apps Connectors API
-    baseURL: https://api.powerapps.com/providers/Microsoft.PowerApps
-    tags:
-      - Connectors
-      - Custom Connectors
-      - Integration
-    serviceName: Power Apps Connectors API
-    serviceCategory: API
-  - name: Power Apps Canvas Apps API
-    baseURL: https://api.powerapps.com
-    tags:
-      - Canvas Apps
-      - Low-Code
-      - Mobile
-      - UI
-    serviceName: Power Apps Canvas Apps API
-    serviceCategory: API
-  - name: Power Apps Model-driven Apps API
-    baseURL: https://[organization].crm.dynamics.com
-    tags:
-      - Business Logic
-      - Forms
-      - Model-Driven Apps
-      - Views
-    serviceName: Power Apps Model-driven Apps API
-    serviceCategory: API
-  - name: Power Apps Component Framework (PCF) API
-    baseURL: https://api.powerapps.com
-    tags:
-      - Code Components
-      - Component Framework
-      - Custom Controls
-      - PCF
-      - TypeScript
-    serviceName: Power Apps Component Framework (PCF) API
-    serviceCategory: API
-  - name: Power Platform REST API
-    baseURL: https://api.powerplatform.com
-    tags:
-      - Administration
-      - Environments
-      - Governance
-      - Licensing
-      - REST API
-    serviceName: Power Platform REST API
-    serviceCategory: API
-  - name: Power Pages Web API
-    baseURL: https://[site-url]/_api
-    tags:
-      - CRUD
-      - External Users
-      - Portals
-      - Power Pages
-      - Web API
-    serviceName: Power Pages Web API
-    serviceCategory: API
-  - name: Dataverse Organization Service SDK
-    baseURL: https://[organization].api.crm.dynamics.com
-    tags:
-      - .NET
-      - Organization Service
-      - Plugins
-      - SDK
-      - Server-Side
-    serviceName: Dataverse Organization Service SDK
-    serviceCategory: API
-  - name: Power Apps Code Apps API
-    baseURL: https://api.powerapps.com
-    tags:
-      - Code Apps
-      - Code-First
-      - Pro Developer
-      - React
-      - Vue
-    serviceName: Power Apps Code Apps API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - app
+      - environment
+principles:
+  - name: Visibility
+    description: Use the Power Platform admin center capacity reports (Licensed user, Non-licensed
+      user, Per-flow) to download CSV usage of Power Platform requests; surface seat licensing through
+      the Microsoft 365 admin center.
+  - name: Allocation
+    description: Tag environments with consuming team / cost center; attribute seat licenses to assigned
+      users via Microsoft 365 license groups; allocate Dataverse capacity by environment to map back
+      to product owners.
+  - name: Optimization
+    description: Right-size between Premium ($20) and per-app / pay-as-you-go for low-frequency users;
+      consolidate apps to fewer environments to reduce Dataverse capacity floor; cache Dataverse reads
+      to stay under the 6,000-requests / 5-minute service-protection ceiling rather than buying PPR
+      add-ons.
+  - name: Accountability
+    description: Assign each environment to a budget owner; review the Capacity page monthly; investigate
+      users who breach 75% of their PPR daily entitlement two days in a row to determine whether they
+      need an add-on, a license upgrade, or a code fix.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
