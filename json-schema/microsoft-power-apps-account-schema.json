@@ -1,0 +1,460 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Account",
+  "title": "Account",
+  "type": "object",
+  "description": "Business that represents a customer or potential customer. The company that is billed in business transactions. Corresponds to the account entity type in the Microsoft.Dynamics.CRM namespace.",
+  "properties": {
+    "accountid": {
+      "type": "string",
+      "format": "uuid",
+      "readOnly": true,
+      "description": "Unique identifier of the account.",
+      "example": "500123"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 160,
+      "description": "Company or business name of the account.",
+      "example": "Example Title"
+    },
+    "accountnumber": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "ID number or code for the account to quickly search and identify the account in system views.",
+      "example": "example_value"
+    },
+    "accountcategorycode": {
+      "type": "integer",
+      "description": "Category indicating whether the customer account is standard or preferred. 1 = Preferred Customer, 2 = Standard.",
+      "enum": [
+        1,
+        2
+      ],
+      "example": 1
+    },
+    "accountclassificationcode": {
+      "type": "integer",
+      "description": "Classification code indicating the potential value of the customer account. 1 = Default Value.",
+      "example": 10
+    },
+    "accountratingcode": {
+      "type": "integer",
+      "description": "Rating indicating the value of the customer account.",
+      "example": 10
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Additional information describing the account.",
+      "example": "A sample description."
+    },
+    "emailaddress1": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 100,
+      "description": "Primary email address for the account.",
+      "example": "user@example.com"
+    },
+    "emailaddress2": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 100,
+      "description": "Secondary email address for the account.",
+      "example": "user@example.com"
+    },
+    "emailaddress3": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 100,
+      "description": "Alternate email address for the account.",
+      "example": "user@example.com"
+    },
+    "telephone1": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Main phone number for the account.",
+      "example": "example_value"
+    },
+    "telephone2": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Second phone number for the account.",
+      "example": "example_value"
+    },
+    "telephone3": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Third phone number for the account.",
+      "example": "example_value"
+    },
+    "fax": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Fax number for the account.",
+      "example": "example_value"
+    },
+    "websiteurl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 200,
+      "description": "Website URL for the account.",
+      "example": "https://www.example.com"
+    },
+    "industrycode": {
+      "type": "integer",
+      "description": "Primary industry of the account for marketing segmentation. Values include 1=Accounting, 2=Agriculture, 3=Broadcasting, 4=Brokers, 5=Building Supply, 6=Business Services, 7=Consulting, 8=Consumer Services, and others up to 33=Wholesale.",
+      "example": 10
+    },
+    "numberofemployees": {
+      "type": "integer",
+      "description": "Number of employees at the account.",
+      "example": 10
+    },
+    "revenue": {
+      "type": "number",
+      "format": "decimal",
+      "description": "Annual revenue for the account.",
+      "example": 42.5
+    },
+    "revenue_base": {
+      "type": "number",
+      "format": "decimal",
+      "readOnly": true,
+      "description": "Annual revenue converted to the system default base currency.",
+      "example": 42.5
+    },
+    "ownershipcode": {
+      "type": "integer",
+      "description": "Ownership structure of the account. 1 = Public, 2 = Private, 3 = Subsidiary, 4 = Other.",
+      "enum": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "example": 1
+    },
+    "customertypecode": {
+      "type": "integer",
+      "description": "Category describing the relationship between the account and the organization. 1=Competitor, 2=Consultant, 3=Customer, 4=Investor, 5=Partner, 6=Influencer, 7=Press, 8=Prospect, 9=Reseller, 10=Supplier, 11=Vendor, 12=Other.",
+      "example": 10
+    },
+    "businesstypecode": {
+      "type": "integer",
+      "description": "Legal designation or other business type of the account.",
+      "example": 10
+    },
+    "sic": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Standard Industrial Classification (SIC) code.",
+      "example": "example_value"
+    },
+    "tickersymbol": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Stock exchange symbol for the account.",
+      "example": "example_value"
+    },
+    "stockexchange": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Stock exchange at which the account is listed.",
+      "example": "example_value"
+    },
+    "sharesoutstanding": {
+      "type": "integer",
+      "description": "Number of shares available to the public.",
+      "example": 10
+    },
+    "marketcap": {
+      "type": "number",
+      "format": "decimal",
+      "description": "Market capitalization of the account.",
+      "example": 42.5
+    },
+    "creditlimit": {
+      "type": "number",
+      "format": "decimal",
+      "description": "Credit limit of the account.",
+      "example": 42.5
+    },
+    "creditonhold": {
+      "type": "boolean",
+      "description": "Whether the credit for the account is on hold.",
+      "example": true
+    },
+    "paymenttermscode": {
+      "type": "integer",
+      "description": "Payment terms for the account. 1 = Net 30, 2 = 2% 10 Net 30, 3 = Net 45, 4 = Net 60.",
+      "enum": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "example": 1
+    },
+    "preferredcontactmethodcode": {
+      "type": "integer",
+      "description": "Preferred method of contact. 1 = Any, 2 = Email, 3 = Phone, 4 = Fax, 5 = Mail.",
+      "enum": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "example": 1
+    },
+    "donotemail": {
+      "type": "boolean",
+      "description": "Whether the account allows direct email.",
+      "example": "user@example.com"
+    },
+    "donotphone": {
+      "type": "boolean",
+      "description": "Whether the account allows phone calls.",
+      "example": true
+    },
+    "donotfax": {
+      "type": "boolean",
+      "description": "Whether the account allows faxes.",
+      "example": true
+    },
+    "donotpostalmail": {
+      "type": "boolean",
+      "description": "Whether the account allows direct mail.",
+      "example": true
+    },
+    "donotbulkemail": {
+      "type": "boolean",
+      "description": "Whether the account allows bulk email through campaigns.",
+      "example": "user@example.com"
+    },
+    "donotsendmm": {
+      "type": "boolean",
+      "description": "Whether the account accepts marketing materials.",
+      "example": true
+    },
+    "address1_name": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "Descriptive name for the primary address.",
+      "example": "example_value"
+    },
+    "address1_line1": {
+      "type": "string",
+      "maxLength": 250,
+      "description": "First line of the primary address.",
+      "example": "example_value"
+    },
+    "address1_line2": {
+      "type": "string",
+      "maxLength": 250,
+      "description": "Second line of the primary address.",
+      "example": "example_value"
+    },
+    "address1_line3": {
+      "type": "string",
+      "maxLength": 250,
+      "description": "Third line of the primary address.",
+      "example": "example_value"
+    },
+    "address1_city": {
+      "type": "string",
+      "maxLength": 80,
+      "description": "City for the primary address.",
+      "example": "example_value"
+    },
+    "address1_stateorprovince": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "State or province for the primary address.",
+      "example": "example_value"
+    },
+    "address1_postalcode": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "ZIP code or postal code for the primary address.",
+      "example": "example_value"
+    },
+    "address1_country": {
+      "type": "string",
+      "maxLength": 80,
+      "description": "Country or region for the primary address.",
+      "example": "example_value"
+    },
+    "address1_county": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "County for the primary address.",
+      "example": "example_value"
+    },
+    "address1_telephone1": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Main phone number for the primary address.",
+      "example": "example_value"
+    },
+    "address1_fax": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Fax number for the primary address.",
+      "example": "example_value"
+    },
+    "address1_latitude": {
+      "type": "number",
+      "format": "double",
+      "description": "Latitude value for the primary address.",
+      "example": 42.5
+    },
+    "address1_longitude": {
+      "type": "number",
+      "format": "double",
+      "description": "Longitude value for the primary address.",
+      "example": 42.5
+    },
+    "address1_addresstypecode": {
+      "type": "integer",
+      "description": "Primary address type. 1 = Bill To, 2 = Ship To, 3 = Primary, 4 = Other.",
+      "enum": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "example": 1
+    },
+    "address2_name": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "Descriptive name for the secondary address.",
+      "example": "example_value"
+    },
+    "address2_line1": {
+      "type": "string",
+      "maxLength": 250,
+      "description": "First line of the secondary address.",
+      "example": "example_value"
+    },
+    "address2_line2": {
+      "type": "string",
+      "maxLength": 250,
+      "description": "Second line of the secondary address.",
+      "example": "example_value"
+    },
+    "address2_line3": {
+      "type": "string",
+      "maxLength": 250,
+      "description": "Third line of the secondary address.",
+      "example": "example_value"
+    },
+    "address2_city": {
+      "type": "string",
+      "maxLength": 80,
+      "description": "City for the secondary address.",
+      "example": "example_value"
+    },
+    "address2_stateorprovince": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "State or province for the secondary address.",
+      "example": "example_value"
+    },
+    "address2_postalcode": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "ZIP code or postal code for the secondary address.",
+      "example": "example_value"
+    },
+    "address2_country": {
+      "type": "string",
+      "maxLength": 80,
+      "description": "Country or region for the secondary address.",
+      "example": "example_value"
+    },
+    "statecode": {
+      "type": "integer",
+      "description": "Status of the account. 0 = Active, 1 = Inactive. Inactive accounts are read-only.",
+      "enum": [
+        0,
+        1
+      ],
+      "readOnly": true,
+      "example": 0
+    },
+    "statuscode": {
+      "type": "integer",
+      "description": "Status reason for the account. 1 = Active, 2 = Inactive.",
+      "enum": [
+        1,
+        2
+      ],
+      "example": 1
+    },
+    "createdon": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "Date and time when the account record was created.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "modifiedon": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "Date and time when the account record was last updated.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "versionnumber": {
+      "type": "integer",
+      "format": "int64",
+      "readOnly": true,
+      "description": "Version number of the account record.",
+      "example": 10
+    },
+    "_primarycontactid_value": {
+      "type": "string",
+      "format": "uuid",
+      "readOnly": true,
+      "description": "Lookup property for the primary contact of the account.",
+      "example": "example_value"
+    },
+    "_parentaccountid_value": {
+      "type": "string",
+      "format": "uuid",
+      "readOnly": true,
+      "description": "Lookup property for the parent account.",
+      "example": "example_value"
+    },
+    "_ownerid_value": {
+      "type": "string",
+      "format": "uuid",
+      "readOnly": true,
+      "description": "Lookup property for the user or team assigned to manage the record.",
+      "example": "example_value"
+    },
+    "_transactioncurrencyid_value": {
+      "type": "string",
+      "format": "uuid",
+      "readOnly": true,
+      "description": "Lookup property for the currency associated with the record.",
+      "example": "example_value"
+    },
+    "yominame": {
+      "type": "string",
+      "maxLength": 160,
+      "description": "Phonetic spelling of the company name for Japanese pronunciation.",
+      "example": "example_value"
+    }
+  },
+  "x-ms-dynamics-entity": {
+    "entitySetName": "accounts",
+    "primaryKey": "accountid",
+    "primaryNameColumn": "name",
+    "namespace": "Microsoft.Dynamics.CRM",
+    "baseType": "crmbaseentity"
+  }
+}

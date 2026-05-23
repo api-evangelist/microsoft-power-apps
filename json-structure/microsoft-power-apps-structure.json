@@ -1,0 +1,162 @@
+{
+  "provider": "Microsoft Power Apps",
+  "providerId": "microsoft-power-apps",
+  "kind": "json-structure",
+  "description": "Structural overview of the Microsoft Power Apps API surface; extracted from openapi/.",
+  "schemaCount": 7,
+  "operationCount": 12,
+  "schemas": [
+    {
+      "name": "Account",
+      "type": "object",
+      "propertyCount": 69,
+      "required": []
+    },
+    {
+      "name": "AccountCollection",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Contact",
+      "type": "object",
+      "propertyCount": 68,
+      "required": []
+    },
+    {
+      "name": "ContactCollection",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Entity",
+      "type": "object",
+      "propertyCount": 22,
+      "required": []
+    },
+    {
+      "name": "EntityCollection",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ODataError",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/accounts",
+      "operationId": "getAccounts",
+      "summary": "Microsoft Power Apps Retrieve Multiple Accounts",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/accounts",
+      "operationId": "createAccount",
+      "summary": "Microsoft Power Apps Create a New Account",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/accounts({accountid})",
+      "operationId": "getAccount",
+      "summary": "Microsoft Power Apps Retrieve a Single Account",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/accounts({accountid})",
+      "operationId": "deleteAccount",
+      "summary": "Microsoft Power Apps Delete an Account",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/accounts({accountid})",
+      "operationId": "updateAccount",
+      "summary": "Microsoft Power Apps Update an Existing Account",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/contacts",
+      "operationId": "getContacts",
+      "summary": "Microsoft Power Apps Retrieve Multiple Contacts",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/contacts",
+      "operationId": "createContact",
+      "summary": "Microsoft Power Apps Create a New Contact",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/contacts({contactid})",
+      "operationId": "getContact",
+      "summary": "Microsoft Power Apps Retrieve a Single Contact",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/contacts({contactid})",
+      "operationId": "deleteContact",
+      "summary": "Microsoft Power Apps Delete a Contact",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/contacts({contactid})",
+      "operationId": "updateContact",
+      "summary": "Microsoft Power Apps Update an Existing Contact",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/entities",
+      "operationId": "getEntities",
+      "summary": "Microsoft Power Apps Retrieve Entity Definitions",
+      "tags": [
+        "Entities"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/entities({entityid})",
+      "operationId": "getEntity",
+      "summary": "Microsoft Power Apps Retrieve a Single Entity Definition",
+      "tags": [
+        "Entities"
+      ]
+    }
+  ]
+}

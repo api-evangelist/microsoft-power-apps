@@ -1,0 +1,450 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Contact",
+  "title": "Contact",
+  "type": "object",
+  "description": "Person with whom a business unit has a relationship, such as a customer, supplier, or colleague. Corresponds to the contact entity type in the Microsoft.Dynamics.CRM namespace.",
+  "properties": {
+    "contactid": {
+      "type": "string",
+      "format": "uuid",
+      "readOnly": true,
+      "description": "Unique identifier of the contact.",
+      "example": "500123"
+    },
+    "firstname": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "First name of the contact.",
+      "example": "example_value"
+    },
+    "lastname": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Last name of the contact.",
+      "example": "example_value"
+    },
+    "fullname": {
+      "type": "string",
+      "maxLength": 160,
+      "readOnly": true,
+      "description": "Full name of the contact, combining first name, middle name, and last name.",
+      "example": "example_value"
+    },
+    "middlename": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Middle name or initial of the contact.",
+      "example": "example_value"
+    },
+    "nickname": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Nickname of the contact.",
+      "example": "example_value"
+    },
+    "salutation": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Salutation for correspondence with the contact.",
+      "example": "example_value"
+    },
+    "suffix": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Suffix used in the contact's name.",
+      "example": "example_value"
+    },
+    "jobtitle": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Job title of the contact.",
+      "example": "example_value"
+    },
+    "department": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Department or business unit where the contact works.",
+      "example": "example_value"
+    },
+    "emailaddress1": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 100,
+      "description": "Primary email address for the contact.",
+      "example": "user@example.com"
+    },
+    "emailaddress2": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 100,
+      "description": "Secondary email address for the contact.",
+      "example": "user@example.com"
+    },
+    "emailaddress3": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 100,
+      "description": "Alternate email address for the contact.",
+      "example": "user@example.com"
+    },
+    "telephone1": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Main phone number for the contact.",
+      "example": "example_value"
+    },
+    "telephone2": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Second phone number for the contact.",
+      "example": "example_value"
+    },
+    "telephone3": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Third phone number for the contact.",
+      "example": "example_value"
+    },
+    "mobilephone": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Mobile phone number for the contact.",
+      "example": "example_value"
+    },
+    "fax": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Fax number for the contact.",
+      "example": "example_value"
+    },
+    "websiteurl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 200,
+      "description": "Website URL for the contact.",
+      "example": "https://www.example.com"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Additional information to describe the contact.",
+      "example": "A sample description."
+    },
+    "gendercode": {
+      "type": "integer",
+      "description": "Gender of the contact. 1 = Male, 2 = Female.",
+      "enum": [
+        1,
+        2
+      ],
+      "example": 1
+    },
+    "familystatuscode": {
+      "type": "integer",
+      "description": "Marital status of the contact. 1 = Single, 2 = Married, 3 = Divorced, 4 = Widowed.",
+      "enum": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "example": 1
+    },
+    "birthdate": {
+      "type": "string",
+      "format": "date",
+      "description": "Birthday of the contact.",
+      "example": "2026-01-15"
+    },
+    "anniversary": {
+      "type": "string",
+      "format": "date",
+      "description": "Anniversary date of the contact.",
+      "example": "2026-01-15"
+    },
+    "spousesname": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Name of the contact's spouse or partner.",
+      "example": "example_value"
+    },
+    "numberofchildren": {
+      "type": "integer",
+      "description": "Number of children the contact has.",
+      "example": 10
+    },
+    "address1_name": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "Descriptive name for the primary address.",
+      "example": "example_value"
+    },
+    "address1_line1": {
+      "type": "string",
+      "maxLength": 250,
+      "description": "First line of the primary address.",
+      "example": "example_value"
+    },
+    "address1_line2": {
+      "type": "string",
+      "maxLength": 250,
+      "description": "Second line of the primary address.",
+      "example": "example_value"
+    },
+    "address1_line3": {
+      "type": "string",
+      "maxLength": 250,
+      "description": "Third line of the primary address.",
+      "example": "example_value"
+    },
+    "address1_city": {
+      "type": "string",
+      "maxLength": 80,
+      "description": "City for the primary address.",
+      "example": "example_value"
+    },
+    "address1_stateorprovince": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "State or province for the primary address.",
+      "example": "example_value"
+    },
+    "address1_postalcode": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "ZIP code or postal code for the primary address.",
+      "example": "example_value"
+    },
+    "address1_country": {
+      "type": "string",
+      "maxLength": 80,
+      "description": "Country or region for the primary address.",
+      "example": "example_value"
+    },
+    "address1_county": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "County for the primary address.",
+      "example": "example_value"
+    },
+    "address1_telephone1": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Main phone number for the primary address.",
+      "example": "example_value"
+    },
+    "address1_fax": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Fax number for the primary address.",
+      "example": "example_value"
+    },
+    "address1_latitude": {
+      "type": "number",
+      "format": "double",
+      "description": "Latitude value for the primary address.",
+      "example": 42.5
+    },
+    "address1_longitude": {
+      "type": "number",
+      "format": "double",
+      "description": "Longitude value for the primary address.",
+      "example": 42.5
+    },
+    "address2_name": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "Descriptive name for the secondary address.",
+      "example": "example_value"
+    },
+    "address2_line1": {
+      "type": "string",
+      "maxLength": 250,
+      "description": "First line of the secondary address.",
+      "example": "example_value"
+    },
+    "address2_line2": {
+      "type": "string",
+      "maxLength": 250,
+      "description": "Second line of the secondary address.",
+      "example": "example_value"
+    },
+    "address2_line3": {
+      "type": "string",
+      "maxLength": 250,
+      "description": "Third line of the secondary address.",
+      "example": "example_value"
+    },
+    "address2_city": {
+      "type": "string",
+      "maxLength": 80,
+      "description": "City for the secondary address.",
+      "example": "example_value"
+    },
+    "address2_stateorprovince": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "State or province for the secondary address.",
+      "example": "example_value"
+    },
+    "address2_postalcode": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "ZIP code or postal code for the secondary address.",
+      "example": "example_value"
+    },
+    "address2_country": {
+      "type": "string",
+      "maxLength": 80,
+      "description": "Country or region for the secondary address.",
+      "example": "example_value"
+    },
+    "preferredcontactmethodcode": {
+      "type": "integer",
+      "description": "Preferred method of contact. 1 = Any, 2 = Email, 3 = Phone, 4 = Fax, 5 = Mail.",
+      "enum": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "example": 1
+    },
+    "donotemail": {
+      "type": "boolean",
+      "description": "Whether the contact allows direct email.",
+      "example": "user@example.com"
+    },
+    "donotphone": {
+      "type": "boolean",
+      "description": "Whether the contact allows phone calls.",
+      "example": true
+    },
+    "donotfax": {
+      "type": "boolean",
+      "description": "Whether the contact allows faxes.",
+      "example": true
+    },
+    "donotpostalmail": {
+      "type": "boolean",
+      "description": "Whether the contact allows direct mail.",
+      "example": true
+    },
+    "donotbulkemail": {
+      "type": "boolean",
+      "description": "Whether the contact allows bulk email through campaigns.",
+      "example": "user@example.com"
+    },
+    "donotsendmm": {
+      "type": "boolean",
+      "description": "Whether the contact accepts marketing materials.",
+      "example": true
+    },
+    "creditlimit": {
+      "type": "number",
+      "format": "decimal",
+      "description": "Credit limit of the contact.",
+      "example": 42.5
+    },
+    "creditonhold": {
+      "type": "boolean",
+      "description": "Whether the credit for the contact is on hold.",
+      "example": true
+    },
+    "statecode": {
+      "type": "integer",
+      "description": "Status of the contact. 0 = Active, 1 = Inactive. Inactive contacts are read-only.",
+      "enum": [
+        0,
+        1
+      ],
+      "readOnly": true,
+      "example": 0
+    },
+    "statuscode": {
+      "type": "integer",
+      "description": "Status reason for the contact. 1 = Active, 2 = Inactive.",
+      "enum": [
+        1,
+        2
+      ],
+      "example": 1
+    },
+    "createdon": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "Date and time when the contact record was created.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "modifiedon": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "Date and time when the contact record was last updated.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "versionnumber": {
+      "type": "integer",
+      "format": "int64",
+      "readOnly": true,
+      "description": "Version number of the contact record.",
+      "example": 10
+    },
+    "_parentcustomerid_value": {
+      "type": "string",
+      "format": "uuid",
+      "readOnly": true,
+      "description": "Lookup property for the parent customer (account or contact) associated with this contact.",
+      "example": "example_value"
+    },
+    "_ownerid_value": {
+      "type": "string",
+      "format": "uuid",
+      "readOnly": true,
+      "description": "Lookup property for the user or team assigned to manage the record.",
+      "example": "example_value"
+    },
+    "_transactioncurrencyid_value": {
+      "type": "string",
+      "format": "uuid",
+      "readOnly": true,
+      "description": "Lookup property for the currency associated with the record.",
+      "example": "example_value"
+    },
+    "yomifirstname": {
+      "type": "string",
+      "maxLength": 150,
+      "description": "Phonetic spelling of the first name (Japanese).",
+      "example": "example_value"
+    },
+    "yomilastname": {
+      "type": "string",
+      "maxLength": 150,
+      "description": "Phonetic spelling of the last name (Japanese).",
+      "example": "example_value"
+    },
+    "yomimiddlename": {
+      "type": "string",
+      "maxLength": 150,
+      "description": "Phonetic spelling of the middle name (Japanese).",
+      "example": "example_value"
+    },
+    "yomifullname": {
+      "type": "string",
+      "maxLength": 450,
+      "readOnly": true,
+      "description": "Phonetic spelling of the full name (Japanese).",
+      "example": "example_value"
+    }
+  },
+  "x-ms-dynamics-entity": {
+    "entitySetName": "contacts",
+    "primaryKey": "contactid",
+    "primaryNameColumn": "fullname",
+    "namespace": "Microsoft.Dynamics.CRM",
+    "baseType": "crmbaseentity"
+  }
+}

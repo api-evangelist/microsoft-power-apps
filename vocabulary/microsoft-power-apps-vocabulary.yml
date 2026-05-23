@@ -1,0 +1,14 @@
+name: Microsoft Power Apps Domain Vocabulary
+provider: Microsoft Power Apps
+providerId: microsoft-power-apps
+description: Tag-derived vocabulary for the Microsoft Power Apps API surface; sourced from openapi/ tags.
+terms:
+- term: Accounts
+  description: Operations on the account entity set. An account represents a business that is a customer or potential customer,
+    typically the company billed in business transactions.
+- term: Contacts
+  description: Operations on the contact entity set. A contact represents a person with whom a business unit has a relationship,
+    such as a customer, supplier, or colleague.
+- term: Entities
+  description: Operations on the entity definition entity set. Provides metadata about Dataverse tables (entities) including
+    their logical names, collection names, and structural information. Read-only access via RetrieveMultiple.
