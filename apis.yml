@@ -302,6 +302,12 @@ apis:
       - type: Security
         url: https://learn.microsoft.com/en-us/power-apps/developer/code-apps/how-to/content-security-policy
 common:
+  - type: VulnerabilityDisclosure
+    url: security/microsoft-power-apps-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/microsoft-power-apps-domain-security.yml
+  - type: Authentication
+    url: authentication/microsoft-power-apps-authentication.yml
   - type: OAuthScopes
     url: scopes/microsoft-power-apps-scopes.yml
   - type: DeveloperPortal
