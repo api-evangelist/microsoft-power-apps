@@ -302,6 +302,8 @@ apis:
       - type: Security
         url: https://learn.microsoft.com/en-us/power-apps/developer/code-apps/how-to/content-security-policy
 common:
+  - type: AgenticAccess
+    url: agentic-access/microsoft-power-apps-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/microsoft-power-apps-vulnerability-disclosure.yml
   - type: DomainSecurity
