@@ -1,0 +1,371 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Power Apps Microsoft Dataverse Web Accounts Entities API
+  description: RESTful API for interacting with Microsoft Dataverse (formerly Common Data Service), the underlying data platform for Microsoft Power Apps. This API follows OData v4.0 conventions and provides CRUD operations on Dataverse tables including accounts, contacts, and entity definitions. Each Dataverse environment has a unique organization URL and may include custom tables and operations specific to that environment.
+  version: '9.2'
+  termsOfService: https://www.microsoft.com/licensing/terms/productoffering/MicrosoftPowerApps
+  contact:
+    name: Microsoft Power Apps Developer Support
+    url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/overview
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/licensing/terms/productoffering/MicrosoftPowerApps
+  x-namespace: Microsoft.Dynamics.CRM
+servers:
+- url: https://{organization}.api.crm.dynamics.com/api/data/v9.2
+  description: Dataverse Web API v9.2 endpoint (North America)
+  variables:
+    organization:
+      default: yourorg
+      description: The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.
+- url: https://{organization}.api.crm2.dynamics.com/api/data/v9.2
+  description: Dataverse Web API v9.2 endpoint (South America)
+  variables:
+    organization:
+      default: yourorg
+      description: The unique organization name for your Dataverse environment.
+- url: https://{organization}.api.crm4.dynamics.com/api/data/v9.2
+  description: Dataverse Web API v9.2 endpoint (Europe)
+  variables:
+    organization:
+      default: yourorg
+      description: The unique organization name for your Dataverse environment.
+- url: https://{organization}.api.crm5.dynamics.com/api/data/v9.2
+  description: Dataverse Web API v9.2 endpoint (Asia Pacific)
+  variables:
+    organization:
+      default: yourorg
+      description: The unique organization name for your Dataverse environment.
+security:
+- oauth2: []
+tags:
+- name: Entities
+  description: Operations on the entity definition entity set. Provides metadata about Dataverse tables (entities) including their logical names, collection names, and structural information. Read-only access via RetrieveMultiple.
+  externalDocs:
+    description: Entity EntityType Reference
+    url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/reference/entity
+paths:
+  /entities:
+    get:
+      operationId: getEntities
+      summary: Microsoft Power Apps Retrieve Entity Definitions
+      description: Retrieves a collection of entity (table) definitions from Dataverse. This endpoint provides metadata about the tables available in the environment, including their logical names, collection names, and structural information. This is a read-only endpoint supporting only RetrieveMultiple operations.
+      tags:
+      - Entities
+      parameters:
+      - $ref: '#/components/parameters/ODataSelect'
+      - $ref: '#/components/parameters/ODataFilter'
+      - $ref: '#/components/parameters/ODataOrderBy'
+      - $ref: '#/components/parameters/ODataTop'
+      - $ref: '#/components/parameters/ODataSkip'
+      - $ref: '#/components/parameters/ODataCount'
+      - $ref: '#/components/parameters/Prefer'
+      - $ref: '#/components/parameters/ODataMaxPageSize'
+      responses:
+        '200':
+          description: Successfully retrieved entity definition collection.
+          headers:
+            OData-Version:
+              description: OData protocol version.
+              schema:
+                type: string
+                example: '4.0'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /entities({entityid}):
+    get:
+      operationId: getEntity
+      summary: Microsoft Power Apps Retrieve a Single Entity Definition
+      description: Retrieves a single entity (table) definition by its unique identifier. Provides metadata about the table including its logical name, collection name, and structural information.
+      tags:
+      - Entities
+      parameters:
+      - name: entityid
+        in: path
+        required: true
+        description: Unique identifier (GUID) of the entity definition.
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/ODataSelect'
+      - $ref: '#/components/parameters/Prefer'
+      responses:
+        '200':
+          description: Successfully retrieved entity definition.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Entity'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    Forbidden:
+      description: The authenticated user does not have sufficient permissions to perform this operation. Check Dataverse security roles and privileges.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: The requested record was not found. Verify the record identifier is correct and the record exists.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+  schemas:
+    ODataError:
+      type: object
+      description: Standard OData error response from the Dataverse Web API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code.
+            message:
+              type: string
+              description: Human-readable error message.
+            innererror:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Detailed inner error message.
+                type:
+                  type: string
+                  description: Error type identifier.
+                stacktrace:
+                  type: string
+                  description: Server-side stack trace for debugging.
+          example: example_value
+    EntityCollection:
+      type: object
+      description: OData collection response containing entity definition records.
+      properties:
+        '@odata.context':
+          type: string
+          format: uri
+          description: OData context URL describing the collection.
+          example: https://www.example.com
+        '@odata.count':
+          type: integer
+          description: Total count of matching records (when $count=true).
+          example: 10
+        '@odata.nextLink':
+          type: string
+          format: uri
+          description: URL to retrieve the next page of results.
+          example: https://www.example.com
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+          description: Array of entity definition records.
+          example: []
+    Entity:
+      type: object
+      description: Metadata definition for a Dataverse table (entity). Provides information about the table structure including logical names, collection names, and configuration. Read-only entity type supporting only RetrieveMultiple operations.
+      properties:
+        entityid:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Unique identifier of the entity definition.
+          example: '500123'
+        name:
+          type: string
+          description: Display name of the entity.
+          example: Example Title
+        logicalname:
+          type: string
+          description: Logical name of the entity, used in API requests and programmatic references.
+          example: example_value
+        logicalcollectionname:
+          type: string
+          description: Logical collection name of the entity.
+          example: example_value
+        collectionname:
+          type: string
+          description: Collection name of the entity.
+          example: example_value
+        entitysetname:
+          type: string
+          description: Entity set name used in Web API URLs to reference this table.
+          example: example_value
+        physicalname:
+          type: string
+          description: Physical database table name of the entity.
+          example: example_value
+        basetablename:
+          type: string
+          description: Base table name of the entity.
+          example: example_value
+        externalname:
+          type: string
+          description: External name of the entity for virtual entities.
+          example: example_value
+        externalcollectionname:
+          type: string
+          description: External collection name of the entity.
+          example: example_value
+        addresstablename:
+          type: string
+          description: Address table name associated with the entity.
+          example: example_value
+        extensiontablename:
+          type: string
+          description: Extension table name of the entity.
+          example: example_value
+        reportviewname:
+          type: string
+          description: Report view name of the entity.
+          example: example_value
+        parentcontrollingattributename:
+          type: string
+          description: Parent controlling attribute name of the entity.
+          example: example_value
+        originallocalizedname:
+          type: string
+          description: Original localized display name of the entity.
+          example: example_value
+        originallocalizedcollectionname:
+          type: string
+          description: Original localized collection name of the entity.
+          example: example_value
+        isactivity:
+          type: boolean
+          readOnly: true
+          description: Whether this entity is an activity type.
+          example: true
+        objecttypecode:
+          type: integer
+          readOnly: true
+          description: Object type code of the entity.
+          example: 10
+        componentstate:
+          type: integer
+          readOnly: true
+          description: Component state of the entity. 0 = Published, 1 = Unpublished, 2 = Deleted, 3 = Deleted Unpublished.
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          example: 0
+        solutionid:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Unique identifier of the associated solution.
+          example: '500123'
+        overwritetime:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Record overwrite time for internal use.
+          example: '2026-01-15T10:30:00Z'
+        versionnumber:
+          type: integer
+          format: int64
+          readOnly: true
+          description: Version number of the entity definition record.
+          example: 10
+      x-ms-dynamics-entity:
+        entitySetName: entities
+        primaryKey: entityid
+        primaryNameColumn: name
+        namespace: Microsoft.Dynamics.CRM
+        baseType: crmbaseentity
+  parameters:
+    ODataCount:
+      name: $count
+      in: query
+      description: Set to true to include a count of matching records in the response.
+      schema:
+        type: boolean
+      example: true
+    Prefer:
+      name: Prefer
+      in: header
+      description: OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations="*" (include formatted values), and odata.maxpagesize=N (set page size).
+      schema:
+        type: string
+      example: return=representation,odata.include-annotations="*"
+    ODataMaxPageSize:
+      name: Prefer
+      in: header
+      description: Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.
+      schema:
+        type: string
+      example: odata.maxpagesize=100
+    ODataFilter:
+      name: $filter
+      in: query
+      description: OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.
+      schema:
+        type: string
+      example: statecode eq 0
+    ODataOrderBy:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties to sort results by, each optionally followed by asc or desc.
+      schema:
+        type: string
+      example: name asc
+    ODataSkip:
+      name: $skip
+      in: query
+      description: Number of records to skip before returning results.
+      schema:
+        type: integer
+        minimum: 0
+    ODataSelect:
+      name: $select
+      in: query
+      description: Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.
+      schema:
+        type: string
+      example: name,accountnumber,emailaddress1
+    ODataTop:
+      name: $top
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        minimum: 1
+      example: 50
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication using Microsoft Entra ID (formerly Azure Active Directory). Applications must be registered in Microsoft Entra ID and granted appropriate Dataverse permissions.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://{organization}.crm.dynamics.com/.default: Full access to Dataverse environment
+            https://{organization}.crm.dynamics.com/user_impersonation: Access Dataverse as the signed-in user
+externalDocs:
+  description: Microsoft Dataverse Web API Reference
+  url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/reference/about
