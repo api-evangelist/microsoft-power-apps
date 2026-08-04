@@ -1,0 +1,610 @@
+{
+  "info": {
+    "_postman_id": "bf8b099c-6538-4dd5-b70e-e285a9c9580b",
+    "name": "Microsoft Power Apps Microsoft Dataverse Web Accounts Entities API",
+    "description": "RESTful API for interacting with Microsoft Dataverse (formerly Common Data Service), the underlying data platform for Microsoft Power Apps. This API follows OData v4.0 conventions and provides CRUD operations on Dataverse tables including accounts, contacts, and entity definitions. Each Dataverse environment has a unique organization URL and may include custom tables and operations specific to that environment.\n\nContact Support:\n Name: Microsoft Power Apps Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:11:57.000Z",
+    "updatedAt": "2026-07-28T02:11:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bf8b099c-6538-4dd5-b70e-e285a9c9580b"
+  },
+  "item": [
+    {
+      "name": "entities",
+      "item": [
+        {
+          "name": "Microsoft Power Apps Retrieve Entity Definitions",
+          "id": "e39b6a14-6f6c-4e75-99a7-9481272ff610",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "description": "Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/entities?$select=<string>&$filter=<string>&$orderby=<string>&$top=<integer>&$skip=<integer>&$count=<boolean>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "entities"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of properties to sort results by, each optionally followed by asc or desc.",
+                  "key": "$orderby",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of records to return.",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of records to skip before returning results.",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Set to true to include a count of matching records in the response.",
+                  "key": "$count",
+                  "value": "<boolean>"
+                }
+              ]
+            },
+            "description": "Retrieves a collection of entity (table) definitions from Dataverse. This endpoint provides metadata about the tables available in the environment, including their logical names, collection names, and structural information. This is a read-only endpoint supporting only RetrieveMultiple operations."
+          },
+          "response": [
+            {
+              "id": "cd87f837-1c38-4531-84e6-445159bdf38b",
+              "name": "Successfully retrieved entity definition collection.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/entities?$select=<string>&$filter=<string>&$orderby=<string>&$top=<integer>&$skip=<integer>&$count=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "entities"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to sort results by, each optionally followed by asc or desc.",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of records to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip before returning results.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Set to true to include a count of matching records in the response.",
+                      "key": "$count",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "OData protocol version.",
+                    "type": "text/plain"
+                  },
+                  "key": "OData-Version",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"@odata.context\": \"<uri>\",\n  \"@odata.count\": \"<integer>\",\n  \"@odata.nextLink\": \"<uri>\",\n  \"value\": [\n    {\n      \"entityid\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"logicalname\": \"<string>\",\n      \"logicalcollectionname\": \"<string>\",\n      \"collectionname\": \"<string>\",\n      \"entitysetname\": \"<string>\",\n      \"physicalname\": \"<string>\",\n      \"basetablename\": \"<string>\",\n      \"externalname\": \"<string>\",\n      \"externalcollectionname\": \"<string>\",\n      \"addresstablename\": \"<string>\",\n      \"extensiontablename\": \"<string>\",\n      \"reportviewname\": \"<string>\",\n      \"parentcontrollingattributename\": \"<string>\",\n      \"originallocalizedname\": \"<string>\",\n      \"originallocalizedcollectionname\": \"<string>\",\n      \"isactivity\": \"<boolean>\",\n      \"objecttypecode\": \"<integer>\",\n      \"componentstate\": 1,\n      \"solutionid\": \"<uuid>\",\n      \"overwritetime\": \"<dateTime>\",\n      \"versionnumber\": \"<long>\"\n    },\n    {\n      \"entityid\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"logicalname\": \"<string>\",\n      \"logicalcollectionname\": \"<string>\",\n      \"collectionname\": \"<string>\",\n      \"entitysetname\": \"<string>\",\n      \"physicalname\": \"<string>\",\n      \"basetablename\": \"<string>\",\n      \"externalname\": \"<string>\",\n      \"externalcollectionname\": \"<string>\",\n      \"addresstablename\": \"<string>\",\n      \"extensiontablename\": \"<string>\",\n      \"reportviewname\": \"<string>\",\n      \"parentcontrollingattributename\": \"<string>\",\n      \"originallocalizedname\": \"<string>\",\n      \"originallocalizedcollectionname\": \"<string>\",\n      \"isactivity\": \"<boolean>\",\n      \"objecttypecode\": \"<integer>\",\n      \"componentstate\": 0,\n      \"solutionid\": \"<uuid>\",\n      \"overwritetime\": \"<dateTime>\",\n      \"versionnumber\": \"<long>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:11:57.000Z",
+              "updatedAt": "2026-07-28T02:11:57.000Z",
+              "uid": "35240-cd87f837-1c38-4531-84e6-445159bdf38b"
+            },
+            {
+              "id": "896da098-f244-4d07-9bbc-e33135a56120",
+              "name": "Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/entities?$select=<string>&$filter=<string>&$orderby=<string>&$top=<integer>&$skip=<integer>&$count=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "entities"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to sort results by, each optionally followed by asc or desc.",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of records to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip before returning results.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Set to true to include a count of matching records in the response.",
+                      "key": "$count",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innererror\": {\n      \"message\": \"<string>\",\n      \"type\": \"<string>\",\n      \"stacktrace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:11:57.000Z",
+              "updatedAt": "2026-07-28T02:11:57.000Z",
+              "uid": "35240-896da098-f244-4d07-9bbc-e33135a56120"
+            },
+            {
+              "id": "6e46cd28-7e1a-40df-a6ad-c7165cc5f1f5",
+              "name": "The authenticated user does not have sufficient permissions to perform this operation. Check Dataverse security roles and privileges.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/entities?$select=<string>&$filter=<string>&$orderby=<string>&$top=<integer>&$skip=<integer>&$count=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "entities"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to sort results by, each optionally followed by asc or desc.",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of records to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip before returning results.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Set to true to include a count of matching records in the response.",
+                      "key": "$count",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innererror\": {\n      \"message\": \"<string>\",\n      \"type\": \"<string>\",\n      \"stacktrace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:11:57.000Z",
+              "updatedAt": "2026-07-28T02:11:57.000Z",
+              "uid": "35240-6e46cd28-7e1a-40df-a6ad-c7165cc5f1f5"
+            }
+          ],
+          "createdAt": "2026-07-28T02:11:57.000Z",
+          "updatedAt": "2026-07-28T02:11:57.000Z",
+          "uid": "35240-e39b6a14-6f6c-4e75-99a7-9481272ff610"
+        }
+      ],
+      "id": "ec1c94a1-1842-4716-a2dc-460db8bfc8c0",
+      "createdAt": "2026-07-28T02:11:57.000Z",
+      "updatedAt": "2026-07-28T02:11:57.000Z",
+      "uid": "35240-ec1c94a1-1842-4716-a2dc-460db8bfc8c0"
+    },
+    {
+      "name": "entities({entityid})",
+      "item": [
+        {
+          "name": "Microsoft Power Apps Retrieve a Single Entity Definition",
+          "id": "da453424-72ba-4dd0-bfd5-f546d780af9a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/entities({{entityid}})?$select=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "entities({{entityid}})"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.",
+                  "key": "$select",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a single entity (table) definition by its unique identifier. Provides metadata about the table including its logical name, collection name, and structural information."
+          },
+          "response": [
+            {
+              "id": "0c08a01d-3c1a-4c28-8230-b4d541f1329b",
+              "name": "Successfully retrieved entity definition.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/entities({{entityid}})?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "entities({{entityid}})"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entityid\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"logicalname\": \"<string>\",\n  \"logicalcollectionname\": \"<string>\",\n  \"collectionname\": \"<string>\",\n  \"entitysetname\": \"<string>\",\n  \"physicalname\": \"<string>\",\n  \"basetablename\": \"<string>\",\n  \"externalname\": \"<string>\",\n  \"externalcollectionname\": \"<string>\",\n  \"addresstablename\": \"<string>\",\n  \"extensiontablename\": \"<string>\",\n  \"reportviewname\": \"<string>\",\n  \"parentcontrollingattributename\": \"<string>\",\n  \"originallocalizedname\": \"<string>\",\n  \"originallocalizedcollectionname\": \"<string>\",\n  \"isactivity\": \"<boolean>\",\n  \"objecttypecode\": \"<integer>\",\n  \"componentstate\": 3,\n  \"solutionid\": \"<uuid>\",\n  \"overwritetime\": \"<dateTime>\",\n  \"versionnumber\": \"<long>\"\n}",
+              "createdAt": "2026-07-28T02:11:57.000Z",
+              "updatedAt": "2026-07-28T02:11:57.000Z",
+              "uid": "35240-0c08a01d-3c1a-4c28-8230-b4d541f1329b"
+            },
+            {
+              "id": "9e1ea79c-05a6-4185-b8c2-1d4787894df0",
+              "name": "Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/entities({{entityid}})?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "entities({{entityid}})"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innererror\": {\n      \"message\": \"<string>\",\n      \"type\": \"<string>\",\n      \"stacktrace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:11:57.000Z",
+              "updatedAt": "2026-07-28T02:11:57.000Z",
+              "uid": "35240-9e1ea79c-05a6-4185-b8c2-1d4787894df0"
+            },
+            {
+              "id": "1a269267-0a8c-4bec-8485-f3bd3a639765",
+              "name": "The requested record was not found. Verify the record identifier is correct and the record exists.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/entities({{entityid}})?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "entities({{entityid}})"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innererror\": {\n      \"message\": \"<string>\",\n      \"type\": \"<string>\",\n      \"stacktrace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:11:57.000Z",
+              "updatedAt": "2026-07-28T02:11:57.000Z",
+              "uid": "35240-1a269267-0a8c-4bec-8485-f3bd3a639765"
+            }
+          ],
+          "createdAt": "2026-07-28T02:11:57.000Z",
+          "updatedAt": "2026-07-28T02:11:57.000Z",
+          "uid": "35240-da453424-72ba-4dd0-bfd5-f546d780af9a"
+        }
+      ],
+      "id": "13427250-383b-4aa3-a462-39bcec8f72bf",
+      "createdAt": "2026-07-28T02:11:57.000Z",
+      "updatedAt": "2026-07-28T02:11:57.000Z",
+      "uid": "35240-13427250-383b-4aa3-a462-39bcec8f72bf"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://{organization}.crm.dynamics.com/.default https://{organization}.crm.dynamics.com/user_impersonation",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "organization",
+      "value": "yourorg"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{organization}}.api.crm.dynamics.com/api/data/v9.2"
+    },
+    {
+      "key": "entityid",
+      "value": "<uuid>"
+    }
+  ]
+}

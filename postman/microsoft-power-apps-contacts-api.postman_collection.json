@@ -1,0 +1,1530 @@
+{
+  "info": {
+    "_postman_id": "6e95b576-b9f8-4f5a-b645-d665dbb9d89a",
+    "name": "Microsoft Power Apps Microsoft Dataverse Web Accounts Contacts API",
+    "description": "RESTful API for interacting with Microsoft Dataverse (formerly Common Data Service), the underlying data platform for Microsoft Power Apps. This API follows OData v4.0 conventions and provides CRUD operations on Dataverse tables including accounts, contacts, and entity definitions. Each Dataverse environment has a unique organization URL and may include custom tables and operations specific to that environment.\n\nContact Support:\n Name: Microsoft Power Apps Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:11:55.000Z",
+    "updatedAt": "2026-07-28T02:11:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6e95b576-b9f8-4f5a-b645-d665dbb9d89a"
+  },
+  "item": [
+    {
+      "name": "contacts",
+      "item": [
+        {
+          "name": "Microsoft Power Apps Retrieve Multiple Contacts",
+          "id": "77743f18-e735-4463-9871-3317b3e01123",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "description": "Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/contacts?$select=<string>&$filter=<string>&$orderby=<string>&$top=<integer>&$skip=<integer>&$expand=<string>&$count=<boolean>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contacts"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of properties to sort results by, each optionally followed by asc or desc.",
+                  "key": "$orderby",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of records to return.",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of records to skip before returning results.",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities.",
+                  "key": "$expand",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Set to true to include a count of matching records in the response.",
+                  "key": "$count",
+                  "value": "<boolean>"
+                }
+              ]
+            },
+            "description": "Retrieves a collection of contact records from Dataverse. Supports OData query options for filtering, sorting, selecting fields, expanding navigation properties, and pagination."
+          },
+          "response": [
+            {
+              "id": "b0d6cd35-0648-42f0-82d1-dfa19f5a31db",
+              "name": "Successfully retrieved contact collection.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts?$select=<string>&$filter=<string>&$orderby=<string>&$top=<integer>&$skip=<integer>&$expand=<string>&$count=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to sort results by, each optionally followed by asc or desc.",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of records to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip before returning results.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities.",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to true to include a count of matching records in the response.",
+                      "key": "$count",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "OData protocol version.",
+                    "type": "text/plain"
+                  },
+                  "key": "OData-Version",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"@odata.context\": \"<uri>\",\n  \"@odata.count\": \"<integer>\",\n  \"@odata.nextLink\": \"<uri>\",\n  \"value\": [\n    {\n      \"contactid\": \"<uuid>\",\n      \"firstname\": \"<string>\",\n      \"lastname\": \"<string>\",\n      \"fullname\": \"<string>\",\n      \"middlename\": \"<string>\",\n      \"nickname\": \"<string>\",\n      \"salutation\": \"<string>\",\n      \"suffix\": \"<string>\",\n      \"jobtitle\": \"<string>\",\n      \"department\": \"<string>\",\n      \"emailaddress1\": \"<email>\",\n      \"emailaddress2\": \"<email>\",\n      \"emailaddress3\": \"<email>\",\n      \"telephone1\": \"<string>\",\n      \"telephone2\": \"<string>\",\n      \"telephone3\": \"<string>\",\n      \"mobilephone\": \"<string>\",\n      \"fax\": \"<string>\",\n      \"websiteurl\": \"<uri>\",\n      \"description\": \"<string>\",\n      \"gendercode\": 1,\n      \"familystatuscode\": 2,\n      \"birthdate\": \"<date>\",\n      \"anniversary\": \"<date>\",\n      \"spousesname\": \"<string>\",\n      \"numberofchildren\": \"<integer>\",\n      \"address1_name\": \"<string>\",\n      \"address1_line1\": \"<string>\",\n      \"address1_line2\": \"<string>\",\n      \"address1_line3\": \"<string>\",\n      \"address1_city\": \"<string>\",\n      \"address1_stateorprovince\": \"<string>\",\n      \"address1_postalcode\": \"<string>\",\n      \"address1_country\": \"<string>\",\n      \"address1_county\": \"<string>\",\n      \"address1_telephone1\": \"<string>\",\n      \"address1_fax\": \"<string>\",\n      \"address1_latitude\": \"<double>\",\n      \"address1_longitude\": \"<double>\",\n      \"address2_name\": \"<string>\",\n      \"address2_line1\": \"<string>\",\n      \"address2_line2\": \"<string>\",\n      \"address2_line3\": \"<string>\",\n      \"address2_city\": \"<string>\",\n      \"address2_stateorprovince\": \"<string>\",\n      \"address2_postalcode\": \"<string>\",\n      \"address2_country\": \"<string>\",\n      \"preferredcontactmethodcode\": 5,\n      \"donotemail\": \"<boolean>\",\n      \"donotphone\": \"<boolean>\",\n      \"donotfax\": \"<boolean>\",\n      \"donotpostalmail\": \"<boolean>\",\n      \"donotbulkemail\": \"<boolean>\",\n      \"donotsendmm\": \"<boolean>\",\n      \"creditlimit\": \"<number>\",\n      \"creditonhold\": \"<boolean>\",\n      \"statecode\": 0,\n      \"statuscode\": 2,\n      \"createdon\": \"<dateTime>\",\n      \"modifiedon\": \"<dateTime>\",\n      \"versionnumber\": \"<long>\",\n      \"_parentcustomerid_value\": \"<uuid>\",\n      \"_ownerid_value\": \"<uuid>\",\n      \"_transactioncurrencyid_value\": \"<uuid>\",\n      \"yomifirstname\": \"<string>\",\n      \"yomilastname\": \"<string>\",\n      \"yomimiddlename\": \"<string>\",\n      \"yomifullname\": \"<string>\"\n    },\n    {\n      \"contactid\": \"<uuid>\",\n      \"firstname\": \"<string>\",\n      \"lastname\": \"<string>\",\n      \"fullname\": \"<string>\",\n      \"middlename\": \"<string>\",\n      \"nickname\": \"<string>\",\n      \"salutation\": \"<string>\",\n      \"suffix\": \"<string>\",\n      \"jobtitle\": \"<string>\",\n      \"department\": \"<string>\",\n      \"emailaddress1\": \"<email>\",\n      \"emailaddress2\": \"<email>\",\n      \"emailaddress3\": \"<email>\",\n      \"telephone1\": \"<string>\",\n      \"telephone2\": \"<string>\",\n      \"telephone3\": \"<string>\",\n      \"mobilephone\": \"<string>\",\n      \"fax\": \"<string>\",\n      \"websiteurl\": \"<uri>\",\n      \"description\": \"<string>\",\n      \"gendercode\": 2,\n      \"familystatuscode\": 1,\n      \"birthdate\": \"<date>\",\n      \"anniversary\": \"<date>\",\n      \"spousesname\": \"<string>\",\n      \"numberofchildren\": \"<integer>\",\n      \"address1_name\": \"<string>\",\n      \"address1_line1\": \"<string>\",\n      \"address1_line2\": \"<string>\",\n      \"address1_line3\": \"<string>\",\n      \"address1_city\": \"<string>\",\n      \"address1_stateorprovince\": \"<string>\",\n      \"address1_postalcode\": \"<string>\",\n      \"address1_country\": \"<string>\",\n      \"address1_county\": \"<string>\",\n      \"address1_telephone1\": \"<string>\",\n      \"address1_fax\": \"<string>\",\n      \"address1_latitude\": \"<double>\",\n      \"address1_longitude\": \"<double>\",\n      \"address2_name\": \"<string>\",\n      \"address2_line1\": \"<string>\",\n      \"address2_line2\": \"<string>\",\n      \"address2_line3\": \"<string>\",\n      \"address2_city\": \"<string>\",\n      \"address2_stateorprovince\": \"<string>\",\n      \"address2_postalcode\": \"<string>\",\n      \"address2_country\": \"<string>\",\n      \"preferredcontactmethodcode\": 2,\n      \"donotemail\": \"<boolean>\",\n      \"donotphone\": \"<boolean>\",\n      \"donotfax\": \"<boolean>\",\n      \"donotpostalmail\": \"<boolean>\",\n      \"donotbulkemail\": \"<boolean>\",\n      \"donotsendmm\": \"<boolean>\",\n      \"creditlimit\": \"<number>\",\n      \"creditonhold\": \"<boolean>\",\n      \"statecode\": 1,\n      \"statuscode\": 1,\n      \"createdon\": \"<dateTime>\",\n      \"modifiedon\": \"<dateTime>\",\n      \"versionnumber\": \"<long>\",\n      \"_parentcustomerid_value\": \"<uuid>\",\n      \"_ownerid_value\": \"<uuid>\",\n      \"_transactioncurrencyid_value\": \"<uuid>\",\n      \"yomifirstname\": \"<string>\",\n      \"yomilastname\": \"<string>\",\n      \"yomimiddlename\": \"<string>\",\n      \"yomifullname\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-b0d6cd35-0648-42f0-82d1-dfa19f5a31db"
+            },
+            {
+              "id": "12a0a700-b420-40a0-b9a6-3d34a24132c6",
+              "name": "Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts?$select=<string>&$filter=<string>&$orderby=<string>&$top=<integer>&$skip=<integer>&$expand=<string>&$count=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to sort results by, each optionally followed by asc or desc.",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of records to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip before returning results.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities.",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to true to include a count of matching records in the response.",
+                      "key": "$count",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innererror\": {\n      \"message\": \"<string>\",\n      \"type\": \"<string>\",\n      \"stacktrace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-12a0a700-b420-40a0-b9a6-3d34a24132c6"
+            },
+            {
+              "id": "b1ec1b1e-051e-4d93-a85b-740351bf101b",
+              "name": "The authenticated user does not have sufficient permissions to perform this operation. Check Dataverse security roles and privileges.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts?$select=<string>&$filter=<string>&$orderby=<string>&$top=<integer>&$skip=<integer>&$expand=<string>&$count=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to sort results by, each optionally followed by asc or desc.",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of records to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip before returning results.",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities.",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to true to include a count of matching records in the response.",
+                      "key": "$count",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innererror\": {\n      \"message\": \"<string>\",\n      \"type\": \"<string>\",\n      \"stacktrace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-b1ec1b1e-051e-4d93-a85b-740351bf101b"
+            }
+          ],
+          "createdAt": "2026-07-28T02:11:56.000Z",
+          "updatedAt": "2026-07-28T02:11:56.000Z",
+          "uid": "35240-77743f18-e735-4463-9871-3317b3e01123"
+        },
+        {
+          "name": "Microsoft Power Apps Create a New Contact",
+          "id": "7334b378-e80a-4507-8cb5-9199108f4e8b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contactid\": \"<uuid>\",\n  \"firstname\": \"<string>\",\n  \"lastname\": \"<string>\",\n  \"fullname\": \"<string>\",\n  \"middlename\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"salutation\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"jobtitle\": \"<string>\",\n  \"department\": \"<string>\",\n  \"emailaddress1\": \"<email>\",\n  \"emailaddress2\": \"<email>\",\n  \"emailaddress3\": \"<email>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"telephone3\": \"<string>\",\n  \"mobilephone\": \"<string>\",\n  \"fax\": \"<string>\",\n  \"websiteurl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"gendercode\": 2,\n  \"familystatuscode\": 2,\n  \"birthdate\": \"<date>\",\n  \"anniversary\": \"<date>\",\n  \"spousesname\": \"<string>\",\n  \"numberofchildren\": \"<integer>\",\n  \"address1_name\": \"<string>\",\n  \"address1_line1\": \"<string>\",\n  \"address1_line2\": \"<string>\",\n  \"address1_line3\": \"<string>\",\n  \"address1_city\": \"<string>\",\n  \"address1_stateorprovince\": \"<string>\",\n  \"address1_postalcode\": \"<string>\",\n  \"address1_country\": \"<string>\",\n  \"address1_county\": \"<string>\",\n  \"address1_telephone1\": \"<string>\",\n  \"address1_fax\": \"<string>\",\n  \"address1_latitude\": \"<double>\",\n  \"address1_longitude\": \"<double>\",\n  \"address2_name\": \"<string>\",\n  \"address2_line1\": \"<string>\",\n  \"address2_line2\": \"<string>\",\n  \"address2_line3\": \"<string>\",\n  \"address2_city\": \"<string>\",\n  \"address2_stateorprovince\": \"<string>\",\n  \"address2_postalcode\": \"<string>\",\n  \"address2_country\": \"<string>\",\n  \"preferredcontactmethodcode\": 3,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": \"<boolean>\",\n  \"donotfax\": \"<boolean>\",\n  \"donotpostalmail\": \"<boolean>\",\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": \"<boolean>\",\n  \"creditlimit\": \"<number>\",\n  \"creditonhold\": \"<boolean>\",\n  \"statecode\": 0,\n  \"statuscode\": 2,\n  \"createdon\": \"<dateTime>\",\n  \"modifiedon\": \"<dateTime>\",\n  \"versionnumber\": \"<long>\",\n  \"_parentcustomerid_value\": \"<uuid>\",\n  \"_ownerid_value\": \"<uuid>\",\n  \"_transactioncurrencyid_value\": \"<uuid>\",\n  \"yomifirstname\": \"<string>\",\n  \"yomilastname\": \"<string>\",\n  \"yomimiddlename\": \"<string>\",\n  \"yomifullname\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/contacts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contacts"
+              ]
+            },
+            "description": "Creates a new contact record in Dataverse. Returns the created record when the Prefer header is set to return=representation."
+          },
+          "response": [
+            {
+              "id": "638c91ff-9e93-46c4-8191-9cf4a1158f27",
+              "name": "Contact created successfully with representation returned (when Prefer: return=representation is specified).",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contactid\": \"<uuid>\",\n  \"firstname\": \"<string>\",\n  \"lastname\": \"<string>\",\n  \"fullname\": \"<string>\",\n  \"middlename\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"salutation\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"jobtitle\": \"<string>\",\n  \"department\": \"<string>\",\n  \"emailaddress1\": \"<email>\",\n  \"emailaddress2\": \"<email>\",\n  \"emailaddress3\": \"<email>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"telephone3\": \"<string>\",\n  \"mobilephone\": \"<string>\",\n  \"fax\": \"<string>\",\n  \"websiteurl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"gendercode\": 2,\n  \"familystatuscode\": 2,\n  \"birthdate\": \"<date>\",\n  \"anniversary\": \"<date>\",\n  \"spousesname\": \"<string>\",\n  \"numberofchildren\": \"<integer>\",\n  \"address1_name\": \"<string>\",\n  \"address1_line1\": \"<string>\",\n  \"address1_line2\": \"<string>\",\n  \"address1_line3\": \"<string>\",\n  \"address1_city\": \"<string>\",\n  \"address1_stateorprovince\": \"<string>\",\n  \"address1_postalcode\": \"<string>\",\n  \"address1_country\": \"<string>\",\n  \"address1_county\": \"<string>\",\n  \"address1_telephone1\": \"<string>\",\n  \"address1_fax\": \"<string>\",\n  \"address1_latitude\": \"<double>\",\n  \"address1_longitude\": \"<double>\",\n  \"address2_name\": \"<string>\",\n  \"address2_line1\": \"<string>\",\n  \"address2_line2\": \"<string>\",\n  \"address2_line3\": \"<string>\",\n  \"address2_city\": \"<string>\",\n  \"address2_stateorprovince\": \"<string>\",\n  \"address2_postalcode\": \"<string>\",\n  \"address2_country\": \"<string>\",\n  \"preferredcontactmethodcode\": 3,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": \"<boolean>\",\n  \"donotfax\": \"<boolean>\",\n  \"donotpostalmail\": \"<boolean>\",\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": \"<boolean>\",\n  \"creditlimit\": \"<number>\",\n  \"creditonhold\": \"<boolean>\",\n  \"statecode\": 0,\n  \"statuscode\": 2,\n  \"createdon\": \"<dateTime>\",\n  \"modifiedon\": \"<dateTime>\",\n  \"versionnumber\": \"<long>\",\n  \"_parentcustomerid_value\": \"<uuid>\",\n  \"_ownerid_value\": \"<uuid>\",\n  \"_transactioncurrencyid_value\": \"<uuid>\",\n  \"yomifirstname\": \"<string>\",\n  \"yomilastname\": \"<string>\",\n  \"yomimiddlename\": \"<string>\",\n  \"yomifullname\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"contactid\": \"<uuid>\",\n  \"firstname\": \"<string>\",\n  \"lastname\": \"<string>\",\n  \"fullname\": \"<string>\",\n  \"middlename\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"salutation\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"jobtitle\": \"<string>\",\n  \"department\": \"<string>\",\n  \"emailaddress1\": \"<email>\",\n  \"emailaddress2\": \"<email>\",\n  \"emailaddress3\": \"<email>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"telephone3\": \"<string>\",\n  \"mobilephone\": \"<string>\",\n  \"fax\": \"<string>\",\n  \"websiteurl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"gendercode\": 2,\n  \"familystatuscode\": 2,\n  \"birthdate\": \"<date>\",\n  \"anniversary\": \"<date>\",\n  \"spousesname\": \"<string>\",\n  \"numberofchildren\": \"<integer>\",\n  \"address1_name\": \"<string>\",\n  \"address1_line1\": \"<string>\",\n  \"address1_line2\": \"<string>\",\n  \"address1_line3\": \"<string>\",\n  \"address1_city\": \"<string>\",\n  \"address1_stateorprovince\": \"<string>\",\n  \"address1_postalcode\": \"<string>\",\n  \"address1_country\": \"<string>\",\n  \"address1_county\": \"<string>\",\n  \"address1_telephone1\": \"<string>\",\n  \"address1_fax\": \"<string>\",\n  \"address1_latitude\": \"<double>\",\n  \"address1_longitude\": \"<double>\",\n  \"address2_name\": \"<string>\",\n  \"address2_line1\": \"<string>\",\n  \"address2_line2\": \"<string>\",\n  \"address2_line3\": \"<string>\",\n  \"address2_city\": \"<string>\",\n  \"address2_stateorprovince\": \"<string>\",\n  \"address2_postalcode\": \"<string>\",\n  \"address2_country\": \"<string>\",\n  \"preferredcontactmethodcode\": 3,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": \"<boolean>\",\n  \"donotfax\": \"<boolean>\",\n  \"donotpostalmail\": \"<boolean>\",\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": \"<boolean>\",\n  \"creditlimit\": \"<number>\",\n  \"creditonhold\": \"<boolean>\",\n  \"statecode\": 0,\n  \"statuscode\": 2,\n  \"createdon\": \"<dateTime>\",\n  \"modifiedon\": \"<dateTime>\",\n  \"versionnumber\": \"<long>\",\n  \"_parentcustomerid_value\": \"<uuid>\",\n  \"_ownerid_value\": \"<uuid>\",\n  \"_transactioncurrencyid_value\": \"<uuid>\",\n  \"yomifirstname\": \"<string>\",\n  \"yomilastname\": \"<string>\",\n  \"yomimiddlename\": \"<string>\",\n  \"yomifullname\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-638c91ff-9e93-46c4-8191-9cf4a1158f27"
+            },
+            {
+              "id": "c26a6fa2-e8a2-4a87-a4b0-6031d750eef0",
+              "name": "Contact created successfully.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contactid\": \"<uuid>\",\n  \"firstname\": \"<string>\",\n  \"lastname\": \"<string>\",\n  \"fullname\": \"<string>\",\n  \"middlename\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"salutation\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"jobtitle\": \"<string>\",\n  \"department\": \"<string>\",\n  \"emailaddress1\": \"<email>\",\n  \"emailaddress2\": \"<email>\",\n  \"emailaddress3\": \"<email>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"telephone3\": \"<string>\",\n  \"mobilephone\": \"<string>\",\n  \"fax\": \"<string>\",\n  \"websiteurl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"gendercode\": 2,\n  \"familystatuscode\": 2,\n  \"birthdate\": \"<date>\",\n  \"anniversary\": \"<date>\",\n  \"spousesname\": \"<string>\",\n  \"numberofchildren\": \"<integer>\",\n  \"address1_name\": \"<string>\",\n  \"address1_line1\": \"<string>\",\n  \"address1_line2\": \"<string>\",\n  \"address1_line3\": \"<string>\",\n  \"address1_city\": \"<string>\",\n  \"address1_stateorprovince\": \"<string>\",\n  \"address1_postalcode\": \"<string>\",\n  \"address1_country\": \"<string>\",\n  \"address1_county\": \"<string>\",\n  \"address1_telephone1\": \"<string>\",\n  \"address1_fax\": \"<string>\",\n  \"address1_latitude\": \"<double>\",\n  \"address1_longitude\": \"<double>\",\n  \"address2_name\": \"<string>\",\n  \"address2_line1\": \"<string>\",\n  \"address2_line2\": \"<string>\",\n  \"address2_line3\": \"<string>\",\n  \"address2_city\": \"<string>\",\n  \"address2_stateorprovince\": \"<string>\",\n  \"address2_postalcode\": \"<string>\",\n  \"address2_country\": \"<string>\",\n  \"preferredcontactmethodcode\": 3,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": \"<boolean>\",\n  \"donotfax\": \"<boolean>\",\n  \"donotpostalmail\": \"<boolean>\",\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": \"<boolean>\",\n  \"creditlimit\": \"<number>\",\n  \"creditonhold\": \"<boolean>\",\n  \"statecode\": 0,\n  \"statuscode\": 2,\n  \"createdon\": \"<dateTime>\",\n  \"modifiedon\": \"<dateTime>\",\n  \"versionnumber\": \"<long>\",\n  \"_parentcustomerid_value\": \"<uuid>\",\n  \"_ownerid_value\": \"<uuid>\",\n  \"_transactioncurrencyid_value\": \"<uuid>\",\n  \"yomifirstname\": \"<string>\",\n  \"yomilastname\": \"<string>\",\n  \"yomimiddlename\": \"<string>\",\n  \"yomifullname\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "URI of the newly created contact record.",
+                    "type": "text/plain"
+                  },
+                  "key": "OData-EntityId",
+                  "value": "<uri>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-c26a6fa2-e8a2-4a87-a4b0-6031d750eef0"
+            },
+            {
+              "id": "2c5e91a5-011d-4143-a693-d79217139088",
+              "name": "The request was malformed or contained invalid data. Check the request body and query parameters.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contactid\": \"<uuid>\",\n  \"firstname\": \"<string>\",\n  \"lastname\": \"<string>\",\n  \"fullname\": \"<string>\",\n  \"middlename\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"salutation\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"jobtitle\": \"<string>\",\n  \"department\": \"<string>\",\n  \"emailaddress1\": \"<email>\",\n  \"emailaddress2\": \"<email>\",\n  \"emailaddress3\": \"<email>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"telephone3\": \"<string>\",\n  \"mobilephone\": \"<string>\",\n  \"fax\": \"<string>\",\n  \"websiteurl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"gendercode\": 2,\n  \"familystatuscode\": 2,\n  \"birthdate\": \"<date>\",\n  \"anniversary\": \"<date>\",\n  \"spousesname\": \"<string>\",\n  \"numberofchildren\": \"<integer>\",\n  \"address1_name\": \"<string>\",\n  \"address1_line1\": \"<string>\",\n  \"address1_line2\": \"<string>\",\n  \"address1_line3\": \"<string>\",\n  \"address1_city\": \"<string>\",\n  \"address1_stateorprovince\": \"<string>\",\n  \"address1_postalcode\": \"<string>\",\n  \"address1_country\": \"<string>\",\n  \"address1_county\": \"<string>\",\n  \"address1_telephone1\": \"<string>\",\n  \"address1_fax\": \"<string>\",\n  \"address1_latitude\": \"<double>\",\n  \"address1_longitude\": \"<double>\",\n  \"address2_name\": \"<string>\",\n  \"address2_line1\": \"<string>\",\n  \"address2_line2\": \"<string>\",\n  \"address2_line3\": \"<string>\",\n  \"address2_city\": \"<string>\",\n  \"address2_stateorprovince\": \"<string>\",\n  \"address2_postalcode\": \"<string>\",\n  \"address2_country\": \"<string>\",\n  \"preferredcontactmethodcode\": 3,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": \"<boolean>\",\n  \"donotfax\": \"<boolean>\",\n  \"donotpostalmail\": \"<boolean>\",\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": \"<boolean>\",\n  \"creditlimit\": \"<number>\",\n  \"creditonhold\": \"<boolean>\",\n  \"statecode\": 0,\n  \"statuscode\": 2,\n  \"createdon\": \"<dateTime>\",\n  \"modifiedon\": \"<dateTime>\",\n  \"versionnumber\": \"<long>\",\n  \"_parentcustomerid_value\": \"<uuid>\",\n  \"_ownerid_value\": \"<uuid>\",\n  \"_transactioncurrencyid_value\": \"<uuid>\",\n  \"yomifirstname\": \"<string>\",\n  \"yomilastname\": \"<string>\",\n  \"yomimiddlename\": \"<string>\",\n  \"yomifullname\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innererror\": {\n      \"message\": \"<string>\",\n      \"type\": \"<string>\",\n      \"stacktrace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-2c5e91a5-011d-4143-a693-d79217139088"
+            },
+            {
+              "id": "3db0fdf6-42e0-45dc-9885-e6e256888b40",
+              "name": "Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contactid\": \"<uuid>\",\n  \"firstname\": \"<string>\",\n  \"lastname\": \"<string>\",\n  \"fullname\": \"<string>\",\n  \"middlename\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"salutation\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"jobtitle\": \"<string>\",\n  \"department\": \"<string>\",\n  \"emailaddress1\": \"<email>\",\n  \"emailaddress2\": \"<email>\",\n  \"emailaddress3\": \"<email>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"telephone3\": \"<string>\",\n  \"mobilephone\": \"<string>\",\n  \"fax\": \"<string>\",\n  \"websiteurl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"gendercode\": 2,\n  \"familystatuscode\": 2,\n  \"birthdate\": \"<date>\",\n  \"anniversary\": \"<date>\",\n  \"spousesname\": \"<string>\",\n  \"numberofchildren\": \"<integer>\",\n  \"address1_name\": \"<string>\",\n  \"address1_line1\": \"<string>\",\n  \"address1_line2\": \"<string>\",\n  \"address1_line3\": \"<string>\",\n  \"address1_city\": \"<string>\",\n  \"address1_stateorprovince\": \"<string>\",\n  \"address1_postalcode\": \"<string>\",\n  \"address1_country\": \"<string>\",\n  \"address1_county\": \"<string>\",\n  \"address1_telephone1\": \"<string>\",\n  \"address1_fax\": \"<string>\",\n  \"address1_latitude\": \"<double>\",\n  \"address1_longitude\": \"<double>\",\n  \"address2_name\": \"<string>\",\n  \"address2_line1\": \"<string>\",\n  \"address2_line2\": \"<string>\",\n  \"address2_line3\": \"<string>\",\n  \"address2_city\": \"<string>\",\n  \"address2_stateorprovince\": \"<string>\",\n  \"address2_postalcode\": \"<string>\",\n  \"address2_country\": \"<string>\",\n  \"preferredcontactmethodcode\": 3,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": \"<boolean>\",\n  \"donotfax\": \"<boolean>\",\n  \"donotpostalmail\": \"<boolean>\",\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": \"<boolean>\",\n  \"creditlimit\": \"<number>\",\n  \"creditonhold\": \"<boolean>\",\n  \"statecode\": 0,\n  \"statuscode\": 2,\n  \"createdon\": \"<dateTime>\",\n  \"modifiedon\": \"<dateTime>\",\n  \"versionnumber\": \"<long>\",\n  \"_parentcustomerid_value\": \"<uuid>\",\n  \"_ownerid_value\": \"<uuid>\",\n  \"_transactioncurrencyid_value\": \"<uuid>\",\n  \"yomifirstname\": \"<string>\",\n  \"yomilastname\": \"<string>\",\n  \"yomimiddlename\": \"<string>\",\n  \"yomifullname\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innererror\": {\n      \"message\": \"<string>\",\n      \"type\": \"<string>\",\n      \"stacktrace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-3db0fdf6-42e0-45dc-9885-e6e256888b40"
+            },
+            {
+              "id": "85bba8dd-95f0-40ae-bcb5-442ea801f760",
+              "name": "The authenticated user does not have sufficient permissions to perform this operation. Check Dataverse security roles and privileges.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contactid\": \"<uuid>\",\n  \"firstname\": \"<string>\",\n  \"lastname\": \"<string>\",\n  \"fullname\": \"<string>\",\n  \"middlename\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"salutation\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"jobtitle\": \"<string>\",\n  \"department\": \"<string>\",\n  \"emailaddress1\": \"<email>\",\n  \"emailaddress2\": \"<email>\",\n  \"emailaddress3\": \"<email>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"telephone3\": \"<string>\",\n  \"mobilephone\": \"<string>\",\n  \"fax\": \"<string>\",\n  \"websiteurl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"gendercode\": 2,\n  \"familystatuscode\": 2,\n  \"birthdate\": \"<date>\",\n  \"anniversary\": \"<date>\",\n  \"spousesname\": \"<string>\",\n  \"numberofchildren\": \"<integer>\",\n  \"address1_name\": \"<string>\",\n  \"address1_line1\": \"<string>\",\n  \"address1_line2\": \"<string>\",\n  \"address1_line3\": \"<string>\",\n  \"address1_city\": \"<string>\",\n  \"address1_stateorprovince\": \"<string>\",\n  \"address1_postalcode\": \"<string>\",\n  \"address1_country\": \"<string>\",\n  \"address1_county\": \"<string>\",\n  \"address1_telephone1\": \"<string>\",\n  \"address1_fax\": \"<string>\",\n  \"address1_latitude\": \"<double>\",\n  \"address1_longitude\": \"<double>\",\n  \"address2_name\": \"<string>\",\n  \"address2_line1\": \"<string>\",\n  \"address2_line2\": \"<string>\",\n  \"address2_line3\": \"<string>\",\n  \"address2_city\": \"<string>\",\n  \"address2_stateorprovince\": \"<string>\",\n  \"address2_postalcode\": \"<string>\",\n  \"address2_country\": \"<string>\",\n  \"preferredcontactmethodcode\": 3,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": \"<boolean>\",\n  \"donotfax\": \"<boolean>\",\n  \"donotpostalmail\": \"<boolean>\",\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": \"<boolean>\",\n  \"creditlimit\": \"<number>\",\n  \"creditonhold\": \"<boolean>\",\n  \"statecode\": 0,\n  \"statuscode\": 2,\n  \"createdon\": \"<dateTime>\",\n  \"modifiedon\": \"<dateTime>\",\n  \"versionnumber\": \"<long>\",\n  \"_parentcustomerid_value\": \"<uuid>\",\n  \"_ownerid_value\": \"<uuid>\",\n  \"_transactioncurrencyid_value\": \"<uuid>\",\n  \"yomifirstname\": \"<string>\",\n  \"yomilastname\": \"<string>\",\n  \"yomimiddlename\": \"<string>\",\n  \"yomifullname\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innererror\": {\n      \"message\": \"<string>\",\n      \"type\": \"<string>\",\n      \"stacktrace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-85bba8dd-95f0-40ae-bcb5-442ea801f760"
+            }
+          ],
+          "createdAt": "2026-07-28T02:11:56.000Z",
+          "updatedAt": "2026-07-28T02:11:56.000Z",
+          "uid": "35240-7334b378-e80a-4507-8cb5-9199108f4e8b"
+        }
+      ],
+      "id": "3f266cee-1b78-4ccb-9bb5-f870058d3524",
+      "createdAt": "2026-07-28T02:11:56.000Z",
+      "updatedAt": "2026-07-28T02:11:56.000Z",
+      "uid": "35240-3f266cee-1b78-4ccb-9bb5-f870058d3524"
+    },
+    {
+      "name": "contacts({contactid})",
+      "item": [
+        {
+          "name": "Microsoft Power Apps Retrieve a Single Contact",
+          "id": "968d0210-887c-40af-b494-4f7acdb3271a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/contacts({{contactid}})?$select=<string>&$expand=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contacts({{contactid}})"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities.",
+                  "key": "$expand",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a single contact record by its unique identifier."
+          },
+          "response": [
+            {
+              "id": "dd00b673-8a71-4738-9392-b949958d368f",
+              "name": "Successfully retrieved contact record.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts({{contactid}})?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts({{contactid}})"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities.",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"contactid\": \"<uuid>\",\n  \"firstname\": \"<string>\",\n  \"lastname\": \"<string>\",\n  \"fullname\": \"<string>\",\n  \"middlename\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"salutation\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"jobtitle\": \"<string>\",\n  \"department\": \"<string>\",\n  \"emailaddress1\": \"<email>\",\n  \"emailaddress2\": \"<email>\",\n  \"emailaddress3\": \"<email>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"telephone3\": \"<string>\",\n  \"mobilephone\": \"<string>\",\n  \"fax\": \"<string>\",\n  \"websiteurl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"gendercode\": 2,\n  \"familystatuscode\": 2,\n  \"birthdate\": \"<date>\",\n  \"anniversary\": \"<date>\",\n  \"spousesname\": \"<string>\",\n  \"numberofchildren\": \"<integer>\",\n  \"address1_name\": \"<string>\",\n  \"address1_line1\": \"<string>\",\n  \"address1_line2\": \"<string>\",\n  \"address1_line3\": \"<string>\",\n  \"address1_city\": \"<string>\",\n  \"address1_stateorprovince\": \"<string>\",\n  \"address1_postalcode\": \"<string>\",\n  \"address1_country\": \"<string>\",\n  \"address1_county\": \"<string>\",\n  \"address1_telephone1\": \"<string>\",\n  \"address1_fax\": \"<string>\",\n  \"address1_latitude\": \"<double>\",\n  \"address1_longitude\": \"<double>\",\n  \"address2_name\": \"<string>\",\n  \"address2_line1\": \"<string>\",\n  \"address2_line2\": \"<string>\",\n  \"address2_line3\": \"<string>\",\n  \"address2_city\": \"<string>\",\n  \"address2_stateorprovince\": \"<string>\",\n  \"address2_postalcode\": \"<string>\",\n  \"address2_country\": \"<string>\",\n  \"preferredcontactmethodcode\": 3,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": \"<boolean>\",\n  \"donotfax\": \"<boolean>\",\n  \"donotpostalmail\": \"<boolean>\",\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": \"<boolean>\",\n  \"creditlimit\": \"<number>\",\n  \"creditonhold\": \"<boolean>\",\n  \"statecode\": 0,\n  \"statuscode\": 2,\n  \"createdon\": \"<dateTime>\",\n  \"modifiedon\": \"<dateTime>\",\n  \"versionnumber\": \"<long>\",\n  \"_parentcustomerid_value\": \"<uuid>\",\n  \"_ownerid_value\": \"<uuid>\",\n  \"_transactioncurrencyid_value\": \"<uuid>\",\n  \"yomifirstname\": \"<string>\",\n  \"yomilastname\": \"<string>\",\n  \"yomimiddlename\": \"<string>\",\n  \"yomifullname\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-dd00b673-8a71-4738-9392-b949958d368f"
+            },
+            {
+              "id": "918717b9-d772-4fb3-bca3-316519a2aa2b",
+              "name": "Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts({{contactid}})?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts({{contactid}})"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities.",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innererror\": {\n      \"message\": \"<string>\",\n      \"type\": \"<string>\",\n      \"stacktrace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-918717b9-d772-4fb3-bca3-316519a2aa2b"
+            },
+            {
+              "id": "86ae9a94-c989-4eb9-8d3a-d78c039e1bd5",
+              "name": "The requested record was not found. Verify the record identifier is correct and the record exists.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts({{contactid}})?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts({{contactid}})"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities.",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innererror\": {\n      \"message\": \"<string>\",\n      \"type\": \"<string>\",\n      \"stacktrace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-86ae9a94-c989-4eb9-8d3a-d78c039e1bd5"
+            }
+          ],
+          "createdAt": "2026-07-28T02:11:56.000Z",
+          "updatedAt": "2026-07-28T02:11:56.000Z",
+          "uid": "35240-968d0210-887c-40af-b494-4f7acdb3271a"
+        },
+        {
+          "name": "Microsoft Power Apps Update an Existing Contact",
+          "id": "9b87f6d5-6bd8-4827-8f70-fafa33c53c40",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "description": "Used for optimistic concurrency control. Set to the ETag value of the record to ensure you are updating the latest version.",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contactid\": \"<uuid>\",\n  \"firstname\": \"<string>\",\n  \"lastname\": \"<string>\",\n  \"fullname\": \"<string>\",\n  \"middlename\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"salutation\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"jobtitle\": \"<string>\",\n  \"department\": \"<string>\",\n  \"emailaddress1\": \"<email>\",\n  \"emailaddress2\": \"<email>\",\n  \"emailaddress3\": \"<email>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"telephone3\": \"<string>\",\n  \"mobilephone\": \"<string>\",\n  \"fax\": \"<string>\",\n  \"websiteurl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"gendercode\": 2,\n  \"familystatuscode\": 2,\n  \"birthdate\": \"<date>\",\n  \"anniversary\": \"<date>\",\n  \"spousesname\": \"<string>\",\n  \"numberofchildren\": \"<integer>\",\n  \"address1_name\": \"<string>\",\n  \"address1_line1\": \"<string>\",\n  \"address1_line2\": \"<string>\",\n  \"address1_line3\": \"<string>\",\n  \"address1_city\": \"<string>\",\n  \"address1_stateorprovince\": \"<string>\",\n  \"address1_postalcode\": \"<string>\",\n  \"address1_country\": \"<string>\",\n  \"address1_county\": \"<string>\",\n  \"address1_telephone1\": \"<string>\",\n  \"address1_fax\": \"<string>\",\n  \"address1_latitude\": \"<double>\",\n  \"address1_longitude\": \"<double>\",\n  \"address2_name\": \"<string>\",\n  \"address2_line1\": \"<string>\",\n  \"address2_line2\": \"<string>\",\n  \"address2_line3\": \"<string>\",\n  \"address2_city\": \"<string>\",\n  \"address2_stateorprovince\": \"<string>\",\n  \"address2_postalcode\": \"<string>\",\n  \"address2_country\": \"<string>\",\n  \"preferredcontactmethodcode\": 3,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": \"<boolean>\",\n  \"donotfax\": \"<boolean>\",\n  \"donotpostalmail\": \"<boolean>\",\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": \"<boolean>\",\n  \"creditlimit\": \"<number>\",\n  \"creditonhold\": \"<boolean>\",\n  \"statecode\": 0,\n  \"statuscode\": 2,\n  \"createdon\": \"<dateTime>\",\n  \"modifiedon\": \"<dateTime>\",\n  \"versionnumber\": \"<long>\",\n  \"_parentcustomerid_value\": \"<uuid>\",\n  \"_ownerid_value\": \"<uuid>\",\n  \"_transactioncurrencyid_value\": \"<uuid>\",\n  \"yomifirstname\": \"<string>\",\n  \"yomilastname\": \"<string>\",\n  \"yomimiddlename\": \"<string>\",\n  \"yomifullname\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/contacts({{contactid}})",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contacts({{contactid}})"
+              ]
+            },
+            "description": "Updates an existing contact record using PATCH (merge update). Only the properties included in the request body are updated."
+          },
+          "response": [
+            {
+              "id": "bddb21fb-8e6b-4219-bb10-c5d0b6a7dbda",
+              "name": "Contact updated successfully.",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "Used for optimistic concurrency control. Set to the ETag value of the record to ensure you are updating the latest version.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contactid\": \"<uuid>\",\n  \"firstname\": \"<string>\",\n  \"lastname\": \"<string>\",\n  \"fullname\": \"<string>\",\n  \"middlename\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"salutation\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"jobtitle\": \"<string>\",\n  \"department\": \"<string>\",\n  \"emailaddress1\": \"<email>\",\n  \"emailaddress2\": \"<email>\",\n  \"emailaddress3\": \"<email>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"telephone3\": \"<string>\",\n  \"mobilephone\": \"<string>\",\n  \"fax\": \"<string>\",\n  \"websiteurl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"gendercode\": 2,\n  \"familystatuscode\": 2,\n  \"birthdate\": \"<date>\",\n  \"anniversary\": \"<date>\",\n  \"spousesname\": \"<string>\",\n  \"numberofchildren\": \"<integer>\",\n  \"address1_name\": \"<string>\",\n  \"address1_line1\": \"<string>\",\n  \"address1_line2\": \"<string>\",\n  \"address1_line3\": \"<string>\",\n  \"address1_city\": \"<string>\",\n  \"address1_stateorprovince\": \"<string>\",\n  \"address1_postalcode\": \"<string>\",\n  \"address1_country\": \"<string>\",\n  \"address1_county\": \"<string>\",\n  \"address1_telephone1\": \"<string>\",\n  \"address1_fax\": \"<string>\",\n  \"address1_latitude\": \"<double>\",\n  \"address1_longitude\": \"<double>\",\n  \"address2_name\": \"<string>\",\n  \"address2_line1\": \"<string>\",\n  \"address2_line2\": \"<string>\",\n  \"address2_line3\": \"<string>\",\n  \"address2_city\": \"<string>\",\n  \"address2_stateorprovince\": \"<string>\",\n  \"address2_postalcode\": \"<string>\",\n  \"address2_country\": \"<string>\",\n  \"preferredcontactmethodcode\": 3,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": \"<boolean>\",\n  \"donotfax\": \"<boolean>\",\n  \"donotpostalmail\": \"<boolean>\",\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": \"<boolean>\",\n  \"creditlimit\": \"<number>\",\n  \"creditonhold\": \"<boolean>\",\n  \"statecode\": 0,\n  \"statuscode\": 2,\n  \"createdon\": \"<dateTime>\",\n  \"modifiedon\": \"<dateTime>\",\n  \"versionnumber\": \"<long>\",\n  \"_parentcustomerid_value\": \"<uuid>\",\n  \"_ownerid_value\": \"<uuid>\",\n  \"_transactioncurrencyid_value\": \"<uuid>\",\n  \"yomifirstname\": \"<string>\",\n  \"yomilastname\": \"<string>\",\n  \"yomimiddlename\": \"<string>\",\n  \"yomifullname\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts({{contactid}})",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts({{contactid}})"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-bddb21fb-8e6b-4219-bb10-c5d0b6a7dbda"
+            },
+            {
+              "id": "8a4dbbda-3dc0-464e-b27a-fb95e0239680",
+              "name": "The request was malformed or contained invalid data. Check the request body and query parameters.",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "Used for optimistic concurrency control. Set to the ETag value of the record to ensure you are updating the latest version.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contactid\": \"<uuid>\",\n  \"firstname\": \"<string>\",\n  \"lastname\": \"<string>\",\n  \"fullname\": \"<string>\",\n  \"middlename\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"salutation\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"jobtitle\": \"<string>\",\n  \"department\": \"<string>\",\n  \"emailaddress1\": \"<email>\",\n  \"emailaddress2\": \"<email>\",\n  \"emailaddress3\": \"<email>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"telephone3\": \"<string>\",\n  \"mobilephone\": \"<string>\",\n  \"fax\": \"<string>\",\n  \"websiteurl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"gendercode\": 2,\n  \"familystatuscode\": 2,\n  \"birthdate\": \"<date>\",\n  \"anniversary\": \"<date>\",\n  \"spousesname\": \"<string>\",\n  \"numberofchildren\": \"<integer>\",\n  \"address1_name\": \"<string>\",\n  \"address1_line1\": \"<string>\",\n  \"address1_line2\": \"<string>\",\n  \"address1_line3\": \"<string>\",\n  \"address1_city\": \"<string>\",\n  \"address1_stateorprovince\": \"<string>\",\n  \"address1_postalcode\": \"<string>\",\n  \"address1_country\": \"<string>\",\n  \"address1_county\": \"<string>\",\n  \"address1_telephone1\": \"<string>\",\n  \"address1_fax\": \"<string>\",\n  \"address1_latitude\": \"<double>\",\n  \"address1_longitude\": \"<double>\",\n  \"address2_name\": \"<string>\",\n  \"address2_line1\": \"<string>\",\n  \"address2_line2\": \"<string>\",\n  \"address2_line3\": \"<string>\",\n  \"address2_city\": \"<string>\",\n  \"address2_stateorprovince\": \"<string>\",\n  \"address2_postalcode\": \"<string>\",\n  \"address2_country\": \"<string>\",\n  \"preferredcontactmethodcode\": 3,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": \"<boolean>\",\n  \"donotfax\": \"<boolean>\",\n  \"donotpostalmail\": \"<boolean>\",\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": \"<boolean>\",\n  \"creditlimit\": \"<number>\",\n  \"creditonhold\": \"<boolean>\",\n  \"statecode\": 0,\n  \"statuscode\": 2,\n  \"createdon\": \"<dateTime>\",\n  \"modifiedon\": \"<dateTime>\",\n  \"versionnumber\": \"<long>\",\n  \"_parentcustomerid_value\": \"<uuid>\",\n  \"_ownerid_value\": \"<uuid>\",\n  \"_transactioncurrencyid_value\": \"<uuid>\",\n  \"yomifirstname\": \"<string>\",\n  \"yomilastname\": \"<string>\",\n  \"yomimiddlename\": \"<string>\",\n  \"yomifullname\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts({{contactid}})",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts({{contactid}})"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innererror\": {\n      \"message\": \"<string>\",\n      \"type\": \"<string>\",\n      \"stacktrace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-8a4dbbda-3dc0-464e-b27a-fb95e0239680"
+            },
+            {
+              "id": "ec5c01c9-a9c1-4a89-850d-8e01d5a63042",
+              "name": "Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "Used for optimistic concurrency control. Set to the ETag value of the record to ensure you are updating the latest version.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contactid\": \"<uuid>\",\n  \"firstname\": \"<string>\",\n  \"lastname\": \"<string>\",\n  \"fullname\": \"<string>\",\n  \"middlename\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"salutation\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"jobtitle\": \"<string>\",\n  \"department\": \"<string>\",\n  \"emailaddress1\": \"<email>\",\n  \"emailaddress2\": \"<email>\",\n  \"emailaddress3\": \"<email>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"telephone3\": \"<string>\",\n  \"mobilephone\": \"<string>\",\n  \"fax\": \"<string>\",\n  \"websiteurl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"gendercode\": 2,\n  \"familystatuscode\": 2,\n  \"birthdate\": \"<date>\",\n  \"anniversary\": \"<date>\",\n  \"spousesname\": \"<string>\",\n  \"numberofchildren\": \"<integer>\",\n  \"address1_name\": \"<string>\",\n  \"address1_line1\": \"<string>\",\n  \"address1_line2\": \"<string>\",\n  \"address1_line3\": \"<string>\",\n  \"address1_city\": \"<string>\",\n  \"address1_stateorprovince\": \"<string>\",\n  \"address1_postalcode\": \"<string>\",\n  \"address1_country\": \"<string>\",\n  \"address1_county\": \"<string>\",\n  \"address1_telephone1\": \"<string>\",\n  \"address1_fax\": \"<string>\",\n  \"address1_latitude\": \"<double>\",\n  \"address1_longitude\": \"<double>\",\n  \"address2_name\": \"<string>\",\n  \"address2_line1\": \"<string>\",\n  \"address2_line2\": \"<string>\",\n  \"address2_line3\": \"<string>\",\n  \"address2_city\": \"<string>\",\n  \"address2_stateorprovince\": \"<string>\",\n  \"address2_postalcode\": \"<string>\",\n  \"address2_country\": \"<string>\",\n  \"preferredcontactmethodcode\": 3,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": \"<boolean>\",\n  \"donotfax\": \"<boolean>\",\n  \"donotpostalmail\": \"<boolean>\",\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": \"<boolean>\",\n  \"creditlimit\": \"<number>\",\n  \"creditonhold\": \"<boolean>\",\n  \"statecode\": 0,\n  \"statuscode\": 2,\n  \"createdon\": \"<dateTime>\",\n  \"modifiedon\": \"<dateTime>\",\n  \"versionnumber\": \"<long>\",\n  \"_parentcustomerid_value\": \"<uuid>\",\n  \"_ownerid_value\": \"<uuid>\",\n  \"_transactioncurrencyid_value\": \"<uuid>\",\n  \"yomifirstname\": \"<string>\",\n  \"yomilastname\": \"<string>\",\n  \"yomimiddlename\": \"<string>\",\n  \"yomifullname\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts({{contactid}})",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts({{contactid}})"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innererror\": {\n      \"message\": \"<string>\",\n      \"type\": \"<string>\",\n      \"stacktrace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-ec5c01c9-a9c1-4a89-850d-8e01d5a63042"
+            },
+            {
+              "id": "63ec18d6-1583-4b99-8a99-887e0cfcbd74",
+              "name": "The requested record was not found. Verify the record identifier is correct and the record exists.",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "Used for optimistic concurrency control. Set to the ETag value of the record to ensure you are updating the latest version.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contactid\": \"<uuid>\",\n  \"firstname\": \"<string>\",\n  \"lastname\": \"<string>\",\n  \"fullname\": \"<string>\",\n  \"middlename\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"salutation\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"jobtitle\": \"<string>\",\n  \"department\": \"<string>\",\n  \"emailaddress1\": \"<email>\",\n  \"emailaddress2\": \"<email>\",\n  \"emailaddress3\": \"<email>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"telephone3\": \"<string>\",\n  \"mobilephone\": \"<string>\",\n  \"fax\": \"<string>\",\n  \"websiteurl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"gendercode\": 2,\n  \"familystatuscode\": 2,\n  \"birthdate\": \"<date>\",\n  \"anniversary\": \"<date>\",\n  \"spousesname\": \"<string>\",\n  \"numberofchildren\": \"<integer>\",\n  \"address1_name\": \"<string>\",\n  \"address1_line1\": \"<string>\",\n  \"address1_line2\": \"<string>\",\n  \"address1_line3\": \"<string>\",\n  \"address1_city\": \"<string>\",\n  \"address1_stateorprovince\": \"<string>\",\n  \"address1_postalcode\": \"<string>\",\n  \"address1_country\": \"<string>\",\n  \"address1_county\": \"<string>\",\n  \"address1_telephone1\": \"<string>\",\n  \"address1_fax\": \"<string>\",\n  \"address1_latitude\": \"<double>\",\n  \"address1_longitude\": \"<double>\",\n  \"address2_name\": \"<string>\",\n  \"address2_line1\": \"<string>\",\n  \"address2_line2\": \"<string>\",\n  \"address2_line3\": \"<string>\",\n  \"address2_city\": \"<string>\",\n  \"address2_stateorprovince\": \"<string>\",\n  \"address2_postalcode\": \"<string>\",\n  \"address2_country\": \"<string>\",\n  \"preferredcontactmethodcode\": 3,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": \"<boolean>\",\n  \"donotfax\": \"<boolean>\",\n  \"donotpostalmail\": \"<boolean>\",\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": \"<boolean>\",\n  \"creditlimit\": \"<number>\",\n  \"creditonhold\": \"<boolean>\",\n  \"statecode\": 0,\n  \"statuscode\": 2,\n  \"createdon\": \"<dateTime>\",\n  \"modifiedon\": \"<dateTime>\",\n  \"versionnumber\": \"<long>\",\n  \"_parentcustomerid_value\": \"<uuid>\",\n  \"_ownerid_value\": \"<uuid>\",\n  \"_transactioncurrencyid_value\": \"<uuid>\",\n  \"yomifirstname\": \"<string>\",\n  \"yomilastname\": \"<string>\",\n  \"yomimiddlename\": \"<string>\",\n  \"yomifullname\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts({{contactid}})",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts({{contactid}})"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innererror\": {\n      \"message\": \"<string>\",\n      \"type\": \"<string>\",\n      \"stacktrace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-63ec18d6-1583-4b99-8a99-887e0cfcbd74"
+            },
+            {
+              "id": "6f32a72b-dad7-46a9-8ba5-99b8a61cf464",
+              "name": "The If-Match header value does not match the current ETag of the record, indicating the record has been modified since it was last retrieved. Retrieve the latest version and retry.",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "Used for optimistic concurrency control. Set to the ETag value of the record to ensure you are updating the latest version.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contactid\": \"<uuid>\",\n  \"firstname\": \"<string>\",\n  \"lastname\": \"<string>\",\n  \"fullname\": \"<string>\",\n  \"middlename\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"salutation\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"jobtitle\": \"<string>\",\n  \"department\": \"<string>\",\n  \"emailaddress1\": \"<email>\",\n  \"emailaddress2\": \"<email>\",\n  \"emailaddress3\": \"<email>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"telephone3\": \"<string>\",\n  \"mobilephone\": \"<string>\",\n  \"fax\": \"<string>\",\n  \"websiteurl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"gendercode\": 2,\n  \"familystatuscode\": 2,\n  \"birthdate\": \"<date>\",\n  \"anniversary\": \"<date>\",\n  \"spousesname\": \"<string>\",\n  \"numberofchildren\": \"<integer>\",\n  \"address1_name\": \"<string>\",\n  \"address1_line1\": \"<string>\",\n  \"address1_line2\": \"<string>\",\n  \"address1_line3\": \"<string>\",\n  \"address1_city\": \"<string>\",\n  \"address1_stateorprovince\": \"<string>\",\n  \"address1_postalcode\": \"<string>\",\n  \"address1_country\": \"<string>\",\n  \"address1_county\": \"<string>\",\n  \"address1_telephone1\": \"<string>\",\n  \"address1_fax\": \"<string>\",\n  \"address1_latitude\": \"<double>\",\n  \"address1_longitude\": \"<double>\",\n  \"address2_name\": \"<string>\",\n  \"address2_line1\": \"<string>\",\n  \"address2_line2\": \"<string>\",\n  \"address2_line3\": \"<string>\",\n  \"address2_city\": \"<string>\",\n  \"address2_stateorprovince\": \"<string>\",\n  \"address2_postalcode\": \"<string>\",\n  \"address2_country\": \"<string>\",\n  \"preferredcontactmethodcode\": 3,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": \"<boolean>\",\n  \"donotfax\": \"<boolean>\",\n  \"donotpostalmail\": \"<boolean>\",\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": \"<boolean>\",\n  \"creditlimit\": \"<number>\",\n  \"creditonhold\": \"<boolean>\",\n  \"statecode\": 0,\n  \"statuscode\": 2,\n  \"createdon\": \"<dateTime>\",\n  \"modifiedon\": \"<dateTime>\",\n  \"versionnumber\": \"<long>\",\n  \"_parentcustomerid_value\": \"<uuid>\",\n  \"_ownerid_value\": \"<uuid>\",\n  \"_transactioncurrencyid_value\": \"<uuid>\",\n  \"yomifirstname\": \"<string>\",\n  \"yomilastname\": \"<string>\",\n  \"yomimiddlename\": \"<string>\",\n  \"yomifullname\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts({{contactid}})",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts({{contactid}})"
+                  ]
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innererror\": {\n      \"message\": \"<string>\",\n      \"type\": \"<string>\",\n      \"stacktrace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-6f32a72b-dad7-46a9-8ba5-99b8a61cf464"
+            }
+          ],
+          "createdAt": "2026-07-28T02:11:56.000Z",
+          "updatedAt": "2026-07-28T02:11:56.000Z",
+          "uid": "35240-9b87f6d5-6bd8-4827-8f70-fafa33c53c40"
+        },
+        {
+          "name": "Microsoft Power Apps Delete a Contact",
+          "id": "8068d7f4-9479-46c4-8232-74961f3c6c1e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/contacts({{contactid}})",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contacts({{contactid}})"
+              ]
+            },
+            "description": "Deletes an existing contact record from Dataverse."
+          },
+          "response": [
+            {
+              "id": "42ed18be-0531-4b0f-91d5-b37505bfd7c0",
+              "name": "Contact deleted successfully.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts({{contactid}})",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts({{contactid}})"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-42ed18be-0531-4b0f-91d5-b37505bfd7c0"
+            },
+            {
+              "id": "fec41237-5eda-4136-9309-e311f8eee58e",
+              "name": "Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts({{contactid}})",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts({{contactid}})"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innererror\": {\n      \"message\": \"<string>\",\n      \"type\": \"<string>\",\n      \"stacktrace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-fec41237-5eda-4136-9309-e311f8eee58e"
+            },
+            {
+              "id": "754bd288-8e7e-45f6-9a6e-ed52e8506198",
+              "name": "The requested record was not found. Verify the record identifier is correct and the record exists.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts({{contactid}})",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts({{contactid}})"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innererror\": {\n      \"message\": \"<string>\",\n      \"type\": \"<string>\",\n      \"stacktrace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:11:56.000Z",
+              "updatedAt": "2026-07-28T02:11:56.000Z",
+              "uid": "35240-754bd288-8e7e-45f6-9a6e-ed52e8506198"
+            }
+          ],
+          "createdAt": "2026-07-28T02:11:56.000Z",
+          "updatedAt": "2026-07-28T02:11:56.000Z",
+          "uid": "35240-8068d7f4-9479-46c4-8232-74961f3c6c1e"
+        }
+      ],
+      "id": "ad011e9f-db0d-48e7-bf6b-0062caa13ebe",
+      "createdAt": "2026-07-28T02:11:56.000Z",
+      "updatedAt": "2026-07-28T02:11:56.000Z",
+      "uid": "35240-ad011e9f-db0d-48e7-bf6b-0062caa13ebe"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://{organization}.crm.dynamics.com/.default https://{organization}.crm.dynamics.com/user_impersonation",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "organization",
+      "value": "yourorg"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{organization}}.api.crm.dynamics.com/api/data/v9.2"
+    },
+    {
+      "key": "contactid",
+      "value": "<uuid>"
+    }
+  ]
+}

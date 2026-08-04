@@ -1,0 +1,18 @@
+{
+  "provider": "microsoft-power-apps",
+  "sources": [
+    "microsoft-power-apps-accounts-api-openapi.yml",
+    "microsoft-power-apps-contacts-api-openapi.yml",
+    "microsoft-power-apps-entities-api-openapi.yml"
+  ],
+  "outputs": [
+    "microsoft-power-apps-accounts-api-openapi.yml",
+    "microsoft-power-apps-contacts-api-openapi.yml",
+    "microsoft-power-apps-entities-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
