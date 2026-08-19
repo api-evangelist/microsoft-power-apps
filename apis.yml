@@ -41,7 +41,7 @@ artifacts:
       description: >-
         JSON-LD context mapping Dataverse entity properties to Schema.org, Dublin Core, OData, and vCard vocabularies
         for semantic interoperability
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 url: https://raw.githubusercontent.com/api-evangelist/microsoft-power-apps/refs/heads/main/apis.yml
 apis:
 - name: Power Apps Management API
