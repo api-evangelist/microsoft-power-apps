@@ -1,0 +1,1688 @@
+{
+  "item": [
+    {
+      "id": "8d874713-a214-4bcb-b166-ef8001984666",
+      "name": "Accounts",
+      "description": {
+        "content": "Operations on the account entity set. An account represents a business that is a customer or potential customer, typically the company billed in business transactions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "27702d49-4812-4a17-bce0-d3890476b186",
+          "name": "Microsoft Power Apps Retrieve Multiple Accounts",
+          "request": {
+            "name": "Microsoft Power Apps Retrieve Multiple Accounts",
+            "description": {
+              "content": "Retrieves a collection of account records from Dataverse. Supports OData query options for filtering, sorting, selecting fields, expanding navigation properties, and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to sort results by, each optionally followed by asc or desc."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of records to skip before returning results."
+                },
+                {
+                  "disabled": false,
+                  "key": "$expand",
+                  "value": "<string>",
+                  "description": "Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities."
+                },
+                {
+                  "disabled": false,
+                  "key": "$count",
+                  "value": "<boolean>",
+                  "description": "Set to true to include a count of matching records in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c8cf1e0-6323-485a-8312-025420fbee8e",
+              "name": "Successfully retrieved account collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,accountnumber,emailaddress1"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "statecode eq 0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "name asc"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "50"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "primarycontactid($select=fullname,emailaddress1)"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.",
+                    "key": "Prefer",
+                    "value": "odata.maxpagesize=100"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "OData protocol version.",
+                  "key": "OData-Version",
+                  "value": "4.0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"https://www.example.com\",\n  \"@odata.count\": 10,\n  \"@odata.nextLink\": \"https://www.example.com\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4003c5a-b3b0-49dc-83b5-d4afac415245",
+              "name": "Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,accountnumber,emailaddress1"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "statecode eq 0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "name asc"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "50"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "primarycontactid($select=fullname,emailaddress1)"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.",
+                    "key": "Prefer",
+                    "value": "odata.maxpagesize=100"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innererror\": {\n      \"message\": \"string\",\n      \"type\": \"string\",\n      \"stacktrace\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b743d712-014c-414c-96a9-57c934a06eac",
+              "name": "The authenticated user does not have sufficient permissions to perform this operation. Check Dataverse security roles and privileges.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,accountnumber,emailaddress1"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "statecode eq 0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "name asc"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "50"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "primarycontactid($select=fullname,emailaddress1)"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.",
+                    "key": "Prefer",
+                    "value": "odata.maxpagesize=100"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innererror\": {\n      \"message\": \"string\",\n      \"type\": \"string\",\n      \"stacktrace\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ea5a5b0-0fa3-44da-9e92-445fb3ebef5d",
+          "name": "Microsoft Power Apps Create a New Account",
+          "request": {
+            "name": "Microsoft Power Apps Create a New Account",
+            "description": {
+              "content": "Creates a new account record in Dataverse. Returns the created record when the Prefer header is set to return=representation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"accountnumber\": \"<string>\",\n  \"accountcategorycode\": \"<integer>\",\n  \"accountclassificationcode\": \"<integer>\",\n  \"accountratingcode\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"emailaddress1\": \"<email>\",\n  \"emailaddress2\": \"<email>\",\n  \"emailaddress3\": \"<email>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"telephone3\": \"<string>\",\n  \"fax\": \"<string>\",\n  \"websiteurl\": \"<uri>\",\n  \"industrycode\": \"<integer>\",\n  \"numberofemployees\": \"<integer>\",\n  \"revenue\": \"<decimal>\",\n  \"ownershipcode\": \"<integer>\",\n  \"customertypecode\": \"<integer>\",\n  \"businesstypecode\": \"<integer>\",\n  \"sic\": \"<string>\",\n  \"tickersymbol\": \"<string>\",\n  \"stockexchange\": \"<string>\",\n  \"sharesoutstanding\": \"<integer>\",\n  \"marketcap\": \"<decimal>\",\n  \"creditlimit\": \"<decimal>\",\n  \"creditonhold\": \"<boolean>\",\n  \"paymenttermscode\": \"<integer>\",\n  \"preferredcontactmethodcode\": \"<integer>\",\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": \"<boolean>\",\n  \"donotfax\": \"<boolean>\",\n  \"donotpostalmail\": \"<boolean>\",\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": \"<boolean>\",\n  \"address1_name\": \"<string>\",\n  \"address1_line1\": \"<string>\",\n  \"address1_line2\": \"<string>\",\n  \"address1_line3\": \"<string>\",\n  \"address1_city\": \"<string>\",\n  \"address1_stateorprovince\": \"<string>\",\n  \"address1_postalcode\": \"<string>\",\n  \"address1_country\": \"<string>\",\n  \"address1_county\": \"<string>\",\n  \"address1_telephone1\": \"<string>\",\n  \"address1_fax\": \"<string>\",\n  \"address1_latitude\": \"<double>\",\n  \"address1_longitude\": \"<double>\",\n  \"address1_addresstypecode\": \"<integer>\",\n  \"address2_name\": \"<string>\",\n  \"address2_line1\": \"<string>\",\n  \"address2_line2\": \"<string>\",\n  \"address2_line3\": \"<string>\",\n  \"address2_city\": \"<string>\",\n  \"address2_stateorprovince\": \"<string>\",\n  \"address2_postalcode\": \"<string>\",\n  \"address2_country\": \"<string>\",\n  \"statuscode\": \"<integer>\",\n  \"yominame\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8b0df2ce-2763-48b3-b2d5-831d5dd882eb",
+              "name": "Account created successfully with representation returned (when Prefer: return=representation is specified).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"accountnumber\": \"example_value\",\n  \"accountcategorycode\": 1,\n  \"accountclassificationcode\": 10,\n  \"accountratingcode\": 10,\n  \"description\": \"A sample description.\",\n  \"emailaddress1\": \"user@example.com\",\n  \"emailaddress2\": \"user@example.com\",\n  \"emailaddress3\": \"user@example.com\",\n  \"telephone1\": \"example_value\",\n  \"telephone2\": \"example_value\",\n  \"telephone3\": \"example_value\",\n  \"fax\": \"example_value\",\n  \"websiteurl\": \"https://www.example.com\",\n  \"industrycode\": 10,\n  \"numberofemployees\": 10,\n  \"revenue\": 42.5,\n  \"ownershipcode\": 1,\n  \"customertypecode\": 10,\n  \"businesstypecode\": 10,\n  \"sic\": \"example_value\",\n  \"tickersymbol\": \"<string>\",\n  \"stockexchange\": \"example_value\",\n  \"sharesoutstanding\": 10,\n  \"marketcap\": 42.5,\n  \"creditlimit\": 42.5,\n  \"creditonhold\": true,\n  \"paymenttermscode\": 1,\n  \"preferredcontactmethodcode\": 1,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": true,\n  \"donotfax\": true,\n  \"donotpostalmail\": true,\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": true,\n  \"address1_name\": \"example_value\",\n  \"address1_line1\": \"example_value\",\n  \"address1_line2\": \"example_value\",\n  \"address1_line3\": \"example_value\",\n  \"address1_city\": \"example_value\",\n  \"address1_stateorprovince\": \"example_value\",\n  \"address1_postalcode\": \"example_value\",\n  \"address1_country\": \"example_value\",\n  \"address1_county\": \"example_value\",\n  \"address1_telephone1\": \"example_value\",\n  \"address1_fax\": \"example_value\",\n  \"address1_latitude\": 42.5,\n  \"address1_longitude\": 42.5,\n  \"address1_addresstypecode\": 1,\n  \"address2_name\": \"example_value\",\n  \"address2_line1\": \"example_value\",\n  \"address2_line2\": \"example_value\",\n  \"address2_line3\": \"example_value\",\n  \"address2_city\": \"example_value\",\n  \"address2_stateorprovince\": \"example_value\",\n  \"address2_postalcode\": \"example_value\",\n  \"address2_country\": \"example_value\",\n  \"statuscode\": 1,\n  \"yominame\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountid\": \"913c7bb7-4c48-f56e-ee25-b360270726c5\",\n  \"name\": \"Example Title\",\n  \"accountnumber\": \"example_value\",\n  \"accountcategorycode\": 1,\n  \"accountclassificationcode\": 10,\n  \"accountratingcode\": 10,\n  \"description\": \"A sample description.\",\n  \"emailaddress1\": \"user@example.com\",\n  \"emailaddress2\": \"user@example.com\",\n  \"emailaddress3\": \"user@example.com\",\n  \"telephone1\": \"example_value\",\n  \"telephone2\": \"example_value\",\n  \"telephone3\": \"example_value\",\n  \"fax\": \"example_value\",\n  \"websiteurl\": \"https://www.example.com\",\n  \"industrycode\": 10,\n  \"numberofemployees\": 10,\n  \"revenue\": 42.5,\n  \"revenue_base\": 42.5,\n  \"ownershipcode\": 1,\n  \"customertypecode\": 10,\n  \"businesstypecode\": 10,\n  \"sic\": \"example_value\",\n  \"tickersymbol\": \"string\",\n  \"stockexchange\": \"example_value\",\n  \"sharesoutstanding\": 10,\n  \"marketcap\": 42.5,\n  \"creditlimit\": 42.5,\n  \"creditonhold\": true,\n  \"paymenttermscode\": 1,\n  \"preferredcontactmethodcode\": 1,\n  \"donotemail\": true,\n  \"donotphone\": true,\n  \"donotfax\": true,\n  \"donotpostalmail\": true,\n  \"donotbulkemail\": false,\n  \"donotsendmm\": true,\n  \"address1_name\": \"example_value\",\n  \"address1_line1\": \"example_value\",\n  \"address1_line2\": \"example_value\",\n  \"address1_line3\": \"example_value\",\n  \"address1_city\": \"example_value\",\n  \"address1_stateorprovince\": \"example_value\",\n  \"address1_postalcode\": \"example_value\",\n  \"address1_country\": \"example_value\",\n  \"address1_county\": \"example_value\",\n  \"address1_telephone1\": \"example_value\",\n  \"address1_fax\": \"example_value\",\n  \"address1_latitude\": 42.5,\n  \"address1_longitude\": 42.5,\n  \"address1_addresstypecode\": 1,\n  \"address2_name\": \"example_value\",\n  \"address2_line1\": \"example_value\",\n  \"address2_line2\": \"example_value\",\n  \"address2_line3\": \"example_value\",\n  \"address2_city\": \"example_value\",\n  \"address2_stateorprovince\": \"example_value\",\n  \"address2_postalcode\": \"example_value\",\n  \"address2_country\": \"example_value\",\n  \"statecode\": 0,\n  \"statuscode\": 1,\n  \"createdon\": \"2026-01-15T10:30:00Z\",\n  \"modifiedon\": \"2026-01-15T10:30:00Z\",\n  \"versionnumber\": 10,\n  \"_primarycontactid_value\": \"00fd4372-2a6c-aed5-775d-547ff3c2e82b\",\n  \"_parentaccountid_value\": \"f465801f-25c5-dbcc-45cd-df7d3ae575a8\",\n  \"_ownerid_value\": \"634a0cc6-2a69-86d7-a626-305b4ade2d8d\",\n  \"_transactioncurrencyid_value\": \"318bd654-0e7e-fd89-ce48-7871b0e26cf9\",\n  \"yominame\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "410f43c4-26bf-48e7-85d7-0dd4fd7abafc",
+              "name": "Account created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"accountnumber\": \"example_value\",\n  \"accountcategorycode\": 1,\n  \"accountclassificationcode\": 10,\n  \"accountratingcode\": 10,\n  \"description\": \"A sample description.\",\n  \"emailaddress1\": \"user@example.com\",\n  \"emailaddress2\": \"user@example.com\",\n  \"emailaddress3\": \"user@example.com\",\n  \"telephone1\": \"example_value\",\n  \"telephone2\": \"example_value\",\n  \"telephone3\": \"example_value\",\n  \"fax\": \"example_value\",\n  \"websiteurl\": \"https://www.example.com\",\n  \"industrycode\": 10,\n  \"numberofemployees\": 10,\n  \"revenue\": 42.5,\n  \"ownershipcode\": 1,\n  \"customertypecode\": 10,\n  \"businesstypecode\": 10,\n  \"sic\": \"example_value\",\n  \"tickersymbol\": \"<string>\",\n  \"stockexchange\": \"example_value\",\n  \"sharesoutstanding\": 10,\n  \"marketcap\": 42.5,\n  \"creditlimit\": 42.5,\n  \"creditonhold\": true,\n  \"paymenttermscode\": 1,\n  \"preferredcontactmethodcode\": 1,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": true,\n  \"donotfax\": true,\n  \"donotpostalmail\": true,\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": true,\n  \"address1_name\": \"example_value\",\n  \"address1_line1\": \"example_value\",\n  \"address1_line2\": \"example_value\",\n  \"address1_line3\": \"example_value\",\n  \"address1_city\": \"example_value\",\n  \"address1_stateorprovince\": \"example_value\",\n  \"address1_postalcode\": \"example_value\",\n  \"address1_country\": \"example_value\",\n  \"address1_county\": \"example_value\",\n  \"address1_telephone1\": \"example_value\",\n  \"address1_fax\": \"example_value\",\n  \"address1_latitude\": 42.5,\n  \"address1_longitude\": 42.5,\n  \"address1_addresstypecode\": 1,\n  \"address2_name\": \"example_value\",\n  \"address2_line1\": \"example_value\",\n  \"address2_line2\": \"example_value\",\n  \"address2_line3\": \"example_value\",\n  \"address2_city\": \"example_value\",\n  \"address2_stateorprovince\": \"example_value\",\n  \"address2_postalcode\": \"example_value\",\n  \"address2_country\": \"example_value\",\n  \"statuscode\": 1,\n  \"yominame\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "URI of the newly created account record.",
+                  "key": "OData-EntityId",
+                  "value": "http://FyEtuE.yvcy9yHUwc9tusGTU5XxSkxXE"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e2537041-fcd6-44fe-bab5-1b88c19aba9b",
+              "name": "The request was malformed or contained invalid data. Check the request body and query parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"accountnumber\": \"example_value\",\n  \"accountcategorycode\": 1,\n  \"accountclassificationcode\": 10,\n  \"accountratingcode\": 10,\n  \"description\": \"A sample description.\",\n  \"emailaddress1\": \"user@example.com\",\n  \"emailaddress2\": \"user@example.com\",\n  \"emailaddress3\": \"user@example.com\",\n  \"telephone1\": \"example_value\",\n  \"telephone2\": \"example_value\",\n  \"telephone3\": \"example_value\",\n  \"fax\": \"example_value\",\n  \"websiteurl\": \"https://www.example.com\",\n  \"industrycode\": 10,\n  \"numberofemployees\": 10,\n  \"revenue\": 42.5,\n  \"ownershipcode\": 1,\n  \"customertypecode\": 10,\n  \"businesstypecode\": 10,\n  \"sic\": \"example_value\",\n  \"tickersymbol\": \"<string>\",\n  \"stockexchange\": \"example_value\",\n  \"sharesoutstanding\": 10,\n  \"marketcap\": 42.5,\n  \"creditlimit\": 42.5,\n  \"creditonhold\": true,\n  \"paymenttermscode\": 1,\n  \"preferredcontactmethodcode\": 1,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": true,\n  \"donotfax\": true,\n  \"donotpostalmail\": true,\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": true,\n  \"address1_name\": \"example_value\",\n  \"address1_line1\": \"example_value\",\n  \"address1_line2\": \"example_value\",\n  \"address1_line3\": \"example_value\",\n  \"address1_city\": \"example_value\",\n  \"address1_stateorprovince\": \"example_value\",\n  \"address1_postalcode\": \"example_value\",\n  \"address1_country\": \"example_value\",\n  \"address1_county\": \"example_value\",\n  \"address1_telephone1\": \"example_value\",\n  \"address1_fax\": \"example_value\",\n  \"address1_latitude\": 42.5,\n  \"address1_longitude\": 42.5,\n  \"address1_addresstypecode\": 1,\n  \"address2_name\": \"example_value\",\n  \"address2_line1\": \"example_value\",\n  \"address2_line2\": \"example_value\",\n  \"address2_line3\": \"example_value\",\n  \"address2_city\": \"example_value\",\n  \"address2_stateorprovince\": \"example_value\",\n  \"address2_postalcode\": \"example_value\",\n  \"address2_country\": \"example_value\",\n  \"statuscode\": 1,\n  \"yominame\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innererror\": {\n      \"message\": \"string\",\n      \"type\": \"string\",\n      \"stacktrace\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fee82b07-b063-4ebd-b17d-1d4cafe4e644",
+              "name": "Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"accountnumber\": \"example_value\",\n  \"accountcategorycode\": 1,\n  \"accountclassificationcode\": 10,\n  \"accountratingcode\": 10,\n  \"description\": \"A sample description.\",\n  \"emailaddress1\": \"user@example.com\",\n  \"emailaddress2\": \"user@example.com\",\n  \"emailaddress3\": \"user@example.com\",\n  \"telephone1\": \"example_value\",\n  \"telephone2\": \"example_value\",\n  \"telephone3\": \"example_value\",\n  \"fax\": \"example_value\",\n  \"websiteurl\": \"https://www.example.com\",\n  \"industrycode\": 10,\n  \"numberofemployees\": 10,\n  \"revenue\": 42.5,\n  \"ownershipcode\": 1,\n  \"customertypecode\": 10,\n  \"businesstypecode\": 10,\n  \"sic\": \"example_value\",\n  \"tickersymbol\": \"<string>\",\n  \"stockexchange\": \"example_value\",\n  \"sharesoutstanding\": 10,\n  \"marketcap\": 42.5,\n  \"creditlimit\": 42.5,\n  \"creditonhold\": true,\n  \"paymenttermscode\": 1,\n  \"preferredcontactmethodcode\": 1,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": true,\n  \"donotfax\": true,\n  \"donotpostalmail\": true,\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": true,\n  \"address1_name\": \"example_value\",\n  \"address1_line1\": \"example_value\",\n  \"address1_line2\": \"example_value\",\n  \"address1_line3\": \"example_value\",\n  \"address1_city\": \"example_value\",\n  \"address1_stateorprovince\": \"example_value\",\n  \"address1_postalcode\": \"example_value\",\n  \"address1_country\": \"example_value\",\n  \"address1_county\": \"example_value\",\n  \"address1_telephone1\": \"example_value\",\n  \"address1_fax\": \"example_value\",\n  \"address1_latitude\": 42.5,\n  \"address1_longitude\": 42.5,\n  \"address1_addresstypecode\": 1,\n  \"address2_name\": \"example_value\",\n  \"address2_line1\": \"example_value\",\n  \"address2_line2\": \"example_value\",\n  \"address2_line3\": \"example_value\",\n  \"address2_city\": \"example_value\",\n  \"address2_stateorprovince\": \"example_value\",\n  \"address2_postalcode\": \"example_value\",\n  \"address2_country\": \"example_value\",\n  \"statuscode\": 1,\n  \"yominame\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innererror\": {\n      \"message\": \"string\",\n      \"type\": \"string\",\n      \"stacktrace\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b30184db-525e-46d8-a8bb-f1d0b813867e",
+              "name": "The authenticated user does not have sufficient permissions to perform this operation. Check Dataverse security roles and privileges.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"accountnumber\": \"example_value\",\n  \"accountcategorycode\": 1,\n  \"accountclassificationcode\": 10,\n  \"accountratingcode\": 10,\n  \"description\": \"A sample description.\",\n  \"emailaddress1\": \"user@example.com\",\n  \"emailaddress2\": \"user@example.com\",\n  \"emailaddress3\": \"user@example.com\",\n  \"telephone1\": \"example_value\",\n  \"telephone2\": \"example_value\",\n  \"telephone3\": \"example_value\",\n  \"fax\": \"example_value\",\n  \"websiteurl\": \"https://www.example.com\",\n  \"industrycode\": 10,\n  \"numberofemployees\": 10,\n  \"revenue\": 42.5,\n  \"ownershipcode\": 1,\n  \"customertypecode\": 10,\n  \"businesstypecode\": 10,\n  \"sic\": \"example_value\",\n  \"tickersymbol\": \"<string>\",\n  \"stockexchange\": \"example_value\",\n  \"sharesoutstanding\": 10,\n  \"marketcap\": 42.5,\n  \"creditlimit\": 42.5,\n  \"creditonhold\": true,\n  \"paymenttermscode\": 1,\n  \"preferredcontactmethodcode\": 1,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": true,\n  \"donotfax\": true,\n  \"donotpostalmail\": true,\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": true,\n  \"address1_name\": \"example_value\",\n  \"address1_line1\": \"example_value\",\n  \"address1_line2\": \"example_value\",\n  \"address1_line3\": \"example_value\",\n  \"address1_city\": \"example_value\",\n  \"address1_stateorprovince\": \"example_value\",\n  \"address1_postalcode\": \"example_value\",\n  \"address1_country\": \"example_value\",\n  \"address1_county\": \"example_value\",\n  \"address1_telephone1\": \"example_value\",\n  \"address1_fax\": \"example_value\",\n  \"address1_latitude\": 42.5,\n  \"address1_longitude\": 42.5,\n  \"address1_addresstypecode\": 1,\n  \"address2_name\": \"example_value\",\n  \"address2_line1\": \"example_value\",\n  \"address2_line2\": \"example_value\",\n  \"address2_line3\": \"example_value\",\n  \"address2_city\": \"example_value\",\n  \"address2_stateorprovince\": \"example_value\",\n  \"address2_postalcode\": \"example_value\",\n  \"address2_country\": \"example_value\",\n  \"statuscode\": 1,\n  \"yominame\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innererror\": {\n      \"message\": \"string\",\n      \"type\": \"string\",\n      \"stacktrace\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8015683f-65ed-4462-9eae-15bc997656b4",
+          "name": "Microsoft Power Apps Retrieve a Single Account",
+          "request": {
+            "name": "Microsoft Power Apps Retrieve a Single Account",
+            "description": {
+              "content": "Retrieves a single account record by its unique identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts({{accountid}})"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance."
+                },
+                {
+                  "disabled": false,
+                  "key": "$expand",
+                  "value": "<string>",
+                  "description": "Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "944490e5-2bc4-49c4-97fc-8721bcf47b78",
+              "name": "Successfully retrieved account record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts({{accountid}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,accountnumber,emailaddress1"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "primarycontactid($select=fullname,emailaddress1)"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountid\": \"913c7bb7-4c48-f56e-ee25-b360270726c5\",\n  \"name\": \"Example Title\",\n  \"accountnumber\": \"example_value\",\n  \"accountcategorycode\": 1,\n  \"accountclassificationcode\": 10,\n  \"accountratingcode\": 10,\n  \"description\": \"A sample description.\",\n  \"emailaddress1\": \"user@example.com\",\n  \"emailaddress2\": \"user@example.com\",\n  \"emailaddress3\": \"user@example.com\",\n  \"telephone1\": \"example_value\",\n  \"telephone2\": \"example_value\",\n  \"telephone3\": \"example_value\",\n  \"fax\": \"example_value\",\n  \"websiteurl\": \"https://www.example.com\",\n  \"industrycode\": 10,\n  \"numberofemployees\": 10,\n  \"revenue\": 42.5,\n  \"revenue_base\": 42.5,\n  \"ownershipcode\": 1,\n  \"customertypecode\": 10,\n  \"businesstypecode\": 10,\n  \"sic\": \"example_value\",\n  \"tickersymbol\": \"string\",\n  \"stockexchange\": \"example_value\",\n  \"sharesoutstanding\": 10,\n  \"marketcap\": 42.5,\n  \"creditlimit\": 42.5,\n  \"creditonhold\": true,\n  \"paymenttermscode\": 1,\n  \"preferredcontactmethodcode\": 1,\n  \"donotemail\": true,\n  \"donotphone\": true,\n  \"donotfax\": true,\n  \"donotpostalmail\": true,\n  \"donotbulkemail\": false,\n  \"donotsendmm\": true,\n  \"address1_name\": \"example_value\",\n  \"address1_line1\": \"example_value\",\n  \"address1_line2\": \"example_value\",\n  \"address1_line3\": \"example_value\",\n  \"address1_city\": \"example_value\",\n  \"address1_stateorprovince\": \"example_value\",\n  \"address1_postalcode\": \"example_value\",\n  \"address1_country\": \"example_value\",\n  \"address1_county\": \"example_value\",\n  \"address1_telephone1\": \"example_value\",\n  \"address1_fax\": \"example_value\",\n  \"address1_latitude\": 42.5,\n  \"address1_longitude\": 42.5,\n  \"address1_addresstypecode\": 1,\n  \"address2_name\": \"example_value\",\n  \"address2_line1\": \"example_value\",\n  \"address2_line2\": \"example_value\",\n  \"address2_line3\": \"example_value\",\n  \"address2_city\": \"example_value\",\n  \"address2_stateorprovince\": \"example_value\",\n  \"address2_postalcode\": \"example_value\",\n  \"address2_country\": \"example_value\",\n  \"statecode\": 0,\n  \"statuscode\": 1,\n  \"createdon\": \"2026-01-15T10:30:00Z\",\n  \"modifiedon\": \"2026-01-15T10:30:00Z\",\n  \"versionnumber\": 10,\n  \"_primarycontactid_value\": \"00fd4372-2a6c-aed5-775d-547ff3c2e82b\",\n  \"_parentaccountid_value\": \"f465801f-25c5-dbcc-45cd-df7d3ae575a8\",\n  \"_ownerid_value\": \"634a0cc6-2a69-86d7-a626-305b4ade2d8d\",\n  \"_transactioncurrencyid_value\": \"318bd654-0e7e-fd89-ce48-7871b0e26cf9\",\n  \"yominame\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cc1ec8c-c487-4470-9799-6ef8aec93229",
+              "name": "Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts({{accountid}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,accountnumber,emailaddress1"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "primarycontactid($select=fullname,emailaddress1)"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innererror\": {\n      \"message\": \"string\",\n      \"type\": \"string\",\n      \"stacktrace\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a09cdd50-493e-480f-b9e7-88ad536ca306",
+              "name": "The requested record was not found. Verify the record identifier is correct and the record exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts({{accountid}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,accountnumber,emailaddress1"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "primarycontactid($select=fullname,emailaddress1)"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innererror\": {\n      \"message\": \"string\",\n      \"type\": \"string\",\n      \"stacktrace\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a881dcf4-c964-47fa-8610-cc6e901b883a",
+          "name": "Microsoft Power Apps Update an Existing Account",
+          "request": {
+            "name": "Microsoft Power Apps Update an Existing Account",
+            "description": {
+              "content": "Updates an existing account record using PATCH (merge update). Only the properties included in the request body are updated. This follows the OData v4.0 convention for updates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts({{accountid}})"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Used for optimistic concurrency control. Set to the ETag value of the record to ensure you are updating the latest version.",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"accountnumber\": \"<string>\",\n  \"accountcategorycode\": \"<integer>\",\n  \"accountclassificationcode\": \"<integer>\",\n  \"accountratingcode\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"emailaddress1\": \"<email>\",\n  \"emailaddress2\": \"<email>\",\n  \"emailaddress3\": \"<email>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"telephone3\": \"<string>\",\n  \"fax\": \"<string>\",\n  \"websiteurl\": \"<uri>\",\n  \"industrycode\": \"<integer>\",\n  \"numberofemployees\": \"<integer>\",\n  \"revenue\": \"<decimal>\",\n  \"ownershipcode\": \"<integer>\",\n  \"customertypecode\": \"<integer>\",\n  \"businesstypecode\": \"<integer>\",\n  \"sic\": \"<string>\",\n  \"tickersymbol\": \"<string>\",\n  \"stockexchange\": \"<string>\",\n  \"sharesoutstanding\": \"<integer>\",\n  \"marketcap\": \"<decimal>\",\n  \"creditlimit\": \"<decimal>\",\n  \"creditonhold\": \"<boolean>\",\n  \"paymenttermscode\": \"<integer>\",\n  \"preferredcontactmethodcode\": \"<integer>\",\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": \"<boolean>\",\n  \"donotfax\": \"<boolean>\",\n  \"donotpostalmail\": \"<boolean>\",\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": \"<boolean>\",\n  \"address1_name\": \"<string>\",\n  \"address1_line1\": \"<string>\",\n  \"address1_line2\": \"<string>\",\n  \"address1_line3\": \"<string>\",\n  \"address1_city\": \"<string>\",\n  \"address1_stateorprovince\": \"<string>\",\n  \"address1_postalcode\": \"<string>\",\n  \"address1_country\": \"<string>\",\n  \"address1_county\": \"<string>\",\n  \"address1_telephone1\": \"<string>\",\n  \"address1_fax\": \"<string>\",\n  \"address1_latitude\": \"<double>\",\n  \"address1_longitude\": \"<double>\",\n  \"address1_addresstypecode\": \"<integer>\",\n  \"address2_name\": \"<string>\",\n  \"address2_line1\": \"<string>\",\n  \"address2_line2\": \"<string>\",\n  \"address2_line3\": \"<string>\",\n  \"address2_city\": \"<string>\",\n  \"address2_stateorprovince\": \"<string>\",\n  \"address2_postalcode\": \"<string>\",\n  \"address2_country\": \"<string>\",\n  \"statuscode\": \"<integer>\",\n  \"yominame\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1067c944-2a72-4055-8803-44e7f7a88eb9",
+              "name": "Account updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts({{accountid}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used for optimistic concurrency control. Set to the ETag value of the record to ensure you are updating the latest version.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"accountnumber\": \"example_value\",\n  \"accountcategorycode\": 1,\n  \"accountclassificationcode\": 10,\n  \"accountratingcode\": 10,\n  \"description\": \"A sample description.\",\n  \"emailaddress1\": \"user@example.com\",\n  \"emailaddress2\": \"user@example.com\",\n  \"emailaddress3\": \"user@example.com\",\n  \"telephone1\": \"example_value\",\n  \"telephone2\": \"example_value\",\n  \"telephone3\": \"example_value\",\n  \"fax\": \"example_value\",\n  \"websiteurl\": \"https://www.example.com\",\n  \"industrycode\": 10,\n  \"numberofemployees\": 10,\n  \"revenue\": 42.5,\n  \"ownershipcode\": 1,\n  \"customertypecode\": 10,\n  \"businesstypecode\": 10,\n  \"sic\": \"example_value\",\n  \"tickersymbol\": \"<string>\",\n  \"stockexchange\": \"example_value\",\n  \"sharesoutstanding\": 10,\n  \"marketcap\": 42.5,\n  \"creditlimit\": 42.5,\n  \"creditonhold\": true,\n  \"paymenttermscode\": 1,\n  \"preferredcontactmethodcode\": 1,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": true,\n  \"donotfax\": true,\n  \"donotpostalmail\": true,\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": true,\n  \"address1_name\": \"example_value\",\n  \"address1_line1\": \"example_value\",\n  \"address1_line2\": \"example_value\",\n  \"address1_line3\": \"example_value\",\n  \"address1_city\": \"example_value\",\n  \"address1_stateorprovince\": \"example_value\",\n  \"address1_postalcode\": \"example_value\",\n  \"address1_country\": \"example_value\",\n  \"address1_county\": \"example_value\",\n  \"address1_telephone1\": \"example_value\",\n  \"address1_fax\": \"example_value\",\n  \"address1_latitude\": 42.5,\n  \"address1_longitude\": 42.5,\n  \"address1_addresstypecode\": 1,\n  \"address2_name\": \"example_value\",\n  \"address2_line1\": \"example_value\",\n  \"address2_line2\": \"example_value\",\n  \"address2_line3\": \"example_value\",\n  \"address2_city\": \"example_value\",\n  \"address2_stateorprovince\": \"example_value\",\n  \"address2_postalcode\": \"example_value\",\n  \"address2_country\": \"example_value\",\n  \"statuscode\": 1,\n  \"yominame\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2054b930-ad71-4638-91b0-4932749103c1",
+              "name": "The request was malformed or contained invalid data. Check the request body and query parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts({{accountid}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used for optimistic concurrency control. Set to the ETag value of the record to ensure you are updating the latest version.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"accountnumber\": \"example_value\",\n  \"accountcategorycode\": 1,\n  \"accountclassificationcode\": 10,\n  \"accountratingcode\": 10,\n  \"description\": \"A sample description.\",\n  \"emailaddress1\": \"user@example.com\",\n  \"emailaddress2\": \"user@example.com\",\n  \"emailaddress3\": \"user@example.com\",\n  \"telephone1\": \"example_value\",\n  \"telephone2\": \"example_value\",\n  \"telephone3\": \"example_value\",\n  \"fax\": \"example_value\",\n  \"websiteurl\": \"https://www.example.com\",\n  \"industrycode\": 10,\n  \"numberofemployees\": 10,\n  \"revenue\": 42.5,\n  \"ownershipcode\": 1,\n  \"customertypecode\": 10,\n  \"businesstypecode\": 10,\n  \"sic\": \"example_value\",\n  \"tickersymbol\": \"<string>\",\n  \"stockexchange\": \"example_value\",\n  \"sharesoutstanding\": 10,\n  \"marketcap\": 42.5,\n  \"creditlimit\": 42.5,\n  \"creditonhold\": true,\n  \"paymenttermscode\": 1,\n  \"preferredcontactmethodcode\": 1,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": true,\n  \"donotfax\": true,\n  \"donotpostalmail\": true,\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": true,\n  \"address1_name\": \"example_value\",\n  \"address1_line1\": \"example_value\",\n  \"address1_line2\": \"example_value\",\n  \"address1_line3\": \"example_value\",\n  \"address1_city\": \"example_value\",\n  \"address1_stateorprovince\": \"example_value\",\n  \"address1_postalcode\": \"example_value\",\n  \"address1_country\": \"example_value\",\n  \"address1_county\": \"example_value\",\n  \"address1_telephone1\": \"example_value\",\n  \"address1_fax\": \"example_value\",\n  \"address1_latitude\": 42.5,\n  \"address1_longitude\": 42.5,\n  \"address1_addresstypecode\": 1,\n  \"address2_name\": \"example_value\",\n  \"address2_line1\": \"example_value\",\n  \"address2_line2\": \"example_value\",\n  \"address2_line3\": \"example_value\",\n  \"address2_city\": \"example_value\",\n  \"address2_stateorprovince\": \"example_value\",\n  \"address2_postalcode\": \"example_value\",\n  \"address2_country\": \"example_value\",\n  \"statuscode\": 1,\n  \"yominame\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innererror\": {\n      \"message\": \"string\",\n      \"type\": \"string\",\n      \"stacktrace\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ccc7078a-8ab6-4807-9b66-2d5881eca76e",
+              "name": "Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts({{accountid}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used for optimistic concurrency control. Set to the ETag value of the record to ensure you are updating the latest version.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"accountnumber\": \"example_value\",\n  \"accountcategorycode\": 1,\n  \"accountclassificationcode\": 10,\n  \"accountratingcode\": 10,\n  \"description\": \"A sample description.\",\n  \"emailaddress1\": \"user@example.com\",\n  \"emailaddress2\": \"user@example.com\",\n  \"emailaddress3\": \"user@example.com\",\n  \"telephone1\": \"example_value\",\n  \"telephone2\": \"example_value\",\n  \"telephone3\": \"example_value\",\n  \"fax\": \"example_value\",\n  \"websiteurl\": \"https://www.example.com\",\n  \"industrycode\": 10,\n  \"numberofemployees\": 10,\n  \"revenue\": 42.5,\n  \"ownershipcode\": 1,\n  \"customertypecode\": 10,\n  \"businesstypecode\": 10,\n  \"sic\": \"example_value\",\n  \"tickersymbol\": \"<string>\",\n  \"stockexchange\": \"example_value\",\n  \"sharesoutstanding\": 10,\n  \"marketcap\": 42.5,\n  \"creditlimit\": 42.5,\n  \"creditonhold\": true,\n  \"paymenttermscode\": 1,\n  \"preferredcontactmethodcode\": 1,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": true,\n  \"donotfax\": true,\n  \"donotpostalmail\": true,\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": true,\n  \"address1_name\": \"example_value\",\n  \"address1_line1\": \"example_value\",\n  \"address1_line2\": \"example_value\",\n  \"address1_line3\": \"example_value\",\n  \"address1_city\": \"example_value\",\n  \"address1_stateorprovince\": \"example_value\",\n  \"address1_postalcode\": \"example_value\",\n  \"address1_country\": \"example_value\",\n  \"address1_county\": \"example_value\",\n  \"address1_telephone1\": \"example_value\",\n  \"address1_fax\": \"example_value\",\n  \"address1_latitude\": 42.5,\n  \"address1_longitude\": 42.5,\n  \"address1_addresstypecode\": 1,\n  \"address2_name\": \"example_value\",\n  \"address2_line1\": \"example_value\",\n  \"address2_line2\": \"example_value\",\n  \"address2_line3\": \"example_value\",\n  \"address2_city\": \"example_value\",\n  \"address2_stateorprovince\": \"example_value\",\n  \"address2_postalcode\": \"example_value\",\n  \"address2_country\": \"example_value\",\n  \"statuscode\": 1,\n  \"yominame\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innererror\": {\n      \"message\": \"string\",\n      \"type\": \"string\",\n      \"stacktrace\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06c23530-acf7-4df8-9bb1-8bc9edd1c701",
+              "name": "The requested record was not found. Verify the record identifier is correct and the record exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts({{accountid}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used for optimistic concurrency control. Set to the ETag value of the record to ensure you are updating the latest version.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"accountnumber\": \"example_value\",\n  \"accountcategorycode\": 1,\n  \"accountclassificationcode\": 10,\n  \"accountratingcode\": 10,\n  \"description\": \"A sample description.\",\n  \"emailaddress1\": \"user@example.com\",\n  \"emailaddress2\": \"user@example.com\",\n  \"emailaddress3\": \"user@example.com\",\n  \"telephone1\": \"example_value\",\n  \"telephone2\": \"example_value\",\n  \"telephone3\": \"example_value\",\n  \"fax\": \"example_value\",\n  \"websiteurl\": \"https://www.example.com\",\n  \"industrycode\": 10,\n  \"numberofemployees\": 10,\n  \"revenue\": 42.5,\n  \"ownershipcode\": 1,\n  \"customertypecode\": 10,\n  \"businesstypecode\": 10,\n  \"sic\": \"example_value\",\n  \"tickersymbol\": \"<string>\",\n  \"stockexchange\": \"example_value\",\n  \"sharesoutstanding\": 10,\n  \"marketcap\": 42.5,\n  \"creditlimit\": 42.5,\n  \"creditonhold\": true,\n  \"paymenttermscode\": 1,\n  \"preferredcontactmethodcode\": 1,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": true,\n  \"donotfax\": true,\n  \"donotpostalmail\": true,\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": true,\n  \"address1_name\": \"example_value\",\n  \"address1_line1\": \"example_value\",\n  \"address1_line2\": \"example_value\",\n  \"address1_line3\": \"example_value\",\n  \"address1_city\": \"example_value\",\n  \"address1_stateorprovince\": \"example_value\",\n  \"address1_postalcode\": \"example_value\",\n  \"address1_country\": \"example_value\",\n  \"address1_county\": \"example_value\",\n  \"address1_telephone1\": \"example_value\",\n  \"address1_fax\": \"example_value\",\n  \"address1_latitude\": 42.5,\n  \"address1_longitude\": 42.5,\n  \"address1_addresstypecode\": 1,\n  \"address2_name\": \"example_value\",\n  \"address2_line1\": \"example_value\",\n  \"address2_line2\": \"example_value\",\n  \"address2_line3\": \"example_value\",\n  \"address2_city\": \"example_value\",\n  \"address2_stateorprovince\": \"example_value\",\n  \"address2_postalcode\": \"example_value\",\n  \"address2_country\": \"example_value\",\n  \"statuscode\": 1,\n  \"yominame\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innererror\": {\n      \"message\": \"string\",\n      \"type\": \"string\",\n      \"stacktrace\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8cdc7ff-cca1-42e0-ad71-05a98a1150ed",
+              "name": "The If-Match header value does not match the current ETag of the record, indicating the record has been modified since it was last retrieved. Retrieve the latest version and retry.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts({{accountid}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used for optimistic concurrency control. Set to the ETag value of the record to ensure you are updating the latest version.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"accountnumber\": \"example_value\",\n  \"accountcategorycode\": 1,\n  \"accountclassificationcode\": 10,\n  \"accountratingcode\": 10,\n  \"description\": \"A sample description.\",\n  \"emailaddress1\": \"user@example.com\",\n  \"emailaddress2\": \"user@example.com\",\n  \"emailaddress3\": \"user@example.com\",\n  \"telephone1\": \"example_value\",\n  \"telephone2\": \"example_value\",\n  \"telephone3\": \"example_value\",\n  \"fax\": \"example_value\",\n  \"websiteurl\": \"https://www.example.com\",\n  \"industrycode\": 10,\n  \"numberofemployees\": 10,\n  \"revenue\": 42.5,\n  \"ownershipcode\": 1,\n  \"customertypecode\": 10,\n  \"businesstypecode\": 10,\n  \"sic\": \"example_value\",\n  \"tickersymbol\": \"<string>\",\n  \"stockexchange\": \"example_value\",\n  \"sharesoutstanding\": 10,\n  \"marketcap\": 42.5,\n  \"creditlimit\": 42.5,\n  \"creditonhold\": true,\n  \"paymenttermscode\": 1,\n  \"preferredcontactmethodcode\": 1,\n  \"donotemail\": \"<boolean>\",\n  \"donotphone\": true,\n  \"donotfax\": true,\n  \"donotpostalmail\": true,\n  \"donotbulkemail\": \"<boolean>\",\n  \"donotsendmm\": true,\n  \"address1_name\": \"example_value\",\n  \"address1_line1\": \"example_value\",\n  \"address1_line2\": \"example_value\",\n  \"address1_line3\": \"example_value\",\n  \"address1_city\": \"example_value\",\n  \"address1_stateorprovince\": \"example_value\",\n  \"address1_postalcode\": \"example_value\",\n  \"address1_country\": \"example_value\",\n  \"address1_county\": \"example_value\",\n  \"address1_telephone1\": \"example_value\",\n  \"address1_fax\": \"example_value\",\n  \"address1_latitude\": 42.5,\n  \"address1_longitude\": 42.5,\n  \"address1_addresstypecode\": 1,\n  \"address2_name\": \"example_value\",\n  \"address2_line1\": \"example_value\",\n  \"address2_line2\": \"example_value\",\n  \"address2_line3\": \"example_value\",\n  \"address2_city\": \"example_value\",\n  \"address2_stateorprovince\": \"example_value\",\n  \"address2_postalcode\": \"example_value\",\n  \"address2_country\": \"example_value\",\n  \"statuscode\": 1,\n  \"yominame\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innererror\": {\n      \"message\": \"string\",\n      \"type\": \"string\",\n      \"stacktrace\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ddb38a45-87fb-4bca-84bf-28c4a6d1688a",
+          "name": "Microsoft Power Apps Delete an Account",
+          "request": {
+            "name": "Microsoft Power Apps Delete an Account",
+            "description": {
+              "content": "Deletes an existing account record from Dataverse.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts({{accountid}})"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8fec16c1-7760-4d44-8447-42deca5670c1",
+              "name": "Account deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts({{accountid}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "54fdee59-585b-404f-9590-36af7a64ee23",
+              "name": "Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts({{accountid}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innererror\": {\n      \"message\": \"string\",\n      \"type\": \"string\",\n      \"stacktrace\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67dececd-bfc2-43ea-9dfb-45a9d08547b1",
+              "name": "The requested record was not found. Verify the record identifier is correct and the record exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts({{accountid}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innererror\": {\n      \"message\": \"string\",\n      \"type\": \"string\",\n      \"stacktrace\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourorg",
+      "key": "organization"
+    },
+    {
+      "type": "string",
+      "value": "https://{{organization}}.api.crm.dynamics.com/api/data/v9.2",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Unique identifier (GUID) of the account record.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<uuid>",
+      "key": "accountid"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://{organization}.crm.dynamics.com/.default https://{organization}.crm.dynamics.com/user_impersonation"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5eb777f7-4086-4eac-b6af-828db156c386",
+    "name": "Microsoft Power Apps Microsoft Dataverse Web Accounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for interacting with Microsoft Dataverse (formerly Common Data Service), the underlying data platform for Microsoft Power Apps. This API follows OData v4.0 conventions and provides CRUD operations on Dataverse tables including accounts, contacts, and entity definitions. Each Dataverse environment has a unique organization URL and may include custom tables and operations specific to that environment.\n\nContact Support:\n Name: Microsoft Power Apps Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

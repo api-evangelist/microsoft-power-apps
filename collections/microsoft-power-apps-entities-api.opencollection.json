@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Power Apps Microsoft Dataverse Web Accounts Entities API",
+    "version": "9.2"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Entities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Power Apps Retrieve Entity Definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.api.crm.dynamics.com/api/data/v9.2/entities",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": "return=representation,odata.include-annotations=\"*\""
+              }
+            ],
+            "params": [
+              {
+                "name": "$select",
+                "value": "name,accountnumber,emailaddress1",
+                "type": "query",
+                "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance."
+              },
+              {
+                "name": "$filter",
+                "value": "statecode eq 0",
+                "type": "query",
+                "description": "OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators."
+              },
+              {
+                "name": "$orderby",
+                "value": "name asc",
+                "type": "query",
+                "description": "Comma-separated list of properties to sort results by, each optionally followed by asc or desc."
+              },
+              {
+                "name": "$top",
+                "value": "50",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip before returning results."
+              },
+              {
+                "name": "$count",
+                "value": "true",
+                "type": "query",
+                "description": "Set to true to include a count of matching records in the response."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of entity (table) definitions from Dataverse. This endpoint provides metadata about the tables available in the environment, including their logical names, collection names, and structural information. This is a read-only endpoint supporting only RetrieveMultiple operations."
+        },
+        {
+          "info": {
+            "name": "Microsoft Power Apps Retrieve a Single Entity Definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.api.crm.dynamics.com/api/data/v9.2/entities(:entityid)",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": "return=representation,odata.include-annotations=\"*\""
+              }
+            ],
+            "params": [
+              {
+                "name": "entityid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (GUID) of the entity definition."
+              },
+              {
+                "name": "$select",
+                "value": "name,accountnumber,emailaddress1",
+                "type": "query",
+                "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance."
+              }
+            ]
+          },
+          "docs": "Retrieves a single entity (table) definition by its unique identifier. Provides metadata about the table including its logical name, collection name, and structural information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,201 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Power Apps Microsoft Dataverse Web Accounts Contacts API",
+    "version": "9.2"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Power Apps Retrieve Multiple Contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.api.crm.dynamics.com/api/data/v9.2/contacts",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": "return=representation,odata.include-annotations=\"*\""
+              }
+            ],
+            "params": [
+              {
+                "name": "$select",
+                "value": "name,accountnumber,emailaddress1",
+                "type": "query",
+                "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance."
+              },
+              {
+                "name": "$filter",
+                "value": "statecode eq 0",
+                "type": "query",
+                "description": "OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators."
+              },
+              {
+                "name": "$orderby",
+                "value": "name asc",
+                "type": "query",
+                "description": "Comma-separated list of properties to sort results by, each optionally followed by asc or desc."
+              },
+              {
+                "name": "$top",
+                "value": "50",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip before returning results."
+              },
+              {
+                "name": "$expand",
+                "value": "primarycontactid($select=fullname,emailaddress1)",
+                "type": "query",
+                "description": "Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities."
+              },
+              {
+                "name": "$count",
+                "value": "true",
+                "type": "query",
+                "description": "Set to true to include a count of matching records in the response."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of contact records from Dataverse. Supports OData query options for filtering, sorting, selecting fields, expanding navigation properties, and pagination."
+        },
+        {
+          "info": {
+            "name": "Microsoft Power Apps Create a New Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.api.crm.dynamics.com/api/data/v9.2/contacts",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": "return=representation,odata.include-annotations=\"*\""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new contact record in Dataverse. Returns the created record when the Prefer header is set to return=representation."
+        },
+        {
+          "info": {
+            "name": "Microsoft Power Apps Retrieve a Single Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.api.crm.dynamics.com/api/data/v9.2/contacts(:contactid)",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": "return=representation,odata.include-annotations=\"*\""
+              }
+            ],
+            "params": [
+              {
+                "name": "contactid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (GUID) of the contact record."
+              },
+              {
+                "name": "$select",
+                "value": "name,accountnumber,emailaddress1",
+                "type": "query",
+                "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance."
+              },
+              {
+                "name": "$expand",
+                "value": "primarycontactid($select=fullname,emailaddress1)",
+                "type": "query",
+                "description": "Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities."
+              }
+            ]
+          },
+          "docs": "Retrieves a single contact record by its unique identifier."
+        },
+        {
+          "info": {
+            "name": "Microsoft Power Apps Update an Existing Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{organization}.api.crm.dynamics.com/api/data/v9.2/contacts(:contactid)",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              },
+              {
+                "name": "Prefer",
+                "value": "return=representation,odata.include-annotations=\"*\""
+              }
+            ],
+            "params": [
+              {
+                "name": "contactid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (GUID) of the contact record."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing contact record using PATCH (merge update). Only the properties included in the request body are updated."
+        },
+        {
+          "info": {
+            "name": "Microsoft Power Apps Delete a Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{organization}.api.crm.dynamics.com/api/data/v9.2/contacts(:contactid)",
+            "params": [
+              {
+                "name": "contactid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (GUID) of the contact record."
+              }
+            ]
+          },
+          "docs": "Deletes an existing contact record from Dataverse."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

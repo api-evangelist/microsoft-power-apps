@@ -1,0 +1,668 @@
+{
+  "item": [
+    {
+      "id": "7b2088bd-cf86-4b19-8463-47b2e0dfe00a",
+      "name": "Entities",
+      "description": {
+        "content": "Operations on the entity definition entity set. Provides metadata about Dataverse tables (entities) including their logical names, collection names, and structural information. Read-only access via RetrieveMultiple.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "878f8f2b-1179-478a-a230-25f7e97d584b",
+          "name": "Microsoft Power Apps Retrieve Entity Definitions",
+          "request": {
+            "name": "Microsoft Power Apps Retrieve Entity Definitions",
+            "description": {
+              "content": "Retrieves a collection of entity (table) definitions from Dataverse. This endpoint provides metadata about the tables available in the environment, including their logical names, collection names, and structural information. This is a read-only endpoint supporting only RetrieveMultiple operations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "entities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to sort results by, each optionally followed by asc or desc."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of records to skip before returning results."
+                },
+                {
+                  "disabled": false,
+                  "key": "$count",
+                  "value": "<boolean>",
+                  "description": "Set to true to include a count of matching records in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "13f45881-2955-4340-95e6-4bb34d2f65b6",
+              "name": "Successfully retrieved entity definition collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,accountnumber,emailaddress1"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "statecode eq 0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "name asc"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "50"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.",
+                    "key": "Prefer",
+                    "value": "odata.maxpagesize=100"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "OData protocol version.",
+                  "key": "OData-Version",
+                  "value": "4.0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"https://www.example.com\",\n  \"@odata.count\": 10,\n  \"@odata.nextLink\": \"https://www.example.com\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ea670c2-f76a-46b7-9318-d1789cbe1caa",
+              "name": "Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,accountnumber,emailaddress1"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "statecode eq 0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "name asc"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "50"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.",
+                    "key": "Prefer",
+                    "value": "odata.maxpagesize=100"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innererror\": {\n      \"message\": \"string\",\n      \"type\": \"string\",\n      \"stacktrace\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7350c18-be14-4bf5-8a64-b19d9c7a10eb",
+              "name": "The authenticated user does not have sufficient permissions to perform this operation. Check Dataverse security roles and privileges.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,accountnumber,emailaddress1"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "statecode eq 0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "name asc"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "50"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.",
+                    "key": "Prefer",
+                    "value": "odata.maxpagesize=100"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innererror\": {\n      \"message\": \"string\",\n      \"type\": \"string\",\n      \"stacktrace\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf9ac5bd-5552-4897-916e-7e0d96f234a2",
+          "name": "Microsoft Power Apps Retrieve a Single Entity Definition",
+          "request": {
+            "name": "Microsoft Power Apps Retrieve a Single Entity Definition",
+            "description": {
+              "content": "Retrieves a single entity (table) definition by its unique identifier. Provides metadata about the table including its logical name, collection name, and structural information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "entities({{entityid}})"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9bda7c18-f29e-46ff-83e0-11e85452cbe9",
+              "name": "Successfully retrieved entity definition.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entities({{entityid}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,accountnumber,emailaddress1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entityid\": \"275255d1-d129-e9ed-4a01-dcb53382e6a6\",\n  \"name\": \"Example Title\",\n  \"logicalname\": \"example_value\",\n  \"logicalcollectionname\": \"example_value\",\n  \"collectionname\": \"example_value\",\n  \"entitysetname\": \"example_value\",\n  \"physicalname\": \"example_value\",\n  \"basetablename\": \"example_value\",\n  \"externalname\": \"example_value\",\n  \"externalcollectionname\": \"example_value\",\n  \"addresstablename\": \"example_value\",\n  \"extensiontablename\": \"example_value\",\n  \"reportviewname\": \"example_value\",\n  \"parentcontrollingattributename\": \"example_value\",\n  \"originallocalizedname\": \"example_value\",\n  \"originallocalizedcollectionname\": \"example_value\",\n  \"isactivity\": true,\n  \"objecttypecode\": 10,\n  \"componentstate\": 0,\n  \"solutionid\": \"d7656ee5-fced-034d-c347-433f79b7f003\",\n  \"overwritetime\": \"2026-01-15T10:30:00Z\",\n  \"versionnumber\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aaf6a52a-c5ec-458a-a7cb-a417b6ca823e",
+              "name": "Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entities({{entityid}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,accountnumber,emailaddress1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innererror\": {\n      \"message\": \"string\",\n      \"type\": \"string\",\n      \"stacktrace\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a9a172e-2d87-4729-afd2-b7ef2d3f9475",
+              "name": "The requested record was not found. Verify the record identifier is correct and the record exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "entities({{entityid}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "name,accountnumber,emailaddress1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations=\"*\" (include formatted values), and odata.maxpagesize=N (set page size).",
+                    "key": "Prefer",
+                    "value": "return=representation,odata.include-annotations=\"*\""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innererror\": {\n      \"message\": \"string\",\n      \"type\": \"string\",\n      \"stacktrace\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The unique organization name for your Dataverse environment. Find this in the Power Platform admin center under environment details.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourorg",
+      "key": "organization"
+    },
+    {
+      "type": "string",
+      "value": "https://{{organization}}.api.crm.dynamics.com/api/data/v9.2",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Unique identifier (GUID) of the entity definition.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<uuid>",
+      "key": "entityid"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://{organization}.crm.dynamics.com/.default https://{organization}.crm.dynamics.com/user_impersonation"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "51963903-9a22-488b-8a58-cff13d6f3089",
+    "name": "Microsoft Power Apps Microsoft Dataverse Web Accounts Entities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for interacting with Microsoft Dataverse (formerly Common Data Service), the underlying data platform for Microsoft Power Apps. This API follows OData v4.0 conventions and provides CRUD operations on Dataverse tables including accounts, contacts, and entity definitions. Each Dataverse environment has a unique organization URL and may include custom tables and operations specific to that environment.\n\nContact Support:\n Name: Microsoft Power Apps Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
