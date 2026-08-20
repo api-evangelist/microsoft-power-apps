@@ -201,6 +201,12 @@ apis:
   tags:
   - CRUD
   - External Users
+  - Portal
+  - Power Pages
+  - Web API
+  tags_raw:
+  - CRUD
+  - External Users
   - Portals
   - Power Pages
   - Web API
@@ -224,6 +230,12 @@ apis:
     https://learn.microsoft.com/en-us/power-apps/developer/data-platform/org-service/overview
   baseURL: https://[organization].api.crm.dynamics.com
   tags:
+  - .NET
+  - OrganizationService
+  - Plugins
+  - SDK
+  - Server-Side
+  tags_raw:
   - .NET
   - Organization Service
   - Plugins
@@ -277,6 +289,8 @@ apis:
   humanURL: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/overview
   baseURL: https://api.powerapps.com
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -505,6 +519,15 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 tags:
+  - Business Applications
+  - Cloud
+  - Enterprise
+  - Low-Code
+  - Microsoft
+  - No-Code
+  - Power Platform
+  - Software-as-a-Service
+tags_raw:
   - Business Applications
   - Cloud
   - Enterprise
