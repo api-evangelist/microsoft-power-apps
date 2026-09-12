@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Microsoft Power Apps Microsoft Dataverse Web Accounts Contacts API
   description: RESTful API for interacting with Microsoft Dataverse (formerly Common Data Service), the underlying data platform for Microsoft Power Apps. This API follows OData v4.0 conventions and provides CRUD operations on Dataverse tables including accounts, contacts, and entity definitions. Each Dataverse environment has a unique organization URL and may include custom tables and operations specific to that environment.
@@ -217,7 +217,78 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    ODataMaxPageSize:
+      name: Prefer
+      in: header
+      description: Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.
+      schema:
+        type: string
+      example: odata.maxpagesize=100
+    ODataExpand:
+      name: $expand
+      in: query
+      description: Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities.
+      schema:
+        type: string
+      example: primarycontactid($select=fullname,emailaddress1)
+    ODataSkip:
+      name: $skip
+      in: query
+      description: Number of records to skip before returning results.
+      schema:
+        type: integer
+        minimum: 0
+    ODataFilter:
+      name: $filter
+      in: query
+      description: OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.
+      schema:
+        type: string
+      example: statecode eq 0
+    Prefer:
+      name: Prefer
+      in: header
+      description: OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations="*" (include formatted values), and odata.maxpagesize=N (set page size).
+      schema:
+        type: string
+      example: return=representation,odata.include-annotations="*"
+    ODataTop:
+      name: $top
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        minimum: 1
+      example: 50
+    ODataSelect:
+      name: $select
+      in: query
+      description: Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.
+      schema:
+        type: string
+      example: name,accountnumber,emailaddress1
+    ODataOrderBy:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties to sort results by, each optionally followed by asc or desc.
+      schema:
+        type: string
+      example: name asc
+    ODataCount:
+      name: $count
+      in: query
+      description: Set to true to include a count of matching records in the response.
+      schema:
+        type: boolean
+      example: true
   responses:
+    BadRequest:
+      description: The request was malformed or contained invalid data. Check the request body and query parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
     Forbidden:
       description: The authenticated user does not have sufficient permissions to perform this operation. Check Dataverse security roles and privileges.
       content:
@@ -230,8 +301,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    BadRequest:
-      description: The request was malformed or contained invalid data. Check the request body and query parameters.
+    PreconditionFailed:
+      description: The If-Match header value does not match the current ETag of the record, indicating the record has been modified since it was last retrieved. Retrieve the latest version and retry.
       content:
         application/json:
           schema:
@@ -242,39 +313,31 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    PreconditionFailed:
-      description: The If-Match header value does not match the current ETag of the record, indicating the record has been modified since it was last retrieved. Retrieve the latest version and retry.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
   schemas:
-    ODataError:
+    ContactCollection:
       type: object
-      description: Standard OData error response from the Dataverse Web API.
+      description: OData collection response containing contact records.
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Machine-readable error code.
-            message:
-              type: string
-              description: Human-readable error message.
-            innererror:
-              type: object
-              properties:
-                message:
-                  type: string
-                  description: Detailed inner error message.
-                type:
-                  type: string
-                  description: Error type identifier.
-                stacktrace:
-                  type: string
-                  description: Server-side stack trace for debugging.
-          example: example_value
+        '@odata.context':
+          type: string
+          format: uri
+          description: OData context URL describing the collection.
+          example: https://www.example.com
+        '@odata.count':
+          type: integer
+          description: Total count of matching records (when $count=true).
+          example: 10
+        '@odata.nextLink':
+          type: string
+          format: uri
+          description: URL to retrieve the next page of results.
+          example: https://www.example.com
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+          description: Array of contact records.
+          example: []
     Contact:
       type: object
       description: Person with whom a business unit has a relationship, such as a customer, supplier, or colleague. Corresponds to the contact entity type in the Microsoft.Dynamics.CRM namespace.
@@ -646,95 +709,32 @@ components:
         primaryNameColumn: fullname
         namespace: Microsoft.Dynamics.CRM
         baseType: crmbaseentity
-    ContactCollection:
+    ODataError:
       type: object
-      description: OData collection response containing contact records.
+      description: Standard OData error response from the Dataverse Web API.
       properties:
-        '@odata.context':
-          type: string
-          format: uri
-          description: OData context URL describing the collection.
-          example: https://www.example.com
-        '@odata.count':
-          type: integer
-          description: Total count of matching records (when $count=true).
-          example: 10
-        '@odata.nextLink':
-          type: string
-          format: uri
-          description: URL to retrieve the next page of results.
-          example: https://www.example.com
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
-          description: Array of contact records.
-          example: []
-  parameters:
-    ODataCount:
-      name: $count
-      in: query
-      description: Set to true to include a count of matching records in the response.
-      schema:
-        type: boolean
-      example: true
-    ODataExpand:
-      name: $expand
-      in: query
-      description: Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities.
-      schema:
-        type: string
-      example: primarycontactid($select=fullname,emailaddress1)
-    ODataMaxPageSize:
-      name: Prefer
-      in: header
-      description: Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.
-      schema:
-        type: string
-      example: odata.maxpagesize=100
-    Prefer:
-      name: Prefer
-      in: header
-      description: OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations="*" (include formatted values), and odata.maxpagesize=N (set page size).
-      schema:
-        type: string
-      example: return=representation,odata.include-annotations="*"
-    ODataFilter:
-      name: $filter
-      in: query
-      description: OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.
-      schema:
-        type: string
-      example: statecode eq 0
-    ODataOrderBy:
-      name: $orderby
-      in: query
-      description: Comma-separated list of properties to sort results by, each optionally followed by asc or desc.
-      schema:
-        type: string
-      example: name asc
-    ODataSkip:
-      name: $skip
-      in: query
-      description: Number of records to skip before returning results.
-      schema:
-        type: integer
-        minimum: 0
-    ODataSelect:
-      name: $select
-      in: query
-      description: Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.
-      schema:
-        type: string
-      example: name,accountnumber,emailaddress1
-    ODataTop:
-      name: $top
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        minimum: 1
-      example: 50
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code.
+            message:
+              type: string
+              description: Human-readable error message.
+            innererror:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Detailed inner error message.
+                type:
+                  type: string
+                  description: Error type identifier.
+                stacktrace:
+                  type: string
+                  description: Server-side stack trace for debugging.
+          example: example_value
   securitySchemes:
     oauth2:
       type: oauth2

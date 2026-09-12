@@ -441,6 +441,8 @@ apis:
   - type: Training
     url: https://learn.microsoft.com/en-us/training/modules/dataverse-web-api/
 common:
+  - type: Website
+    url: https://www.microsoft.com/
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/microsoft-power-apps/overview
   - type: AgenticAccess
@@ -548,3 +550,5 @@ tags_raw:
   - No-Code
   - Power Platform
   - SaaS
+x-parent: microsoft
+x-relationship: product

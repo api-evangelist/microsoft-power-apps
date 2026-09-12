@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Microsoft Power Apps Microsoft Dataverse Web Accounts Entities API
   description: RESTful API for interacting with Microsoft Dataverse (formerly Common Data Service), the underlying data platform for Microsoft Power Apps. This API follows OData v4.0 conventions and provides CRUD operations on Dataverse tables including accounts, contacts, and entity definitions. Each Dataverse environment has a unique organization URL and may include custom tables and operations specific to that environment.
@@ -113,6 +113,64 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    ODataMaxPageSize:
+      name: Prefer
+      in: header
+      description: Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.
+      schema:
+        type: string
+      example: odata.maxpagesize=100
+    ODataSkip:
+      name: $skip
+      in: query
+      description: Number of records to skip before returning results.
+      schema:
+        type: integer
+        minimum: 0
+    ODataFilter:
+      name: $filter
+      in: query
+      description: OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.
+      schema:
+        type: string
+      example: statecode eq 0
+    Prefer:
+      name: Prefer
+      in: header
+      description: OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations="*" (include formatted values), and odata.maxpagesize=N (set page size).
+      schema:
+        type: string
+      example: return=representation,odata.include-annotations="*"
+    ODataTop:
+      name: $top
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        minimum: 1
+      example: 50
+    ODataSelect:
+      name: $select
+      in: query
+      description: Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.
+      schema:
+        type: string
+      example: name,accountnumber,emailaddress1
+    ODataOrderBy:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties to sort results by, each optionally followed by asc or desc.
+      schema:
+        type: string
+      example: name asc
+    ODataCount:
+      name: $count
+      in: query
+      description: Set to true to include a count of matching records in the response.
+      schema:
+        type: boolean
+      example: true
   responses:
     Forbidden:
       description: The authenticated user does not have sufficient permissions to perform this operation. Check Dataverse security roles and privileges.
@@ -133,32 +191,6 @@ components:
           schema:
             $ref: '#/components/schemas/ODataError'
   schemas:
-    ODataError:
-      type: object
-      description: Standard OData error response from the Dataverse Web API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Machine-readable error code.
-            message:
-              type: string
-              description: Human-readable error message.
-            innererror:
-              type: object
-              properties:
-                message:
-                  type: string
-                  description: Detailed inner error message.
-                type:
-                  type: string
-                  description: Error type identifier.
-                stacktrace:
-                  type: string
-                  description: Server-side stack trace for debugging.
-          example: example_value
     EntityCollection:
       type: object
       description: OData collection response containing entity definition records.
@@ -297,64 +329,32 @@ components:
         primaryNameColumn: name
         namespace: Microsoft.Dynamics.CRM
         baseType: crmbaseentity
-  parameters:
-    ODataCount:
-      name: $count
-      in: query
-      description: Set to true to include a count of matching records in the response.
-      schema:
-        type: boolean
-      example: true
-    Prefer:
-      name: Prefer
-      in: header
-      description: OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations="*" (include formatted values), and odata.maxpagesize=N (set page size).
-      schema:
-        type: string
-      example: return=representation,odata.include-annotations="*"
-    ODataMaxPageSize:
-      name: Prefer
-      in: header
-      description: Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.
-      schema:
-        type: string
-      example: odata.maxpagesize=100
-    ODataFilter:
-      name: $filter
-      in: query
-      description: OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.
-      schema:
-        type: string
-      example: statecode eq 0
-    ODataOrderBy:
-      name: $orderby
-      in: query
-      description: Comma-separated list of properties to sort results by, each optionally followed by asc or desc.
-      schema:
-        type: string
-      example: name asc
-    ODataSkip:
-      name: $skip
-      in: query
-      description: Number of records to skip before returning results.
-      schema:
-        type: integer
-        minimum: 0
-    ODataSelect:
-      name: $select
-      in: query
-      description: Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.
-      schema:
-        type: string
-      example: name,accountnumber,emailaddress1
-    ODataTop:
-      name: $top
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        minimum: 1
-      example: 50
+    ODataError:
+      type: object
+      description: Standard OData error response from the Dataverse Web API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code.
+            message:
+              type: string
+              description: Human-readable error message.
+            innererror:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Detailed inner error message.
+                type:
+                  type: string
+                  description: Error type identifier.
+                stacktrace:
+                  type: string
+                  description: Server-side stack trace for debugging.
+          example: example_value
   securitySchemes:
     oauth2:
       type: oauth2
