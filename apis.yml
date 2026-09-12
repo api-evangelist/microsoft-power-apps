@@ -1,8 +1,6 @@
 aid: microsoft-power-apps
 name: Microsoft Power Apps
-description: >-
-  Collection of APIs for Microsoft Power Apps platform enabling low-code application development, automation, and data
-  connectivity.
+description: Collection of APIs for Microsoft Power Apps platform enabling low-code application development, automation, and data connectivity.
 deliveryModel:
   model: saas
   open_source: false
@@ -33,32 +31,25 @@ created: '2024'
 modified: '2026-05-19'
 artifacts:
   openapi:
-    - name: Microsoft Dataverse Web API OpenAPI Specification
-      path: openapi/microsoft-power-apps-dataverse-web-api-openapi.yml
-      version: 3.1.0
-      description: >-
-        OpenAPI 3.1.0 specification for the Dataverse Web API v9.2 covering accounts, contacts, and entity definitions
-        with full CRUD operations and OData query support
+  - name: Microsoft Dataverse Web API OpenAPI Specification
+    path: openapi/microsoft-power-apps-dataverse-web-api-openapi.yml
+    version: 3.1.0
+    description: OpenAPI 3.1.0 specification for the Dataverse Web API v9.2 covering accounts, contacts, and entity definitions with full CRUD operations and OData query support
   jsonSchema:
-    - name: Microsoft Power Apps Dataverse Entity Schema
-      path: json-schema/microsoft-power-apps-entity-schema.json
-      version: draft/2020-12
-      description: >-
-        JSON Schema defining core Dataverse entity types (Account, Contact, Entity) with property types, constraints,
-        and enum values based on the Microsoft.Dynamics.CRM namespace
+  - name: Microsoft Power Apps Dataverse Entity Schema
+    path: json-schema/microsoft-power-apps-entity-schema.json
+    version: draft/2020-12
+    description: JSON Schema defining core Dataverse entity types (Account, Contact, Entity) with property types, constraints, and enum values based on the Microsoft.Dynamics.CRM namespace
   jsonLd:
-    - name: Microsoft Power Apps JSON-LD Context
-      path: json-ld/microsoft-power-apps-context.jsonld
-      version: '1.1'
-      description: >-
-        JSON-LD context mapping Dataverse entity properties to Schema.org, Dublin Core, OData, and vCard vocabularies
-        for semantic interoperability
+  - name: Microsoft Power Apps JSON-LD Context
+    path: json-ld/microsoft-power-apps-context.jsonld
+    version: '1.1'
+    description: JSON-LD context mapping Dataverse entity properties to Schema.org, Dublin Core, OData, and vCard vocabularies for semantic interoperability
 specificationVersion: '0.23'
-url: https://raw.githubusercontent.com/api-evangelist/microsoft-power-apps/refs/heads/main/apis.yml
+url: https://learn.microsoft.com/en-us/power-platform/alm/
 apis:
 - name: Power Apps Management API
-  description: >-
-    API for administrative tasks including environment management, app sharing, and user permissions.
+  description: API for administrative tasks including environment management, app sharing, and user permissions.
   image: https://powerplatform.microsoft.com/images/admin-icon.png
   humanURL: https://docs.microsoft.com/en-us/power-platform/admin/programmability-admin-center
   baseURL: https://api.bap.microsoft.com
@@ -77,14 +68,11 @@ apis:
   - type: Authentication
     url: https://learn.microsoft.com/en-us/power-platform/admin/programmability-authentication-v2
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/rest/api/power-platform/environmentmanagement/environment-management-settings
+    url: https://learn.microsoft.com/en-us/rest/api/power-platform/environmentmanagement/environment-management-settings
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/rest/api/power-platform/environmentmanagement/environment-managed-governance/enable-managed-environment
+    url: https://learn.microsoft.com/en-us/rest/api/power-platform/environmentmanagement/environment-managed-governance/enable-managed-environment
 - name: Power Apps Connectors API
-  description: >-
-    API for working with custom and standard connectors to integrate external services and data sources.
+  description: API for working with custom and standard connectors to integrate external services and data sources.
   image: https://powerplatform.microsoft.com/images/connectors-icon.png
   humanURL: https://docs.microsoft.com/en-us/connectors/custom-connectors/
   baseURL: https://api.powerapps.com/providers/Microsoft.PowerApps
@@ -100,11 +88,9 @@ apis:
   - type: Documentation
     url: https://docs.microsoft.com/en-us/connectors/custom-connectors/
   - type: APIReference
-    url: >-
-      https://learn.microsoft.com/en-us/rest/api/power-platform/connectivity/connectors/list-connectors
+    url: https://learn.microsoft.com/en-us/rest/api/power-platform/connectivity/connectors/list-connectors
 - name: Power Apps Canvas Apps API
-  description: >-
-    API specific to Canvas Apps for creating pixel-perfect user interfaces with drag-and-drop functionality.
+  description: API specific to Canvas Apps for creating pixel-perfect user interfaces with drag-and-drop functionality.
   image: https://powerplatform.microsoft.com/images/canvas-apps-icon.png
   humanURL: https://docs.microsoft.com/en-us/power-apps/maker/canvas-apps/
   baseURL: https://api.powerapps.com
@@ -119,15 +105,13 @@ apis:
   - type: Documentation
     url: https://docs.microsoft.com/en-us/power-platform/power-fx/formula-reference
   - type: Documentation
-    url: >-
-      https://docs.microsoft.com/en-us/power-apps/maker/canvas-apps/application-lifecycle-management
+    url: https://docs.microsoft.com/en-us/power-apps/maker/canvas-apps/application-lifecycle-management
   - type: Documentation
     url: https://learn.microsoft.com/en-us/power-platform/power-fx/overview
   - type: Documentation
     url: https://learn.microsoft.com/en-us/power-platform/power-fx/formula-reference-canvas-apps
 - name: Power Apps Model-driven Apps API
-  description: >-
-    API for Model-driven Apps that automatically generate UI based on data model and business logic.
+  description: API for Model-driven Apps that automatically generate UI based on data model and business logic.
   image: https://powerplatform.microsoft.com/images/model-driven-icon.png
   humanURL: https://docs.microsoft.com/en-us/power-apps/developer/model-driven-apps/
   baseURL: https://[organization].crm.dynamics.com
@@ -140,18 +124,13 @@ apis:
   - type: Documentation
     url: https://docs.microsoft.com/en-us/power-apps/developer/model-driven-apps/overview
   - type: APIReference
-    url: >-
-      https://docs.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference
+    url: https://docs.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference
   - type: Documentation
-    url: >-
-      https://docs.microsoft.com/en-us/power-apps/developer/model-driven-apps/customize-entity-forms
+    url: https://docs.microsoft.com/en-us/power-apps/developer/model-driven-apps/customize-entity-forms
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/power-platform/power-fx/formula-reference-model-driven-apps
+    url: https://learn.microsoft.com/en-us/power-platform/power-fx/formula-reference-model-driven-apps
 - name: Power Apps Component Framework (PCF) API
-  description: >-
-    Framework API for professional developers to create reusable code components for model-driven and
-    canvas apps using TypeScript and web technologies.
+  description: Framework API for professional developers to create reusable code components for model-driven and canvas apps using TypeScript and web technologies.
   image: https://powerplatform.microsoft.com/images/power-apps-icon.png
   humanURL: https://learn.microsoft.com/en-us/power-apps/developer/component-framework/overview
   baseURL: https://api.powerapps.com
@@ -167,18 +146,13 @@ apis:
   - type: APIReference
     url: https://learn.microsoft.com/en-us/power-apps/developer/component-framework/reference/
   - type: GettingStarted
-    url: >-
-      https://learn.microsoft.com/en-us/power-apps/developer/component-framework/implementing-controls-using-typescript
+    url: https://learn.microsoft.com/en-us/power-apps/developer/component-framework/implementing-controls-using-typescript
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/power-apps/developer/component-framework/create-custom-controls-using-pcf
+    url: https://learn.microsoft.com/en-us/power-apps/developer/component-framework/create-custom-controls-using-pcf
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/power-apps/developer/component-framework/bring-intelligence-using-agent-apis
+    url: https://learn.microsoft.com/en-us/power-apps/developer/component-framework/bring-intelligence-using-agent-apis
 - name: Power Platform REST API
-  description: >-
-    Unified RESTful API for Power Platform administration including environment management, governance,
-    licensing, app management, and capacity reporting.
+  description: Unified RESTful API for Power Platform administration including environment management, governance, licensing, app management, and capacity reporting.
   image: https://powerplatform.microsoft.com/images/power-apps-icon.png
   humanURL: https://learn.microsoft.com/en-us/rest/api/power-platform/
   baseURL: https://api.powerplatform.com
@@ -198,15 +172,11 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/power-platform/appmanagement/applications
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/rest/api/power-platform/environmentmanagement/environment-management-settings
+    url: https://learn.microsoft.com/en-us/rest/api/power-platform/environmentmanagement/environment-management-settings
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/rest/api/power-platform/connectivity/connectors/list-connectors
+    url: https://learn.microsoft.com/en-us/rest/api/power-platform/connectivity/connectors/list-connectors
 - name: Power Pages Web API
-  description: >-
-    Web API for Power Pages (formerly Power Apps Portals) enabling CRUD operations on Dataverse tables
-    from external-facing portal web pages.
+  description: Web API for Power Pages (formerly Power Apps Portals) enabling CRUD operations on Dataverse tables from external-facing portal web pages.
   image: https://powerplatform.microsoft.com/images/power-apps-icon.png
   humanURL: https://learn.microsoft.com/en-us/power-pages/configure/web-api-overview
   baseURL: https://[site-url]/_api
@@ -234,12 +204,9 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/power-platform/power-fx/formula-reference-power-pages
 - name: Dataverse Organization Service SDK
-  description: >-
-    .NET SDK providing strongly-typed access to Microsoft Dataverse through the IOrganizationService interface
-    for server-side development and plugins.
+  description: .NET SDK providing strongly-typed access to Microsoft Dataverse through the IOrganizationService interface for server-side development and plugins.
   image: https://powerplatform.microsoft.com/images/dataverse-icon.png
-  humanURL: >-
-    https://learn.microsoft.com/en-us/power-apps/developer/data-platform/org-service/overview
+  humanURL: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/org-service/overview
   baseURL: https://[organization].api.crm.dynamics.com
   tags:
   - .NET
@@ -255,23 +222,17 @@ apis:
   - Server-Side
   properties:
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/power-apps/developer/data-platform/org-service/overview
+    url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/org-service/overview
   - type: APIReference
-    url: >-
-      https://learn.microsoft.com/en-us/power-apps/developer/data-platform/org-service/iorganizationservice-interface
+    url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/org-service/iorganizationservice-interface
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/power-apps/developer/data-platform/org-service/use-messages
+    url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/org-service/use-messages
   - type: APIReference
-    url: >-
-      https://learn.microsoft.com/en-us/dotnet/api/microsoft.powerplatform.dataverse.client.serviceclient
+    url: https://learn.microsoft.com/en-us/dotnet/api/microsoft.powerplatform.dataverse.client.serviceclient
   - type: Documentation
     url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/
 - name: Power Apps Code Apps API
-  description: >-
-    API and SDK for building code-first Power Apps using popular frameworks like React and Vue, developed
-    in any code-first IDE and deployed to Power Apps.
+  description: API and SDK for building code-first Power Apps using popular frameworks like React and Vue, developed in any code-first IDE and deployed to Power Apps.
   image: https://powerplatform.microsoft.com/images/power-apps-icon.png
   humanURL: https://learn.microsoft.com/en-us/power-apps/developer/code-apps/overview
   baseURL: https://api.powerapps.com
@@ -291,13 +252,10 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/power-apps/developer/code-apps/how-to/alm
   - type: Security
-    url: >-
-      https://learn.microsoft.com/en-us/power-apps/developer/code-apps/how-to/content-security-policy
+    url: https://learn.microsoft.com/en-us/power-apps/developer/code-apps/how-to/content-security-policy
 - aid: microsoft-power-apps:microsoft-power-apps-accounts-api
   name: Microsoft Power Apps Accounts API
-  description: >-
-    Operations on the account entity set. An account represents a business that is a customer or potential
-    customer, typically the company billed in business transactions.
+  description: Operations on the account entity set. An account represents a business that is a customer or potential customer, typically the company billed in business transactions.
   humanURL: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/overview
   baseURL: https://api.powerapps.com
   tags:
@@ -320,19 +278,15 @@ apis:
   - type: Documentation
     url: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/overview
   - type: OData
-    url: >-
-      https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/query-data-web-api
+    url: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/query-data-web-api
   - type: Authentication
     url: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/authenticate-oauth
   - type: APIReference
-    url: >-
-      https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/reference/about
+    url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/reference/about
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/perform-operations-web-api
+    url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/perform-operations-web-api
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/web-api-types-operations
+    url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/web-api-types-operations
   - type: Documentation
     url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/custom-api
   - type: JSONSchema
@@ -345,9 +299,7 @@ apis:
     url: https://learn.microsoft.com/en-us/training/modules/dataverse-web-api/
 - aid: microsoft-power-apps:microsoft-power-apps-contacts-api
   name: Microsoft Power Apps Contacts API
-  description: >-
-    Operations on the contact entity set. A contact represents a person with whom a business unit has
-    a relationship, such as a customer, supplier, or colleague.
+  description: Operations on the contact entity set. A contact represents a person with whom a business unit has a relationship, such as a customer, supplier, or colleague.
   humanURL: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/overview
   baseURL: https://api.powerapps.com
   tags:
@@ -368,19 +320,15 @@ apis:
   - type: Documentation
     url: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/overview
   - type: OData
-    url: >-
-      https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/query-data-web-api
+    url: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/query-data-web-api
   - type: Authentication
     url: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/authenticate-oauth
   - type: APIReference
-    url: >-
-      https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/reference/about
+    url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/reference/about
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/perform-operations-web-api
+    url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/perform-operations-web-api
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/web-api-types-operations
+    url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/web-api-types-operations
   - type: Documentation
     url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/custom-api
   - type: JSONSchema
@@ -393,10 +341,7 @@ apis:
     url: https://learn.microsoft.com/en-us/training/modules/dataverse-web-api/
 - aid: microsoft-power-apps:microsoft-power-apps-entities-api
   name: Microsoft Power Apps Entities API
-  description: >-
-    Operations on the entity definition entity set. Provides metadata about Dataverse tables (entities)
-    including their logical names, collection names, and structural information. Read-only access via
-    RetrieveMultiple.
+  description: Operations on the entity definition entity set. Provides metadata about Dataverse tables (entities) including their logical names, collection names, and structural information. Read-only access via RetrieveMultiple.
   humanURL: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/overview
   baseURL: https://api.powerapps.com
   tags:
@@ -417,19 +362,15 @@ apis:
   - type: Documentation
     url: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/overview
   - type: OData
-    url: >-
-      https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/query-data-web-api
+    url: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/webapi/query-data-web-api
   - type: Authentication
     url: https://docs.microsoft.com/en-us/power-apps/developer/data-platform/authenticate-oauth
   - type: APIReference
-    url: >-
-      https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/reference/about
+    url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/reference/about
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/perform-operations-web-api
+    url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/perform-operations-web-api
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/web-api-types-operations
+    url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/web-api-types-operations
   - type: Documentation
     url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/custom-api
   - type: JSONSchema
@@ -440,115 +381,194 @@ apis:
     url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/security-roles
   - type: Training
     url: https://learn.microsoft.com/en-us/training/modules/dataverse-web-api/
+- name: Power Apps Component Framework API
+  description: APIs for building custom components using the Power Apps Component Framework (PCF).
+  image: https://powerusers.microsoft.com/t5/image/serverpage/image-id/98171i62B0C7ECED0A0B8B/image-size/large
+  humanURL: https://docs.microsoft.com/en-us/power-apps/developer/component-framework/overview
+  baseURL: https://pcf.tools
+  tags:
+  - Components
+  - Custom Controls
+  - PCF
+  - UI Framework
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/power-apps/developer/component-framework/reference/
+  - type: CodeExamples
+    url: https://github.com/microsoft/PowerApps-Samples/tree/master/component-framework
+  - type: Tutorials
+    url: https://docs.microsoft.com/en-us/power-apps/developer/component-framework/create-custom-controls-using-pcf
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-apps/developer/component-framework/component-framework-for-canvas-apps
+- name: Model-Driven Apps Client API
+  description: Client API reference for model-driven apps providing JavaScript libraries for form scripting, UI manipulation, data access, and the Xrm object model including Xrm.WebApi for data operations.
+  image: https://powerusers.microsoft.com/t5/image/serverpage/image-id/98171i62B0C7ECED0A0B8B/image-size/large
+  humanURL: https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference
+  baseURL: https://[org].api.crm.dynamics.com
+  tags:
+  - Client API
+  - Form Scripting
+  - JavaScript
+  - Model-Driven Apps
+  - Xrm Object Model
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/walkthrough-write-your-first-client-script
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/client-scripting
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/get-started-web-api-client-side-javascript
+- name: Custom Connectors API
+  description: Custom connectors allow you to create wrappers around REST or SOAP APIs for use in Power Apps, Power Automate, Logic Apps, and Copilot Studio, enabling integration with services not available as prebuilt connectors.
+  image: https://powerusers.microsoft.com/t5/image/serverpage/image-id/98171i62B0C7ECED0A0B8B/image-size/large
+  humanURL: https://learn.microsoft.com/en-us/connectors/custom-connectors/
+  baseURL: https://[environment].api.powerapps.com
+  tags:
+  - Connectors
+  - Custom Connectors
+  - Integration
+  - OpenAPI
+  - REST
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/connectors/custom-connectors/
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/connectors/custom-connectors/define-blank
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/connectors/custom-connectors/use-custom-connector-powerapps
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/connectors/connector-reference/
 common:
-  - type: Website
-    url: https://www.microsoft.com/
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/microsoft-power-apps/overview
-  - type: AgenticAccess
-    url: agentic-access/microsoft-power-apps-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/microsoft-power-apps-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/microsoft-power-apps-domain-security.yml
-  - type: Authentication
-    url: authentication/microsoft-power-apps-authentication.yml
-  - type: OAuthScopes
-    url: scopes/microsoft-power-apps-scopes.yml
-  - type: DeveloperPortal
-    url: https://docs.microsoft.com/en-us/power-apps/developer/
-  - type: Community
-    url: https://powerusers.microsoft.com/
-  - type: Blog
-    url: https://powerapps.microsoft.com/blog/
-  - type: Pricing
-    url: https://powerapps.microsoft.com/pricing/
-  - type: StatusPage
-    url: https://status.powerplatform.microsoft.com/
-  - type: Support
-    url: https://powerapps.microsoft.com/support/
-  - type: Training
-    url: https://docs.microsoft.com/en-us/learn/powerplatform/power-apps
-  - type: GitHubRepository
-    url: https://github.com/microsoft/PowerApps-Samples
-  - type: TermsOfService
-    url: https://www.microsoft.com/licensing/terms/productoffering/MicrosoftPowerApps
-  - type: PrivacyPolicy
-    url: https://privacy.microsoft.com/
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/power-platform/alm/
-    title: ALM Documentation
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/power-platform/alm/pipelines
-    title: Pipelines
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/power-platform/developer/
-    title: Power Platform Developer Documentation
-  - type: CLI
-    url: https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/pipeline
-  - type: Security
-    url: https://learn.microsoft.com/en-us/power-platform/admin/wp-security
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/power-platform/power-fx/overview
-    title: Power Fx Overview
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/power-platform/power-fx/formula-reference-overview
-    title: Power Fx Formula Reference
-  - type: Training
-    url: https://learn.microsoft.com/en-us/training/paths/simplify-power-platform-deployments/
-    title: Deployment Training
-  - type: ReleaseNotes
-    url: https://learn.microsoft.com/en-us/power-platform/release-plan/2025wave1/power-apps/planned-features
-  - type: Features
-    data:
-      - name: Low-Code Development
-        description: Visual drag-and-drop app building with Power Fx formulas and pre-built templates.
-      - name: Microsoft Dataverse
-        description: Built-in data platform with security, business logic, and integration capabilities.
-      - name: Custom Connectors
-        description: Connect to any external API through standard and custom connector definitions.
-      - name: Model-Driven Apps
-        description: Automatically generated UIs based on data model and business logic configuration.
-      - name: Component Framework
-        description: Professional code components using TypeScript for custom controls in canvas and model-driven apps.
-  - type: UseCases
-    data:
-      - name: Business Process Automation
-        description: Digitize paper-based processes and manual workflows with custom business applications.
-      - name: Customer Portal
-        description: Build external-facing portals using Power Pages with Dataverse Web API integration.
-      - name: Field Service Apps
-        description: Create mobile applications for field workers with offline capabilities and data sync.
-      - name: Data Management
-        description: Build CRUD applications on Dataverse for managing business data with role-based security.
-  - type: Integrations
-    data:
-      - name: Microsoft 365
-        description: Native integration with Teams, SharePoint, Outlook, and Excel for productivity workflows.
-      - name: Dynamics 365
-        description: Shared Dataverse platform with Dynamics 365 CRM and ERP modules for unified data.
-      - name: Power Automate
-        description: Trigger automated flows from Power Apps for cross-system process automation.
+- type: Portal
+  url: https://make.powerapps.com
+- type: GitHubOrganization
+  url: https://github.com/microsoft/PowerApps-Samples
+- type: GettingStarted
+  url: https://learn.microsoft.com/en-us/power-platform/developer/get-started
+- type: Resources
+  url: https://learn.microsoft.com/en-us/power-platform/alm/overview-alm
+- type: Resources
+  url: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/developer-tools
+- type: Resources
+  url: https://learn.microsoft.com/en-us/power-platform/alm/devops-github-actions
+- type: ChangeLog
+  url: https://learn.microsoft.com/en-us/power-platform/admin/programmability-whats-new-changed
+- type: Resources
+  url: https://learn.microsoft.com/en-us/connectors/connector-reference/
+- type: MCPServer
+  url: https://github.com/microsoft/powerbi-modeling-mcp
+- type: AgentSkills
+  url: https://github.com/microsoft/power-platform-skills
+- type: Website
+  url: https://www.microsoft.com/
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/microsoft-power-apps/overview
+- type: AgenticAccess
+  url: agentic-access/microsoft-power-apps-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/microsoft-power-apps-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/microsoft-power-apps-domain-security.yml
+- type: Authentication
+  url: authentication/microsoft-power-apps-authentication.yml
+- type: OAuthScopes
+  url: scopes/microsoft-power-apps-scopes.yml
+- type: DeveloperPortal
+  url: https://docs.microsoft.com/en-us/power-apps/developer/
+- type: Community
+  url: https://powerusers.microsoft.com/
+- type: Blog
+  url: https://powerapps.microsoft.com/blog/
+- type: Pricing
+  url: https://powerapps.microsoft.com/pricing/
+- type: StatusPage
+  url: https://status.powerplatform.microsoft.com/
+- type: Support
+  url: https://powerapps.microsoft.com/support/
+- type: Training
+  url: https://docs.microsoft.com/en-us/learn/powerplatform/power-apps
+- type: GitHubRepository
+  url: https://github.com/microsoft/PowerApps-Samples
+- type: TermsOfService
+  url: https://www.microsoft.com/licensing/terms/productoffering/MicrosoftPowerApps
+- type: PrivacyPolicy
+  url: https://privacy.microsoft.com/
+- type: Documentation
+  url: https://learn.microsoft.com/en-us/power-platform/alm/
+  title: ALM Documentation
+- type: Documentation
+  url: https://learn.microsoft.com/en-us/power-platform/alm/pipelines
+  title: Pipelines
+- type: Documentation
+  url: https://learn.microsoft.com/en-us/power-platform/developer/
+  title: Power Platform Developer Documentation
+- type: CLI
+  url: https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/pipeline
+- type: Security
+  url: https://learn.microsoft.com/en-us/power-platform/admin/wp-security
+- type: Documentation
+  url: https://learn.microsoft.com/en-us/power-platform/power-fx/overview
+  title: Power Fx Overview
+- type: Documentation
+  url: https://learn.microsoft.com/en-us/power-platform/power-fx/formula-reference-overview
+  title: Power Fx Formula Reference
+- type: Training
+  url: https://learn.microsoft.com/en-us/training/paths/simplify-power-platform-deployments/
+  title: Deployment Training
+- type: ReleaseNotes
+  url: https://learn.microsoft.com/en-us/power-platform/release-plan/2025wave1/power-apps/planned-features
+- type: Features
+  data:
+  - name: Low-Code Development
+    description: Visual drag-and-drop app building with Power Fx formulas and pre-built templates.
+  - name: Microsoft Dataverse
+    description: Built-in data platform with security, business logic, and integration capabilities.
+  - name: Custom Connectors
+    description: Connect to any external API through standard and custom connector definitions.
+  - name: Model-Driven Apps
+    description: Automatically generated UIs based on data model and business logic configuration.
+  - name: Component Framework
+    description: Professional code components using TypeScript for custom controls in canvas and model-driven apps.
+- type: UseCases
+  data:
+  - name: Business Process Automation
+    description: Digitize paper-based processes and manual workflows with custom business applications.
+  - name: Customer Portal
+    description: Build external-facing portals using Power Pages with Dataverse Web API integration.
+  - name: Field Service Apps
+    description: Create mobile applications for field workers with offline capabilities and data sync.
+  - name: Data Management
+    description: Build CRUD applications on Dataverse for managing business data with role-based security.
+- type: Integrations
+  data:
+  - name: Microsoft 365
+    description: Native integration with Teams, SharePoint, Outlook, and Excel for productivity workflows.
+  - name: Dynamics 365
+    description: Shared Dataverse platform with Dynamics 365 CRM and ERP modules for unified data.
+  - name: Power Automate
+    description: Trigger automated flows from Power Apps for cross-system process automation.
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
 tags:
-  - Business Applications
-  - Cloud
-  - Enterprise
-  - Low-Code
-  - Microsoft
-  - No-Code
-  - Power Platform
-  - Software-as-a-Service
+- Business Applications
+- Cloud
+- Enterprise
+- Low-Code
+- Microsoft
+- No-Code
+- Power Platform
+- Software-as-a-Service
 tags_raw:
-  - Business Applications
-  - Cloud
-  - Enterprise
-  - Low-Code
-  - Microsoft
-  - No-Code
-  - Power Platform
-  - SaaS
-x-parent: microsoft
+- Business Applications
+- Cloud
+- Enterprise
+- Low-Code
+- Microsoft
+- No-Code
+- Power Platform
+- SaaS
+x-parent: power-platform
 x-relationship: product
