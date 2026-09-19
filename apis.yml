@@ -55,6 +55,11 @@ apis:
   baseURL: https://api.bap.microsoft.com
   tags:
   - Administration
+  - Environment
+  - Governance
+  - Management
+  tags_raw:
+  - Administration
   - Environments
   - Governance
   - Management
@@ -157,6 +162,12 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/rest/api/power-platform/
   baseURL: https://api.powerplatform.com
   tags:
+  - Administration
+  - Environment
+  - Governance
+  - Licensing
+  - REST API
+  tags_raw:
   - Administration
   - Environments
   - Governance
