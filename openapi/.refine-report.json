@@ -1,9 +1,7 @@
 {
   "provider": "microsoft-power-apps",
   "sources": [
-    "microsoft-power-apps-accounts-api-openapi.yml",
-    "microsoft-power-apps-contacts-api-openapi.yml",
-    "microsoft-power-apps-entities-api-openapi.yml"
+    "_original/microsoft-power-apps-dataverse-web-api-openapi.yml"
   ],
   "outputs": [
     "microsoft-power-apps-accounts-api-openapi.yml",
@@ -14,10 +12,13 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "microsoft-power-apps-accounts-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "microsoft-power-apps-contacts-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "microsoft-power-apps-entities-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "microsoft-power-apps-dataverse-web-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "microsoft-power-apps-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "microsoft-power-apps-contacts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "microsoft-power-apps-entities-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

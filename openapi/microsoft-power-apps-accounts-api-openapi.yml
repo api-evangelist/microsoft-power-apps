@@ -218,41 +218,6 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    ODataMaxPageSize:
-      name: Prefer
-      in: header
-      description: Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.
-      schema:
-        type: string
-      example: odata.maxpagesize=100
-    ODataExpand:
-      name: $expand
-      in: query
-      description: Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities.
-      schema:
-        type: string
-      example: primarycontactid($select=fullname,emailaddress1)
-    ODataSkip:
-      name: $skip
-      in: query
-      description: Number of records to skip before returning results.
-      schema:
-        type: integer
-        minimum: 0
-    ODataFilter:
-      name: $filter
-      in: query
-      description: OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.
-      schema:
-        type: string
-      example: statecode eq 0
-    Prefer:
-      name: Prefer
-      in: header
-      description: OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations="*" (include formatted values), and odata.maxpagesize=N (set page size).
-      schema:
-        type: string
-      example: return=representation,odata.include-annotations="*"
     ODataTop:
       name: $top
       in: query
@@ -261,6 +226,34 @@ components:
         type: integer
         minimum: 1
       example: 50
+    ODataFilter:
+      name: $filter
+      in: query
+      description: OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.
+      schema:
+        type: string
+      example: statecode eq 0
+    ODataMaxPageSize:
+      name: Prefer
+      in: header
+      description: Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.
+      schema:
+        type: string
+      example: odata.maxpagesize=100
+    Prefer:
+      name: Prefer
+      in: header
+      description: OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations="*" (include formatted values), and odata.maxpagesize=N (set page size).
+      schema:
+        type: string
+      example: return=representation,odata.include-annotations="*"
+    ODataExpand:
+      name: $expand
+      in: query
+      description: Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities.
+      schema:
+        type: string
+      example: primarycontactid($select=fullname,emailaddress1)
     ODataSelect:
       name: $select
       in: query
@@ -282,6 +275,13 @@ components:
       schema:
         type: boolean
       example: true
+    ODataSkip:
+      name: $skip
+      in: query
+      description: Number of records to skip before returning results.
+      schema:
+        type: integer
+        minimum: 0
   responses:
     BadRequest:
       description: The request was malformed or contained invalid data. Check the request body and query parameters.
@@ -301,43 +301,19 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    PreconditionFailed:
-      description: The If-Match header value does not match the current ETag of the record, indicating the record has been modified since it was last retrieved. Retrieve the latest version and retry.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
     Unauthorized:
       description: Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
+    PreconditionFailed:
+      description: The If-Match header value does not match the current ETag of the record, indicating the record has been modified since it was last retrieved. Retrieve the latest version and retry.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   schemas:
-    AccountCollection:
-      type: object
-      description: OData collection response containing account records.
-      properties:
-        '@odata.context':
-          type: string
-          format: uri
-          description: OData context URL describing the collection.
-          example: https://www.example.com
-        '@odata.count':
-          type: integer
-          description: Total count of matching records (when $count=true).
-          example: 10
-        '@odata.nextLink':
-          type: string
-          format: uri
-          description: URL to retrieve the next page of results.
-          example: https://www.example.com
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Account'
-          description: Array of account records.
-          example: []
     Account:
       type: object
       description: Business that represents a customer or potential customer. The company that is billed in business transactions. Corresponds to the account entity type in the Microsoft.Dynamics.CRM namespace.
@@ -742,6 +718,30 @@ components:
                   type: string
                   description: Server-side stack trace for debugging.
           example: example_value
+    AccountCollection:
+      type: object
+      description: OData collection response containing account records.
+      properties:
+        '@odata.context':
+          type: string
+          format: uri
+          description: OData context URL describing the collection.
+          example: https://www.example.com
+        '@odata.count':
+          type: integer
+          description: Total count of matching records (when $count=true).
+          example: 10
+        '@odata.nextLink':
+          type: string
+          format: uri
+          description: URL to retrieve the next page of results.
+          example: https://www.example.com
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+          description: Array of account records.
+          example: []
   securitySchemes:
     oauth2:
       type: oauth2

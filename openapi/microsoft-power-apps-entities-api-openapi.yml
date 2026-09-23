@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Power Apps Microsoft Dataverse Web Accounts Entities API
+  title: Microsoft Power Apps Microsoft Dataverse Web Entities API
   description: RESTful API for interacting with Microsoft Dataverse (formerly Common Data Service), the underlying data platform for Microsoft Power Apps. This API follows OData v4.0 conventions and provides CRUD operations on Dataverse tables including accounts, contacts, and entity definitions. Each Dataverse environment has a unique organization URL and may include custom tables and operations specific to that environment.
   version: '9.2'
   termsOfService: https://www.microsoft.com/licensing/terms/productoffering/MicrosoftPowerApps
@@ -114,34 +114,6 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    ODataMaxPageSize:
-      name: Prefer
-      in: header
-      description: Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.
-      schema:
-        type: string
-      example: odata.maxpagesize=100
-    ODataSkip:
-      name: $skip
-      in: query
-      description: Number of records to skip before returning results.
-      schema:
-        type: integer
-        minimum: 0
-    ODataFilter:
-      name: $filter
-      in: query
-      description: OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.
-      schema:
-        type: string
-      example: statecode eq 0
-    Prefer:
-      name: Prefer
-      in: header
-      description: OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations="*" (include formatted values), and odata.maxpagesize=N (set page size).
-      schema:
-        type: string
-      example: return=representation,odata.include-annotations="*"
     ODataTop:
       name: $top
       in: query
@@ -150,6 +122,27 @@ components:
         type: integer
         minimum: 1
       example: 50
+    ODataFilter:
+      name: $filter
+      in: query
+      description: OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.
+      schema:
+        type: string
+      example: statecode eq 0
+    ODataMaxPageSize:
+      name: Prefer
+      in: header
+      description: Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.
+      schema:
+        type: string
+      example: odata.maxpagesize=100
+    Prefer:
+      name: Prefer
+      in: header
+      description: OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations="*" (include formatted values), and odata.maxpagesize=N (set page size).
+      schema:
+        type: string
+      example: return=representation,odata.include-annotations="*"
     ODataSelect:
       name: $select
       in: query
@@ -171,50 +164,14 @@ components:
       schema:
         type: boolean
       example: true
-  responses:
-    Forbidden:
-      description: The authenticated user does not have sufficient permissions to perform this operation. Check Dataverse security roles and privileges.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    NotFound:
-      description: The requested record was not found. Verify the record identifier is correct and the record exists.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
+    ODataSkip:
+      name: $skip
+      in: query
+      description: Number of records to skip before returning results.
+      schema:
+        type: integer
+        minimum: 0
   schemas:
-    EntityCollection:
-      type: object
-      description: OData collection response containing entity definition records.
-      properties:
-        '@odata.context':
-          type: string
-          format: uri
-          description: OData context URL describing the collection.
-          example: https://www.example.com
-        '@odata.count':
-          type: integer
-          description: Total count of matching records (when $count=true).
-          example: 10
-        '@odata.nextLink':
-          type: string
-          format: uri
-          description: URL to retrieve the next page of results.
-          example: https://www.example.com
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Entity'
-          description: Array of entity definition records.
-          example: []
     Entity:
       type: object
       description: Metadata definition for a Dataverse table (entity). Provides information about the table structure including logical names, collection names, and configuration. Read-only entity type supporting only RetrieveMultiple operations.
@@ -329,6 +286,30 @@ components:
         primaryNameColumn: name
         namespace: Microsoft.Dynamics.CRM
         baseType: crmbaseentity
+    EntityCollection:
+      type: object
+      description: OData collection response containing entity definition records.
+      properties:
+        '@odata.context':
+          type: string
+          format: uri
+          description: OData context URL describing the collection.
+          example: https://www.example.com
+        '@odata.count':
+          type: integer
+          description: Total count of matching records (when $count=true).
+          example: 10
+        '@odata.nextLink':
+          type: string
+          format: uri
+          description: URL to retrieve the next page of results.
+          example: https://www.example.com
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+          description: Array of entity definition records.
+          example: []
     ODataError:
       type: object
       description: Standard OData error response from the Dataverse Web API.
@@ -355,6 +336,25 @@ components:
                   type: string
                   description: Server-side stack trace for debugging.
           example: example_value
+  responses:
+    NotFound:
+      description: The requested record was not found. Verify the record identifier is correct and the record exists.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: The authenticated user does not have sufficient permissions to perform this operation. Check Dataverse security roles and privileges.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Authentication failed. Ensure a valid OAuth 2.0 bearer token is included in the Authorization header.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   securitySchemes:
     oauth2:
       type: oauth2
