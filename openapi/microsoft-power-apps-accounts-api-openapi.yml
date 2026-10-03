@@ -218,12 +218,6 @@ paths:
         dispatcher: FALLBACK
 components:
   responses:
-    PreconditionFailed:
-      description: The If-Match header value does not match the current ETag of the record, indicating the record has been modified since it was last retrieved. Retrieve the latest version and retry.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
     BadRequest:
       description: The request was malformed or contained invalid data. Check the request body and query parameters.
       content:
@@ -232,6 +226,12 @@ components:
             $ref: '#/components/schemas/ODataError'
     Forbidden:
       description: The authenticated user does not have sufficient permissions to perform this operation. Check Dataverse security roles and privileges.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    PreconditionFailed:
+      description: The If-Match header value does not match the current ETag of the record, indicating the record has been modified since it was last retrieved. Retrieve the latest version and retry.
       content:
         application/json:
           schema:
@@ -248,6 +248,71 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
+  parameters:
+    ODataExpand:
+      name: $expand
+      in: query
+      description: Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities.
+      schema:
+        type: string
+      example: primarycontactid($select=fullname,emailaddress1)
+    Prefer:
+      name: Prefer
+      in: header
+      description: OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations="*" (include formatted values), and odata.maxpagesize=N (set page size).
+      schema:
+        type: string
+      example: return=representation,odata.include-annotations="*"
+    ODataSelect:
+      name: $select
+      in: query
+      description: Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.
+      schema:
+        type: string
+      example: name,accountnumber,emailaddress1
+    ODataMaxPageSize:
+      name: Prefer
+      in: header
+      description: Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.
+      schema:
+        type: string
+      example: odata.maxpagesize=100
+    ODataCount:
+      name: $count
+      in: query
+      description: Set to true to include a count of matching records in the response.
+      schema:
+        type: boolean
+      example: true
+    ODataOrderBy:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties to sort results by, each optionally followed by asc or desc.
+      schema:
+        type: string
+      example: name asc
+    ODataSkip:
+      name: $skip
+      in: query
+      description: Number of records to skip before returning results.
+      schema:
+        type: integer
+        minimum: 0
+    ODataFilter:
+      name: $filter
+      in: query
+      description: OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.
+      schema:
+        type: string
+      example: statecode eq 0
+    ODataTop:
+      name: $top
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        minimum: 1
+      example: 50
   schemas:
     AccountCollection:
       type: object
@@ -677,71 +742,6 @@ components:
         primaryNameColumn: name
         namespace: Microsoft.Dynamics.CRM
         baseType: crmbaseentity
-  parameters:
-    ODataSkip:
-      name: $skip
-      in: query
-      description: Number of records to skip before returning results.
-      schema:
-        type: integer
-        minimum: 0
-    ODataOrderBy:
-      name: $orderby
-      in: query
-      description: Comma-separated list of properties to sort results by, each optionally followed by asc or desc.
-      schema:
-        type: string
-      example: name asc
-    ODataExpand:
-      name: $expand
-      in: query
-      description: Comma-separated list of navigation properties to expand inline in the response. Supports nested $select and $filter on expanded entities.
-      schema:
-        type: string
-      example: primarycontactid($select=fullname,emailaddress1)
-    ODataMaxPageSize:
-      name: Prefer
-      in: header
-      description: Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.
-      schema:
-        type: string
-      example: odata.maxpagesize=100
-    ODataSelect:
-      name: $select
-      in: query
-      description: Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.
-      schema:
-        type: string
-      example: name,accountnumber,emailaddress1
-    ODataCount:
-      name: $count
-      in: query
-      description: Set to true to include a count of matching records in the response.
-      schema:
-        type: boolean
-      example: true
-    ODataTop:
-      name: $top
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        minimum: 1
-      example: 50
-    Prefer:
-      name: Prefer
-      in: header
-      description: OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations="*" (include formatted values), and odata.maxpagesize=N (set page size).
-      schema:
-        type: string
-      example: return=representation,odata.include-annotations="*"
-    ODataFilter:
-      name: $filter
-      in: query
-      description: OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.
-      schema:
-        type: string
-      example: statecode eq 0
   securitySchemes:
     oauth2:
       type: oauth2

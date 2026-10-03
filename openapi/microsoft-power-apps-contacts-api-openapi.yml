@@ -218,12 +218,6 @@ paths:
         dispatcher: FALLBACK
 components:
   responses:
-    PreconditionFailed:
-      description: The If-Match header value does not match the current ETag of the record, indicating the record has been modified since it was last retrieved. Retrieve the latest version and retry.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
     BadRequest:
       description: The request was malformed or contained invalid data. Check the request body and query parameters.
       content:
@@ -232,6 +226,12 @@ components:
             $ref: '#/components/schemas/ODataError'
     Forbidden:
       description: The authenticated user does not have sufficient permissions to perform this operation. Check Dataverse security roles and privileges.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    PreconditionFailed:
+      description: The If-Match header value does not match the current ETag of the record, indicating the record has been modified since it was last retrieved. Retrieve the latest version and retry.
       content:
         application/json:
           schema:
@@ -249,20 +249,6 @@ components:
           schema:
             $ref: '#/components/schemas/ODataError'
   parameters:
-    ODataSkip:
-      name: $skip
-      in: query
-      description: Number of records to skip before returning results.
-      schema:
-        type: integer
-        minimum: 0
-    ODataOrderBy:
-      name: $orderby
-      in: query
-      description: Comma-separated list of properties to sort results by, each optionally followed by asc or desc.
-      schema:
-        type: string
-      example: name asc
     ODataExpand:
       name: $expand
       in: query
@@ -270,13 +256,13 @@ components:
       schema:
         type: string
       example: primarycontactid($select=fullname,emailaddress1)
-    ODataMaxPageSize:
+    Prefer:
       name: Prefer
       in: header
-      description: Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.
+      description: OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations="*" (include formatted values), and odata.maxpagesize=N (set page size).
       schema:
         type: string
-      example: odata.maxpagesize=100
+      example: return=representation,odata.include-annotations="*"
     ODataSelect:
       name: $select
       in: query
@@ -284,6 +270,13 @@ components:
       schema:
         type: string
       example: name,accountnumber,emailaddress1
+    ODataMaxPageSize:
+      name: Prefer
+      in: header
+      description: Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.
+      schema:
+        type: string
+      example: odata.maxpagesize=100
     ODataCount:
       name: $count
       in: query
@@ -291,6 +284,27 @@ components:
       schema:
         type: boolean
       example: true
+    ODataOrderBy:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties to sort results by, each optionally followed by asc or desc.
+      schema:
+        type: string
+      example: name asc
+    ODataSkip:
+      name: $skip
+      in: query
+      description: Number of records to skip before returning results.
+      schema:
+        type: integer
+        minimum: 0
+    ODataFilter:
+      name: $filter
+      in: query
+      description: OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.
+      schema:
+        type: string
+      example: statecode eq 0
     ODataTop:
       name: $top
       in: query
@@ -299,21 +313,33 @@ components:
         type: integer
         minimum: 1
       example: 50
-    Prefer:
-      name: Prefer
-      in: header
-      description: OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations="*" (include formatted values), and odata.maxpagesize=N (set page size).
-      schema:
-        type: string
-      example: return=representation,odata.include-annotations="*"
-    ODataFilter:
-      name: $filter
-      in: query
-      description: OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.
-      schema:
-        type: string
-      example: statecode eq 0
   schemas:
+    ODataError:
+      type: object
+      description: Standard OData error response from the Dataverse Web API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code.
+            message:
+              type: string
+              description: Human-readable error message.
+            innererror:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Detailed inner error message.
+                type:
+                  type: string
+                  description: Error type identifier.
+                stacktrace:
+                  type: string
+                  description: Server-side stack trace for debugging.
+          example: example_value
     ContactCollection:
       type: object
       description: OData collection response containing contact records.
@@ -709,32 +735,6 @@ components:
         primaryNameColumn: fullname
         namespace: Microsoft.Dynamics.CRM
         baseType: crmbaseentity
-    ODataError:
-      type: object
-      description: Standard OData error response from the Dataverse Web API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Machine-readable error code.
-            message:
-              type: string
-              description: Human-readable error message.
-            innererror:
-              type: object
-              properties:
-                message:
-                  type: string
-                  description: Detailed inner error message.
-                type:
-                  type: string
-                  description: Error type identifier.
-                stacktrace:
-                  type: string
-                  description: Server-side stack trace for debugging.
-          example: example_value
   securitySchemes:
     oauth2:
       type: oauth2

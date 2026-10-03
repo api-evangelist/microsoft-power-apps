@@ -113,91 +113,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    ODataSkip:
-      name: $skip
-      in: query
-      description: Number of records to skip before returning results.
-      schema:
-        type: integer
-        minimum: 0
-    ODataOrderBy:
-      name: $orderby
-      in: query
-      description: Comma-separated list of properties to sort results by, each optionally followed by asc or desc.
-      schema:
-        type: string
-      example: name asc
-    ODataMaxPageSize:
-      name: Prefer
-      in: header
-      description: Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.
-      schema:
-        type: string
-      example: odata.maxpagesize=100
-    ODataSelect:
-      name: $select
-      in: query
-      description: Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.
-      schema:
-        type: string
-      example: name,accountnumber,emailaddress1
-    ODataCount:
-      name: $count
-      in: query
-      description: Set to true to include a count of matching records in the response.
-      schema:
-        type: boolean
-      example: true
-    ODataTop:
-      name: $top
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        minimum: 1
-      example: 50
-    Prefer:
-      name: Prefer
-      in: header
-      description: OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations="*" (include formatted values), and odata.maxpagesize=N (set page size).
-      schema:
-        type: string
-      example: return=representation,odata.include-annotations="*"
-    ODataFilter:
-      name: $filter
-      in: query
-      description: OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.
-      schema:
-        type: string
-      example: statecode eq 0
   schemas:
-    ODataError:
-      type: object
-      description: Standard OData error response from the Dataverse Web API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Machine-readable error code.
-            message:
-              type: string
-              description: Human-readable error message.
-            innererror:
-              type: object
-              properties:
-                message:
-                  type: string
-                  description: Detailed inner error message.
-                type:
-                  type: string
-                  description: Error type identifier.
-                stacktrace:
-                  type: string
-                  description: Server-side stack trace for debugging.
-          example: example_value
     Entity:
       type: object
       description: Metadata definition for a Dataverse table (entity). Provides information about the table structure including logical names, collection names, and configuration. Read-only entity type supporting only RetrieveMultiple operations.
@@ -312,6 +228,32 @@ components:
         primaryNameColumn: name
         namespace: Microsoft.Dynamics.CRM
         baseType: crmbaseentity
+    ODataError:
+      type: object
+      description: Standard OData error response from the Dataverse Web API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code.
+            message:
+              type: string
+              description: Human-readable error message.
+            innererror:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Detailed inner error message.
+                type:
+                  type: string
+                  description: Error type identifier.
+                stacktrace:
+                  type: string
+                  description: Server-side stack trace for debugging.
+          example: example_value
     EntityCollection:
       type: object
       description: OData collection response containing entity definition records.
@@ -355,6 +297,64 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
+  parameters:
+    ODataMaxPageSize:
+      name: Prefer
+      in: header
+      description: Set the maximum page size for paginated results using odata.maxpagesize preference. Default is 5000 records.
+      schema:
+        type: string
+      example: odata.maxpagesize=100
+    Prefer:
+      name: Prefer
+      in: header
+      description: OData preference header. Common values include return=representation (return created/updated record), odata.include-annotations="*" (include formatted values), and odata.maxpagesize=N (set page size).
+      schema:
+        type: string
+      example: return=representation,odata.include-annotations="*"
+    ODataSelect:
+      name: $select
+      in: query
+      description: Comma-separated list of property names to include in the response. Use to limit the properties returned and improve performance.
+      schema:
+        type: string
+      example: name,accountnumber,emailaddress1
+    ODataCount:
+      name: $count
+      in: query
+      description: Set to true to include a count of matching records in the response.
+      schema:
+        type: boolean
+      example: true
+    ODataOrderBy:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties to sort results by, each optionally followed by asc or desc.
+      schema:
+        type: string
+      example: name asc
+    ODataSkip:
+      name: $skip
+      in: query
+      description: Number of records to skip before returning results.
+      schema:
+        type: integer
+        minimum: 0
+    ODataFilter:
+      name: $filter
+      in: query
+      description: OData filter expression to restrict the set of records returned. Supports standard OData comparison, logical, and function operators.
+      schema:
+        type: string
+      example: statecode eq 0
+    ODataTop:
+      name: $top
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        minimum: 1
+      example: 50
   securitySchemes:
     oauth2:
       type: oauth2
