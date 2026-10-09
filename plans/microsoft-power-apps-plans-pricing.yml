@@ -218,3 +218,74 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  - seat
+  - subscription
+  units:
+  - data
+  - negotiated
+  - request
+  - seat
+  plans:
+  - name: Power Apps Developer Plan
+    access: freemium
+    model: seat
+    model_how: derived
+    units:
+    - data
+    - request
+    - seat
+    periods:
+    - day
+    - month
+  - name: Power Apps Premium
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - data
+    - request
+    - seat
+    periods:
+    - day
+    - month
+  - name: Power Apps Premium (2,000+ Seat Minimum)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - request
+    - seat
+    periods:
+    - day
+    - month
+  - name: Dataverse Database Capacity Add-on
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - data
+    periods:
+    - month
+  - name: Power Apps Pay-as-you-go
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - negotiated
+    - request
+    periods:
+    - day
+    - month
+  - name: Power Platform Request Capacity Add-on
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - request
+    periods:
+    - day
